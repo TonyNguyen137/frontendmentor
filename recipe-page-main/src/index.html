@@ -50,19 +50,21 @@
     <main class="container mb-1">
       <div class="recipe">
         <figure class="recipe__image-container">
-          <img
-            class="recipe__image"
-            sizes="(min-width:768px) 640px, (min-width:576px) 540px, 100vw"
-            srcset="
-              assets/images/image-omelette-720x330.jpeg.webp 720w,
-              assets/images/image-omelette-640x293.jpeg.webp 640w,
-              assets/images/image-omelette-540x248.jpeg.webp 540w
-            "
-            width="640"
-            height="293"
-            src="assets/images/image-omelette.jpeg"
-            alt="omelette image"
-          />
+          <div class="recipe__image-wrapper">
+            <img
+              class="recipe__image"
+              sizes="(min-width:768px) 640px, (min-width:576px) 540px, 100vw"
+              srcset="
+                assets/images/image-omelette-720x330.jpeg.webp 720w,
+                assets/images/image-omelette-640x293.jpeg.webp 640w,
+                assets/images/image-omelette-540x248.jpeg.webp 540w
+              "
+              width="640"
+              height="293"
+              src="assets/images/image-omelette.jpeg"
+              alt="omelette image"
+            />
+          </div>
         </figure>
         <section class="recipe__introduction">
           <h1>Simple Omelette Recipe</h1>

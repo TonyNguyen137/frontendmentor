@@ -12,7 +12,9 @@
 
   &__image-container {
     margin-bottom: var(--mb);
+  }
 
+  &__image-wrapper {
     @include mq(md) {
       overflow: hidden;
       border-radius: var(--border-radius);
@@ -21,9 +23,12 @@
 
   > *:not(.recipe__image-container) {
     padding-inline: var(--px);
+
+    @include mq(md) {
+      padding-inline: var(--px-md);
+    }
   }
 
-  > *,
   &__image-container {
     @include mq(md) {
       padding-inline: var(--px-md);
