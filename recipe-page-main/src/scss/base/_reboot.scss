@@ -1,0 +1,59 @@
+@charset 'utf-8';
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+strong {
+  font-weight: 700;
+}
+
+body {
+  font-family: Outfit, Arial, sans-serif;
+  background-color: $neutral-clr-300;
+  color: $neutral-clr-500;
+  line-height: 1.5;
+  @include mq(md) {
+    padding-block: 125px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ul {
+  list-style: none;
+  padding-left: 8px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Young Serif', serif;
+}
+
+h1 {
+  // 375px:1.9rem - 576px:2.5rem
+  font-size: clamp(1.9rem, 0.7806rem + 4.7761vw, 2.5rem);
+}
+h1,
+h2 {
+  margin-bottom: 20px;
+}

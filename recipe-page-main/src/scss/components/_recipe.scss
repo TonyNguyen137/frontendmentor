@@ -1,0 +1,118 @@
+@use '../abstract/functions' as *;
+@use '../abstract/variables' as *;
+@use '../abstract/mixins' as *;
+
+.recipe {
+  --border-radius: 14px;
+  --mb: 32px;
+  --py: 30px;
+  --diviver: 1px solid hsl(30, 54%, 90%);
+  --px: 20px;
+  --px-md: 40px;
+
+  &__image-container {
+    margin-bottom: var(--mb);
+
+    @include mq(md) {
+      overflow: hidden;
+      border-radius: var(--border-radius);
+    }
+  }
+
+  > *:not(.recipe__image-container) {
+    padding-inline: var(--px);
+  }
+
+  > *,
+  &__image-container {
+    @include mq(md) {
+      padding-inline: var(--px-md);
+    }
+  }
+
+  &__introduction {
+    margin-bottom: px-to-rem(30);
+  }
+
+  &__preparation-box {
+    background-color: $neutral-clr-200;
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    @include mq(md) {
+      padding: 40px;
+    }
+  }
+
+  &__preparation-headline {
+    font-size: px-to-rem(20);
+    font-weight: 600;
+    color: $secondary-clr;
+    margin-bottom: 16px;
+  }
+
+  &__item::before {
+    content: '';
+    display: inline-block;
+    background-color: $neutral-clr-500;
+    width: 0.35em;
+    height: 0.35em;
+    border-radius: 100%;
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: 2ch 1fr;
+    align-items: center;
+    column-gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  &__item:last-child {
+    margin-bottom: 0;
+  }
+
+  &__wrapper {
+    padding-block: var(--py);
+  }
+
+  &__instructions-list {
+    counter-reset: instructions-counter;
+  }
+
+  &__nutrition-section p {
+    margin-bottom: px-to-rem(20);
+  }
+
+  &__nutrition-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+
+    th {
+      font-weight: 400;
+    }
+    tr:not(:last-child) {
+      border-bottom: var(--diviver);
+    }
+
+    td {
+      padding-block: 0.5rem;
+      font-weight: 700;
+    }
+  }
+
+  //utils
+  &__item[data-item='instruction'] {
+    align-items: revert;
+  }
+
+  &__item[data-item='instruction']::before {
+    all: unset;
+    counter-increment: instructions-counter;
+    content: counter(instructions-counter) '.';
+    font-weight: 700;
+  }
+
+  &__wrapper[data-border-bottom] {
+    border-bottom: var(--diviver);
+  }
+}
