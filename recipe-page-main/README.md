@@ -8,7 +8,7 @@ This is a solution to the [Recipe page challenge on Frontend Mentor](https://www
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://recipe-page-tn.netlify.app/](https://recipe-page-tn.netlify.app/)
 
 ## My process
 
@@ -29,7 +29,7 @@ I am still trying to develope and improve my workflow. Trying out tools such as 
 ## Author
 
 - Website - [Tony Nguyen](https://github.com/TonyNguyen137/Frontend-Mentor-Challenges)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/TonyNguyen137)
+- Frontend Mentor - [@TonyNguyen137](https://www.frontendmentor.io/profile/TonyNguyen137)
 - Twitter - [@tonynguyen137](https://twitter.com/tonynguyen137)
 
 ## Acknowledgments
