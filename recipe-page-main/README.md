@@ -34,4 +34,7 @@ I am still trying to develope and improve my workflow. Trying out tools such as 
 
 ## Acknowledgments
 
-[Kevin Powell's Youtube CSS Tutorials](https://www.youtube.com/channel/UCJZv4d5rbIKd4QHMPkcABCw) helping me to expand my css knowdledge.
+1. CSS - [Kevin Powell](https://www.youtube.com/@KevinPowell)
+2. CSS & Js - [Kyle](https://www.youtube.com/c/webdevsimplified)
+3. Animations, CSS, JS - [Jhey](https://www.youtube.com/c/JheyTompkins)
+4. Animations, CSS, JS - [Hyperplex](https://www.youtube.com/c/Hyperplexed)
