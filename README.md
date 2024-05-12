@@ -52,7 +52,7 @@ The projects are hosted online for free on [netlify](https://www.netlify.com/). 
   ![lighthouse](./lighthouse-score.png)
 
 - Evaluate and identify the best tools, plugins, and workflow setup to maximize efficiency and productivity.
-  Tools, plugins & methodology I am currently using/testing:
+  Tools, plugins, approaches & methodology I am currently using/learning/testing:
 
 1. [Parceljs](https://parceljs.org/)
 2. [vite](https://vitejs.dev/)
@@ -60,6 +60,7 @@ The projects are hosted online for free on [netlify](https://www.netlify.com/). 
 4. [postcss](https://postcss.org/)
 5. [postcss-sort-media-queries](https://www.npmjs.com/package/postcss-sort-media-queries)
 6. [BEM methodology](https://getbem.com/)
+7. [Schema](https://schema.org/docs/gs.html)
 
 # Youtubers recommandations to expand your knowledge & to keep you up-to-date on the latest features:
 

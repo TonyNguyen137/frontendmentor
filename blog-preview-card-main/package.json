@@ -1,0 +1,22 @@
+{
+  "name": "blog-preview-card-main",
+  "version": "1.0.0",
+  "description": "![Design preview for the Blog preview card coding challenge](./design/desktop-preview.jpg)",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "dev": "parcel",
+    "build": "parcel build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0",
+    "sass": "^1.77.1",
+    "sharp": "^0.31.3"
+  }
+}
