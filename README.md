@@ -40,6 +40,7 @@ Server running at http://localhost:1234
 The projects are hosted online for free on [netlify](https://www.netlify.com/). It will last approximately for 3 months
 
 - recipe-page-main: [https://recipe-page-tn.netlify.app/](https://recipe-page-tn.netlify.app/)
+- blog-preview-card-main: [https://tn-blog-preview-card-main.netlify.app/](https://tn-blog-preview-card-main.netlify.app/)
 
 #### Since I don't have the Figma Design files for many projects, the results aren't pixel-perfect.
 

@@ -6,7 +6,7 @@ This is a solution to the [Recipe page challenge on Frontend Mentor](https://www
 
 ![](./design/desktop-preview.jpg)
 
-### Links
+### Live Site URL
 
 - Live Site URL: [https://recipe-page-tn.netlify.app/](https://recipe-page-tn.netlify.app/)
 
