@@ -3,6 +3,7 @@
 @use '../abstract/variables' as *;
 
 .card {
+  min-height: px-to-rem(522);
   max-width: px-to-rem(384);
   background-color: $clr-white;
   border-radius: 20px;
@@ -19,12 +20,14 @@
     margin-bottom: 24px;
   }
 
-  &__wrapper-content > *:not(:last-child) {
-    margin-bottom: 12px;
+  &__wrapper-content {
+    display: grid;
+    row-gap: 12px;
   }
 
   &__image {
     border-radius: 10px;
+    height: px-to-rem(200);
   }
 
   &__tag {
@@ -63,21 +66,27 @@
 
   &__text {
     color: $clr-neutral;
-    line-height: 1.5;
     font-weight: 500;
     font-size: px-to-rem(14);
-
     @include media(sm) {
       font-size: px-to-rem(16);
     }
   }
 
-  &__author-image {
-    margin-right: 12px;
+  &__wrapper-author {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
   }
 
   &__author-name {
     font-weight: 800;
     font-size: px-to-rem(14);
+  }
+
+  &__author-image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
   }
 }

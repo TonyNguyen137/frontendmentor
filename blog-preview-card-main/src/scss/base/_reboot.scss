@@ -3,7 +3,7 @@
 @use '../abstract/mixins' as *;
 @use '../abstract/variables' as *;
 
-html {
+:root {
   box-sizing: border-box;
 }
 *,
@@ -22,6 +22,7 @@ body {
   display: grid;
   place-items: center;
   padding-inline: 24px;
+  line-height: 1.5;
 }
 
 img {
