@@ -8,7 +8,7 @@ This is a solution to the [Recipe page challenge on Frontend Mentor](https://www
 
 ### Live Site URL
 
-- Live Site URL: [https://recipe-page-tn.netlify.app/](https://recipe-page-tn.netlify.app/)
+[https://recipe-page-tn.netlify.app/](https://recipe-page-tn.netlify.app/)
 
 ## My process
 

@@ -8,7 +8,7 @@ This is a solution to the [Blog preview card](https://www.frontendmentor.io/chal
 
 ### Live Site URL
 
-- Live Site URL: [https://tn-blog-preview-card-main.netlify.app/](https://tn-blog-preview-card-main.netlify.app/)
+[https://tn-blog-preview-card-main.netlify.app/](https://tn-blog-preview-card-main.netlify.app/)
 
 ## My process
 
