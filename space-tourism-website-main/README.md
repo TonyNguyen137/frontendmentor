@@ -2,11 +2,9 @@
 
 This is a solution to the [Space tourism website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-### Screenshot
-
 ### Live Site URL
 
-[https://recipe-page-tn.netlify.app/](https://recipe-page-tn.netlify.app/)
+[https://recipe-page-tn.netlify.app/](https://master--frontendmentor-spacetourism.netlify.app/)
 
 ## My process
 
