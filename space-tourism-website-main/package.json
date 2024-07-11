@@ -4,7 +4,7 @@
   "description": "![Design preview for the Space tourism website coding challenge](./preview.jpg)",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build"
+    "build": "parcel build src/*.html"
   },
   "keywords": [],
   "author": "",
