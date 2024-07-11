@@ -1,0 +1,44 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+.layout-header {
+  max-width: px-to-rem(1440);
+
+  margin-inline: auto;
+  padding-top: 24px;
+  padding-inline: 24px;
+
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mq(md) {
+    padding-top: 0;
+    padding-inline: 0;
+    grid-template-columns: px-to-rem(39) max-content 1fr;
+    justify-content: revert;
+  }
+
+  @include mq(lg) {
+    padding-top: 40px;
+  }
+
+  @include mq(xxl) {
+    grid-template-columns: px-to-rem(55) max-content 1fr;
+  }
+
+  .logo-link {
+    align-self: center;
+
+    @include mq(md) {
+      grid-column: 2 / 3;
+    }
+  }
+
+  .layout-nav {
+    justify-self: end;
+    width: 100%;
+  }
+}

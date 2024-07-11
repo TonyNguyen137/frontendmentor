@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="frontendmentor, frontend mentor, space tourism website, frontend mentor challenge"
+    />
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Light.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/src/assets/font/Bellefair-Regular.ttf"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <script type="module" src="/src/js/crew.js"></script>
+    <link rel="stylesheet" href="scss/bundle.scss" />
+
+    <title>Frontend Mentor | Space tourism website</title>
+  </head>
+  <body>
+    <picture>
+      <source
+        type="image/avif"
+        media="(min-width: 992px)"
+        srcset="/src/assets/images/crew/background-crew-desktop.jpg?as=avif"
+      />
+      <source
+        type="image/webp"
+        media="(min-width: 992px)"
+        srcset="/src/assets/images/crew/background-crew-desktop.jpg?as=webp"
+      />
+      <source
+        type="image/avif"
+        media="(min-width: 576px)"
+        srcset="/src/assets/images/crew/background-crew-tablet.jpg?as=avif"
+      />
+      <source
+        type="image/webp"
+        media="(min-width: 576px)"
+        srcset="/src/assets/images/crew/background-crew-tablet.jpg?as=webp"
+      />
+      <source
+        type="image/avif"
+        srcset="/src/assets/images/crew/background-crew-mobile.jpg?as=avif"
+      />
+      <source
+        type="image/webp"
+        srcset="/src/assets/images/crew/background-crew-mobile.jpg?as=webp"
+      />
+
+      <img
+        src="/src/assets/images/crew/background-crew-desktop.jpg?as=webp"
+        alt=""
+        fetchpriority="eager"
+        decoding="async"
+        class="background"
+      />
+    </picture>
+
+    <header class="layout-header">
+      <a class="logo-link" href="/" aria-label="Space Tourism">
+        <svg class="logo-icon">
+          <use xlink:href="/src/assets/images/shared/sprite.svg#logo"></use>
+        </svg>
+      </a>
+
+      <div class="layout-nav">
+        <nav class="navbar nav-js" data-expanded="md">
+          <button
+            class="navbar__menu-toggler open-js"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="mbWrapper"
+          >
+            <svg
+              aria-hidden="true"
+              width="24"
+              height="21"
+              class="navbar__hamburger-icon"
+            >
+              <use
+                xlink:href="/src/assets/images/shared/sprite.svg#icon-hamburger"
+              ></use>
+            </svg>
+          </button>
+          <div
+            class="navbar__menubar-wrapper wrapper-js"
+            id="mbWrapper"
+            role="dialog"
+            tabindex="-1"
+          >
+            <button class="navbar__close-btn close-js" aria-label="close">
+              <svg
+                aria-hidden="true"
+                width="24"
+                height="21"
+                class="navbar__close-icon close-icon"
+              >
+                <use
+                  xlink:href="/src/assets/images/shared/sprite.svg#icon-close"
+                ></use>
+              </svg>
+            </button>
+            <ul class="navbar__menubar menubar-js">
+              <li>
+                <a class="navbar__link link-js" href="/">Home</a>
+              </li>
+              <li>
+                <a class="navbar__link link-js" href="destination.html"
+                  >Destination</a
+                >
+              </li>
+              <li>
+                <a
+                  class="navbar__link link-js navbar__link--active"
+                  href="crew.html"
+                  aria-current="page"
+                  >Crew</a
+                >
+              </li>
+              <li>
+                <a class="navbar__link link-js" href="technology.html"
+                  >Technology</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="layout-main layout-main--crew">
+      <h1 class="heading-1-crew">
+        <span class="heading-number" aria-hidden="true">02</span>Meet your crew
+      </h1>
+      <div class="tabs tabs--crew tabs-js">
+        <div class="tabs__wrapper--crew">
+          <div
+            id="panel-1"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-1"
+            class="tabs__panel tabs__panel--active"
+          >
+            <span class="subheading--crew">commander</span>
+            <p class="heading-2-crew">Douglas Hurley</p>
+            <p class="tabs__text">
+              See our planet as you’ve never seen it before. A perfect relaxing
+              trip away to help regain perspective and come back refreshed.
+              While you’re there, take in some history by visiting the Luna 2
+              and Apollo 11 landing sites.
+            </p>
+          </div>
+
+          <div
+            id="panel-2"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-2"
+            class="tabs__panel"
+          >
+            <span class="subheading--crew">Mission Specialist </span>
+            <p class="heading-2-crew">MARK SHUTTLEWORTH</p>
+            <p class="tabs__text">
+              Mark Richard Shuttleworth is the founder and CEO of Canonical, the
+              company behind the Linux-based Ubuntu operating system.
+              Shuttleworth became the first South African to travel to space as
+              a space tourist.
+            </p>
+          </div>
+
+          <div
+            id="panel-3"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-3"
+            class="tabs__panel"
+          >
+            <span class="subheading--crew">PILOT</span>
+            <p class="heading-2-crew">Victor Glover</p>
+            <p class="tabs__text">
+              Pilot on the first operational flight of the SpaceX Crew Dragon to
+              the International Space Station. Glover is a commander in the U.S.
+              Navy where he pilots an F/A-18.He was a crew member of Expedition
+              64, and served as a station systems flight engineer.
+            </p>
+          </div>
+          <div
+            id="panel-4"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-4"
+            class="tabs__panel"
+          >
+            <span class="subheading--crew">Flight Engineer</span>
+            <p class="heading-2-crew">Anousheh Ansari</p>
+            <p class="tabs__text">
+              Anousheh Ansari is an Iranian American engineer and co-founder of
+              Prodea Systems. Ansari was the fourth self-funded space tourist,
+              the first self-funded woman to fly to the ISS, and the first
+              Iranian in space.
+            </p>
+          </div>
+          <div
+            class="tabs__tablist tablist-js"
+            role="tablist"
+            aria-label="Planets"
+          >
+            <button
+              class="tabs__button tabs__button--dot tab-js tabs__button--active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-1 image-1"
+              id="tab-1"
+              tabindex="0"
+            >
+              <span hidden>go to slide 1</span>
+            </button>
+            <button
+              class="tabs__button tabs__button--dot tab-js"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-2 image-2"
+              id="tab-2"
+              tabindex="-1"
+            >
+              <span hidden>go to slide 2</span>
+            </button>
+            <button
+              class="tabs__button tabs__button--dot tab-js"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-3 image-3"
+              id="tab-3"
+              tabindex="-1"
+            >
+              <span hidden>go to slide 3</span>
+            </button>
+            <button
+              class="tabs__button tabs__button--dot tab-js"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-4 image-4"
+              id="tab-4"
+              tabindex="-1"
+            >
+              <span hidden>go to slide 4</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <figure class="image-container image-container--crew">
+        <img
+          class="image-container__image image-container__image--active"
+          src="/src/assets/images/crew/image-douglas-hurley.webp"
+          alt=""
+          width="562"
+          height="703"
+          id="image-1"
+        />
+        <img
+          class="image-container__image"
+          src="/src/assets/images/crew/image-mark-shuttleworth.webp"
+          alt=""
+          width="453"
+          height="654"
+          id="image-2"
+        />
+        <img
+          class="image-container__image"
+          src="/src/assets/images/crew/image-victor-glover.webp"
+          alt=""
+          width="554"
+          height="654"
+          id="image-3"
+        />
+        <img
+          class="image-container__image"
+          src="/src/assets/images/crew/image-anousheh-ansari.webp"
+          alt=""
+          width="615"
+          height="607"
+          id="image-4"
+        />
+      </figure>
+    </main>
+  </body>
+</html>

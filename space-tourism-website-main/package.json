@@ -1,0 +1,17 @@
+{
+  "name": "space-tourism-website-main",
+  "version": "1.0.0",
+  "description": "![Design preview for the Space tourism website coding challenge](./preview.jpg)",
+  "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0",
+    "sharp": "^0.31.3"
+  }
+}

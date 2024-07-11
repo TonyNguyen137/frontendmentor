@@ -1,0 +1,149 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+.navbar {
+  --py: 39px;
+  $_bp: md;
+
+  &__menu-toggler,
+  &__close-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__close-btn {
+    justify-self: end;
+
+    @include mq(#{$_bp}) {
+      display: none;
+    }
+  }
+
+  &__menubar-wrapper {
+    background-color: hsla(0, 0%, 100%, 0.04); /* White with 4% opacity */
+    backdrop-filter: blur(81.55px);
+
+    padding: 33.95px 26.45px 32px 32px;
+
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    row-gap: 106.45px;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    overflow: auto;
+
+    transform: translate3d(100%, 0, 0);
+
+    @include mq(#{$_bp}) {
+      padding: 0;
+      position: static;
+      display: flex;
+      transform: translate3d(0, 0, 0);
+    }
+
+    &--expanded {
+      transform: translate3d(0, 0, 0);
+    }
+
+    &--transitioning {
+      transition: transform var(--transition-duration) linear;
+    }
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  &__menubar {
+    counter-reset: nav-item-counter -1;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include mq(#{$_bp}) {
+      padding-top: 0;
+      padding-inline: 48px 46px;
+      padding-block: var(--py);
+
+      flex-direction: row;
+      column-gap: 48px;
+      row-gap: revert;
+    }
+
+    @include mq(lg) {
+      padding-inline: 123px 165px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $clr-light;
+    letter-spacing: 2.7px;
+    position: relative;
+
+    font-size: 1rem;
+
+    @include mq(md) {
+      font-size: px-to-rem(14);
+    }
+
+    @include mq(lg) {
+      font-size: 1rem;
+    }
+
+    &::before {
+      counter-increment: nav-item-counter;
+      content: '0' counter(nav-item-counter);
+      font-weight: 700;
+      margin-right: 14px;
+
+      @include mq(md) {
+        display: none;
+      }
+
+      @include mq(lg) {
+        display: revert;
+      }
+    }
+
+    &--active::after,
+    &:not(.navbar__link--active)::after {
+      @include mq(#{$_bp}) {
+        content: '';
+        position: absolute;
+        bottom: calc(var(--py) * -1);
+        left: 0;
+        height: 3px;
+        width: 100%;
+      }
+    }
+
+    &--active::after {
+      background-color: $clr-light;
+    }
+
+    &:not(.navbar__link--active)::after {
+      @include mq(#{$_bp}) {
+        opacity: 0;
+        transition: opacity 0.2s;
+        background-color: $clr-grey;
+      }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:not(.navbar__link--active):hover::after {
+        opacity: 1;
+      }
+    }
+  }
+}

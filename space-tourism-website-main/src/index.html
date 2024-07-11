@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="frontendmentor, frontend mentor, space tourism website, frontend mentor challenge"
+    />
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Light.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/src/assets/font/Bellefair-Regular.ttf"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <script type="module" src="/src/js/home.js"></script>
+    <link rel="stylesheet" href="scss/bundle.scss" />
+
+    <title>Frontend Mentor | Space tourism website</title>
+  </head>
+  <body>
+    <picture>
+      <source
+        type="image/avif"
+        media="(min-width: 992px)"
+        srcset="/src/assets/images/home/background-home-desktop.jpg?as=avif"
+      />
+      <source
+        type="image/webp"
+        media="(min-width: 992px)"
+        srcset="/src/assets/images/home/background-home-desktop.jpg?as=webp"
+      />
+      <source
+        type="image/avif"
+        media="(min-width: 576px)"
+        srcset="/src/assets/images/home/background-home-tablet.jpg?as=avif"
+      />
+      <source
+        type="image/webp"
+        media="(min-width: 576px)"
+        srcset="/src/assets/images/home/background-home-tablet.jpg?as=webp"
+      />
+      <source
+        type="image/avif"
+        srcset="/src/assets/images/home/background-home-mobile.jpg?as=avif"
+      />
+      <source
+        type="image/webp"
+        srcset="/src/assets/images/home/background-home-mobile.jpg?as=webp"
+      />
+
+      <img
+        src="/src/assets/images/home/background-home-desktop.jpg?as=webp"
+        alt=""
+        fetchpriority="eager"
+        decoding="async"
+        class="background"
+      />
+    </picture>
+
+    <header class="layout-header">
+      <a class="logo-link" href="/" aria-label="Space Tourism">
+        <svg class="logo-icon">
+          <use xlink:href="/src/assets/images/shared/sprite.svg#logo"></use>
+        </svg>
+      </a>
+
+      <div class="layout-nav">
+        <nav class="navbar nav-js" data-expanded="md">
+          <button
+            class="navbar__menu-toggler open-js"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="mbWrapper"
+          >
+            <svg
+              aria-hidden="true"
+              width="24"
+              height="21"
+              class="navbar__hamburger-icon"
+            >
+              <use
+                xlink:href="/src/assets/images/shared/sprite.svg#icon-hamburger"
+              ></use>
+            </svg>
+          </button>
+          <div
+            class="navbar__menubar-wrapper wrapper-js"
+            id="mbWrapper"
+            role="dialog"
+            tabindex="-1"
+          >
+            <button class="navbar__close-btn close-js" aria-label="close">
+              <svg
+                aria-hidden="true"
+                width="24"
+                height="21"
+                class="navbar__close-icon close-icon"
+              >
+                <use
+                  xlink:href="/src/assets/images/shared/sprite.svg#icon-close"
+                ></use>
+              </svg>
+            </button>
+            <ul class="navbar__menubar menubar-js">
+              <li>
+                <a
+                  class="navbar__link navbar__link--active ink-js"
+                  aria-current="page"
+                  href="/"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a class="navbar__link link-js" href="destination.html"
+                  >Destination</a
+                >
+              </li>
+              <li>
+                <a class="navbar__link link-js" href="crew.html">Crew</a>
+              </li>
+              <li>
+                <a class="navbar__link link-js" href="technology.html"
+                  >Technology</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="container layout-textblock">
+      <div class="text-block">
+        <!-- the font is buggy with h tags -->
+        <p class="text-block__intro">
+          So, you want to travel to
+          <span class="text-block__highlight">Space</span>
+        </p>
+        <p class="text-block__paragraph">
+          Let’s face it; if you want to go to space, you might as well genuinely
+          go to outer space and not hover kind of on the edge of it. Well sit
+          back, and relax because we’ll give you a truly out of this world
+          experience!
+        </p>
+      </div>
+      <div class="circle align-self-end">explore</div>
+    </main>
+  </body>
+</html>

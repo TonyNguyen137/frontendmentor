@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="frontendmentor, frontend mentor, space tourism website, frontend mentor challenge"
+    />
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Light.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/src/assets/font/Bellefair-Regular.ttf"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <script type="module" src="/src/js/destination.js"></script>
+    <link rel="stylesheet" href="scss/bundle.scss" />
+
+    <title>Frontend Mentor | Space tourism website</title>
+  </head>
+  <body>
+    <picture>
+      <source
+        type="image/avif"
+        media="(min-width: 992px)"
+        srcset="
+          /src/assets/images/destination/background-destination-desktop.jpg?as=avif
+        "
+      />
+      <source
+        type="image/webp"
+        media="(min-width: 992px)"
+        srcset="
+          /src/assets/images/destination/background-destination-desktop.jpg?as=webp
+        "
+      />
+      <source
+        type="image/avif"
+        media="(min-width: 576px)"
+        srcset="
+          /src/assets/images/destination/background-destination-tablet.jpg?as=avif
+        "
+      />
+      <source
+        type="image/webp"
+        media="(min-width: 576px)"
+        srcset="
+          /src/assets/images/destination/background-destination-tablet.jpg?as=webp
+        "
+      />
+      <source
+        type="image/avif"
+        srcset="
+          /src/assets/images/destination/background-destination-mobile.jpg?as=avif
+        "
+      />
+      <source
+        type="image/webp"
+        srcset="
+          /src/assets/images/destination/background-destination-mobile.jpg?as=webp
+        "
+      />
+
+      <img
+        src="/src/assets/images/destination/background-destination-desktop.jpg?as=webp"
+        alt=""
+        fetchpriority="eager"
+        decoding="async"
+        class="background"
+      />
+    </picture>
+
+    <header class="layout-header">
+      <a class="logo-link" href="/" aria-label="Space Tourism">
+        <svg class="logo-icon">
+          <use xlink:href="/src/assets/images/shared/sprite.svg#logo"></use>
+        </svg>
+      </a>
+
+      <div class="layout-nav">
+        <nav class="navbar nav-js" data-expanded="md">
+          <button
+            class="navbar__menu-toggler open-js"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="mbWrapper"
+          >
+            <svg
+              aria-hidden="true"
+              width="24"
+              height="21"
+              class="navbar__hamburger-icon"
+            >
+              <use
+                xlink:href="/src/assets/images/shared/sprite.svg#icon-hamburger"
+              ></use>
+            </svg>
+          </button>
+          <div
+            class="navbar__menubar-wrapper wrapper-js"
+            id="mbWrapper"
+            role="dialog"
+            tabindex="-1"
+          >
+            <button class="navbar__close-btn close-js" aria-label="close">
+              <svg
+                aria-hidden="true"
+                width="24"
+                height="21"
+                class="navbar__close-icon close-icon"
+              >
+                <use
+                  xlink:href="/src/assets/images/shared/sprite.svg#icon-close"
+                ></use>
+              </svg>
+            </button>
+            <ul class="navbar__menubar menubar-js">
+              <li>
+                <a class="navbar__link link-js" href="/">Home</a>
+              </li>
+              <li>
+                <a
+                  aria-current="page"
+                  class="navbar__link navbar__link--active link-js"
+                  href="destination.html"
+                  >Destination</a
+                >
+              </li>
+              <li>
+                <a class="navbar__link link-js" href="crew.html">Crew</a>
+              </li>
+              <li>
+                <a class="navbar__link link-js" href="technology.html"
+                  >Technology</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="container-sm layout-main layout-main--destination">
+      <h1 class="heading-1-destination">
+        <span class="heading-number" aria-hidden="true">01</span>Pick your
+        destination
+      </h1>
+      <div class="tabs tabs-js">
+        <figure class="image-container">
+          <img
+            class="image-container__image image-container__image--active"
+            src="/src/assets/images/destination/image-moon.webp"
+            alt=""
+            width="445"
+            height="445"
+            id="image-1"
+          />
+          <img
+            class="image-container__image"
+            src="/src/assets/images/destination/image-mars.webp"
+            alt=""
+            width="445"
+            height="445"
+            id="image-2"
+          />
+          <img
+            class="image-container__image"
+            src="/src/assets/images/destination/image-europa.webp"
+            alt=""
+            width="445"
+            height="445"
+            id="image-3"
+          />
+          <img
+            class="image-container__image"
+            src="/src/assets/images/destination/image-titan.webp"
+            alt=""
+            width="445"
+            height="445"
+            id="image-4"
+          />
+        </figure>
+        <div class="tabs__wrapper">
+          <div
+            class="tabs__tablist tablist-js"
+            role="tablist"
+            aria-label="Planets"
+          >
+            <button
+              class="tabs__button tab-js tabs__button--active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-1 image-1"
+              id="tab-1"
+              tabindex="0"
+            >
+              Moon
+            </button>
+            <button
+              class="tabs__button tab-js"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-2 image-2"
+              id="tab-2"
+              tabindex="-1"
+            >
+              Mars
+            </button>
+            <button
+              class="tabs__button tab-js"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-3 image-3"
+              id="tab-3"
+              tabindex="-1"
+            >
+              Europa
+            </button>
+            <button
+              class="tabs__button tab-js"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-4 image-4"
+              id="tab-4"
+              tabindex="-1"
+            >
+              Titan
+            </button>
+          </div>
+          <div
+            id="panel-1"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-1"
+            class="tabs__panel tabs__panel--active"
+          >
+            <p class="heading-2-destination">Moon</p>
+            <p class="tabs__text">
+              See our planet as you’ve never seen it before. A perfect relaxing
+              trip away to help regain perspective and come back refreshed.
+              While you’re there, take in some history by visiting the Luna 2
+              and Apollo 11 landing sites.
+            </p>
+
+            <div class="tabs__boxes">
+              <div class="tabs__box">
+                <span class="tabs__label">Avg. distance</span>
+                <span class="tabs__value">384,400 km</span>
+              </div>
+
+              <div class="tabs__box">
+                <span class="tabs__label">Est. travel time </span>
+                <span class="tabs__value">3 days</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="panel-2"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-2"
+            class="tabs__panel"
+          >
+            <p class="heading-2-destination">Mars</p>
+            <p class="tabs__text">
+              Don’t forget to pack your hiking boots. You’ll need them to tackle
+              Olympus Mons, the tallest planetary mountain in our solar system.
+              It’s two and a half times the size of Everest!
+            </p>
+
+            <div class="tabs__boxes">
+              <div class="tabs__box">
+                <span class="tabs__label">Avg. distance</span>
+                <span class="tabs__value">225 mil. km</span>
+              </div>
+
+              <div class="tabs__box">
+                <span class="tabs__label">Est. travel time </span>
+                <span class="tabs__value">9 months</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="panel-3"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-3"
+            class="tabs__panel"
+          >
+            <p class="heading-2-destination">Europa</p>
+            <p class="tabs__text">
+              The smallest of the four Galilean moons orbiting Jupiter, Europa
+              is a winter lover’s dream. With an icy surface, it’s perfect for a
+              bit of ice skating, curling, hockey, or simple relaxation in your
+              snug wintery cabin.
+            </p>
+
+            <div class="tabs__boxes">
+              <div class="tabs__box">
+                <span class="tabs__label">Avg. distance </span>
+                <span class="tabs__value"> 628 mil. km</span>
+              </div>
+
+              <div class="tabs__box">
+                <span class="tabs__label">Est. travel time </span>
+                <span class="tabs__value">3 years</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="panel-4"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-4"
+            class="tabs__panel"
+          >
+            <p class="heading-2-destination">Titan</p>
+            <p class="tabs__text">
+              The only moon known to have a dense atmosphere other than Earth,
+              Titan is a home away from home (just a few hundred degrees
+              colder!). As a bonus, you get striking views of the Rings of
+              Saturn.
+            </p>
+
+            <div class="tabs__boxes">
+              <div class="tabs__box">
+                <span class="tabs__label">Avg. distance </span>
+                <span class="tabs__value">1.6 bil. km</span>
+              </div>
+
+              <div class="tabs__box">
+                <span class="tabs__label">Est. travel time </span>
+                <span class="tabs__value">7 years</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

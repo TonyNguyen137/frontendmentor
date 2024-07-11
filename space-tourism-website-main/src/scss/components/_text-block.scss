@@ -1,0 +1,70 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+$_bp: 'lg';
+
+.text-block {
+  color: $clr-secondary;
+  text-align: left;
+  max-width: px-to-rem(327);
+
+  @include mq(sm) {
+    max-width: px-to-rem(450);
+  }
+
+  &__intro {
+    font-size: px-to-rem(16);
+
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2.7px;
+
+    display: grid;
+    row-gap: 24px;
+
+    margin-bottom: 16px;
+
+    @include mq(sm) {
+      max-width: px-to-rem(450);
+
+      font-size: px-to-rem(20);
+      letter-spacing: 3.38px;
+
+      margin-bottom: 24px;
+    }
+
+    @include mq(#{$_bp}) {
+      font-size: px-to-rem(28);
+      text-align: left;
+      letter-spacing: 4.72px;
+
+      margin-bottom: 41px;
+    }
+  }
+
+  &__highlight {
+    font-family: 'Bellefair', serif;
+    font-size: px-to-rem(80);
+
+    text-transform: uppercase;
+    color: $clr-light;
+    line-height: 100px;
+
+    @include mq(md) {
+      font-size: px-to-rem(150);
+      line-height: 150px;
+    }
+  }
+
+  &__paragraph {
+    text-align: center;
+    line-height: 32px;
+    font-size: px-to-rem(16);
+
+    @include mq(#{$_bp}) {
+      font-size: px-to-rem(18);
+      text-align: left;
+    }
+  }
+}

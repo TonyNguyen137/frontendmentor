@@ -1,0 +1,27 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+.layout-textblock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 48px;
+  row-gap: 81px;
+
+  @include mq(sm) {
+    row-gap: 156px;
+  }
+
+  @include mq(md) {
+    margin-top: 106px;
+  }
+
+  @include mq(lg) {
+    flex-direction: row;
+    align-items: end;
+
+    margin-top: 251px;
+  }
+}

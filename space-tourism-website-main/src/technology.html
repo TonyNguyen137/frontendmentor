@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="frontendmentor, frontend mentor, space tourism website, frontend mentor challenge"
+    />
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/src/assets/font/BarlowCondensed-Light.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/src/assets/font/Bellefair-Regular.ttf"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <script type="module" src="/src/js/crew.js"></script>
+    <link rel="stylesheet" href="scss/bundle.scss" />
+
+    <title>Frontend Mentor | Space tourism website</title>
+  </head>
+  <body>
+    <picture>
+      <source
+        type="image/avif"
+        media="(min-width: 992px)"
+        srcset="
+          /src/assets/images/technology/background-technology-desktop.jpg?as=avif
+        "
+      />
+      <source
+        type="image/webp"
+        media="(min-width: 992px)"
+        srcset="
+          /src/assets/images/technology/background-technology-desktop.jpg?as=webp
+        "
+      />
+      <source
+        type="image/avif"
+        media="(min-width: 576px)"
+        srcset="
+          /src/assets/images/technology/background-technology-tablet.jpg?as=avif
+        "
+      />
+      <source
+        type="image/webp"
+        media="(min-width: 576px)"
+        srcset="
+          /src/assets/images/technology/background-technology-tablet.jpg?as=webp
+        "
+      />
+      <source
+        type="image/avif"
+        srcset="
+          /src/assets/images/technology/background-technology-mobile.jpg?as=avif
+        "
+      />
+      <source
+        type="image/webp"
+        srcset="
+          /src/assets/images/technology/background-technology-mobile.jpg?as=webp
+        "
+      />
+
+      <img
+        src="/src/assets/images/technology/background-technology-desktop.jpg?as=webp"
+        alt=""
+        fetchpriority="eager"
+        decoding="async"
+        class="background"
+      />
+    </picture>
+
+    <header class="layout-header">
+      <a class="logo-link" href="/" aria-label="Space Tourism">
+        <svg class="logo-icon">
+          <use xlink:href="/src/assets/images/shared/sprite.svg#logo"></use>
+        </svg>
+      </a>
+
+      <div class="layout-nav">
+        <nav class="navbar nav-js" data-expanded="md">
+          <button
+            class="navbar__menu-toggler open-js"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="mbWrapper"
+          >
+            <svg
+              aria-hidden="true"
+              width="24"
+              height="21"
+              class="navbar__hamburger-icon"
+            >
+              <use
+                xlink:href="/src/assets/images/shared/sprite.svg#icon-hamburger"
+              ></use>
+            </svg>
+          </button>
+          <div
+            class="navbar__menubar-wrapper wrapper-js"
+            id="mbWrapper"
+            role="dialog"
+            tabindex="-1"
+          >
+            <button class="navbar__close-btn close-js" aria-label="close">
+              <svg
+                aria-hidden="true"
+                width="24"
+                height="21"
+                class="navbar__close-icon close-icon"
+              >
+                <use
+                  xlink:href="/src/assets/images/shared/sprite.svg#icon-close"
+                ></use>
+              </svg>
+            </button>
+            <ul class="navbar__menubar menubar-js">
+              <li>
+                <a class="navbar__link link-js" href="/">Home</a>
+              </li>
+              <li>
+                <a class="navbar__link link-js" href="destination.html"
+                  >Destination</a
+                >
+              </li>
+              <li>
+                <a class="navbar__link link-js" href="crew.html">Crew</a>
+              </li>
+              <li>
+                <a
+                  class="navbar__link navbar__link--active link-js"
+                  href="technology.html"
+                  aria-current="page"
+                  >Technology</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="layout-main layout-main--space">
+      <div class="grid grid--heading">
+        <h1 class="heading-1-crew">
+          <span class="heading-number" aria-hidden="true">03</span>Space launch
+          101
+        </h1>
+      </div>
+
+      <div class="grid">
+        <div class="tabs tabs--technology tabs-js">
+          <div
+            class="tabs__tablist tabs__tablist--technology tablist-js"
+            role="tablist"
+            aria-label="Planets"
+          >
+            <button
+              class="tabs__button--dot-big tab-js tabs__button--active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-1 image-1"
+              id="tab-1"
+              tabindex="0"
+            >
+              1
+            </button>
+            <button
+              class="tabs__button--dot-big tab-js"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-2 image-2"
+              id="tab-2"
+              tabindex="-1"
+            >
+              2
+            </button>
+            <button
+              class="tabs__button--dot-big tab-js"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-3 image-3"
+              id="tab-3"
+              tabindex="-1"
+            >
+              3
+            </button>
+          </div>
+          <div class="tabs__wrapper--technology">
+            <div
+              id="panel-1"
+              role="tabpanel"
+              tabindex="0"
+              aria-labelledby="tab-1"
+              class="tabs__panel tabs__panel--technology tabs__panel--active"
+            >
+              <span class="subheading--technology">THE TERMINOLOGY…</span>
+              <p class="heading-2-technology">LAUNCH VEHICLE</p>
+              <p class="tabs__text tabs__text--technology">
+                A launch vehicle or carrier rocket is a rocket-propelled vehicle
+                used to carry a payload from Earth's surface to space, usually
+                to Earth orbit or beyond. Our WEB-X carrier rocket is the most
+                powerful in operation. Standing 150 metres tall, it's quite an
+                awe-inspiring sight on the launch pad!
+              </p>
+            </div>
+
+            <div
+              id="panel-2"
+              role="tabpanel"
+              tabindex="0"
+              aria-labelledby="tab-2"
+              class="tabs__panel tabs__panel--technology"
+            >
+              <span class="subheading--technology">THE TERMINOLOGY…</span>
+              <p class="heading-2-crew">SPACEPORT</p>
+              <p class="tabs__text">
+                A spaceport or cosmodrome is a site for launching (or receiving)
+                spacecraft, by analogy to the seaport for ships or airport for
+                aircraft. Based in the famous Cape Canaveral, our spaceport is
+                ideally situated to take advantage of the Earth’s rotation for
+                launch.
+              </p>
+            </div>
+
+            <div
+              id="panel-3"
+              role="tabpanel"
+              tabindex="0"
+              aria-labelledby="tab-3"
+              class="tabs__panel tabs__panel--technology"
+            >
+              <span class="subheading--technology">THE TERMINOLOGY…</span>
+              <p class="heading-2-crew">SPACE CAPSULE</p>
+              <p class="tabs__text">
+                A space capsule is an often-crewed spacecraft that uses a
+                blunt-body reentry capsule to reenter the Earth's atmosphere
+                without wings. Our capsule is where you'll spend your time
+                during the flight. It includes a space gym, cinema, and plenty
+                of other activities to keep you entertained.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="image-container image-container--technology">
+          <picture>
+            <source
+              media="(min-width:1400px)"
+              srcset="
+                /src/assets/images/technology/image-launch-vehicle-portrait.jpg?as=avif
+              "
+            />
+
+            <img
+              class="image-container__image image-container__image--active"
+              src="/src/assets/images/technology/image-launch-vehicle-landscape.jpg?as=avif"
+              alt="vehicle"
+              width="515"
+              height="527"
+              id="image-1"
+            />
+          </picture>
+
+          <picture>
+            <source
+              media="(min-width:1400px)"
+              srcset="
+                /src/assets/images/technology/image-spaceport-portrait.jpg?as=avif
+              "
+            />
+
+            <img
+              class="image-container__image"
+              src="/src/assets/images/technology/image-spaceport-landscape.jpg?as=avif"
+              alt="spaceport"
+              width="453"
+              height="654"
+              id="image-2"
+            />
+          </picture>
+
+          <picture>
+            <source
+              media="(min-width:1400px)"
+              srcset="
+                /src/assets/images/technology/image-space-capsule-portrait.jpg?as=avif
+              "
+            />
+
+            <img
+              class="image-container__image"
+              src="/src/assets/images/technology/image-space-capsule-landscape.jpg?as=avif"
+              alt="space-capsule"
+              width="554"
+              height="654"
+              id="image-3"
+            />
+          </picture>
+        </figure>
+      </div>
+    </main>
+  </body>
+</html>

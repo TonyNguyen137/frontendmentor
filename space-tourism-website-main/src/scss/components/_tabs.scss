@@ -1,0 +1,305 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 26px;
+
+  @include mq(md) {
+    row-gap: 53px;
+  }
+
+  @include mq(xl) {
+    flex-direction: row;
+  }
+
+  &__wrapper {
+    flex: 0 1 445px;
+
+    &--crew,
+    &--technology {
+      flex: revert;
+      display: flex;
+      flex-direction: column;
+
+      .tabs__tablist {
+        order: -1;
+      }
+
+      @include mq(md) {
+        display: revert;
+
+        .tabs__tablist {
+          order: revert;
+        }
+      }
+    }
+
+    &--technology {
+      align-items: center;
+      text-align: center;
+
+      @include mq(xxl) {
+        text-align: start;
+      }
+    }
+  }
+  &__tablist {
+    display: flex;
+    justify-content: center;
+    column-gap: 26px;
+
+    margin-bottom: 20px;
+
+    @include mq(md) {
+      letter-spacing: 2.7px;
+      column-gap: 35px;
+      margin-bottom: 32px;
+    }
+
+    @include mq(xl) {
+      margin-bottom: 37px;
+
+      justify-content: start;
+    }
+
+    &--technology {
+      display: flex;
+      flex-direction: row;
+      row-gap: 32px;
+      margin-bottom: 0;
+
+      @include mq(md) {
+        justify-content: center;
+      }
+
+      @include mq(xxl) {
+        justify-content: revert;
+      }
+    }
+  }
+
+  &__button {
+    letter-spacing: 2.36px;
+    text-transform: uppercase;
+    border: none;
+    background-color: transparent;
+
+    font-size: px-to-rem(14);
+    font-weight: 400;
+    color: $clr-secondary;
+    padding-bottom: 12px;
+
+    cursor: pointer;
+
+    @include mq(md) {
+      letter-spacing: 2.7px;
+      font-size: px-to-rem(16);
+    }
+
+    &--active {
+      color: $clr-light;
+      cursor: default;
+      background-image: linear-gradient(to bottom, transparent 90%, white 90%);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    &--dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+      background-color: darkgrey;
+
+      &:hover {
+        background-color: lightgrey;
+      }
+    }
+
+    &--dot.tabs__button--active {
+      background: #fff;
+    }
+
+    &--dot-big {
+      width: 40px;
+      height: 40px;
+      background-color: black;
+      border-radius: 100%;
+      border: 1px solid $clr-grey;
+      color: white;
+
+      font-family: 'bellefair', sans-serif;
+      font-size: px-to-rem(16);
+
+      display: grid;
+      place-items: center;
+      padding: 0;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover {
+        border: 1px solid $clr-light;
+      }
+
+      @include mq(md) {
+        font-size: px-to-rem(32);
+
+        width: 60px;
+        height: 60px;
+      }
+
+      @include mq(xl) {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    &--dot-big.tabs__button--active {
+      background-color: white;
+      color: black;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:not(&--active):hover {
+        background-image: linear-gradient(
+          to bottom,
+          transparent 90%,
+          $clr-grey 90%
+        );
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &__panel {
+    display: none;
+
+    &--active {
+      display: inline-block;
+    }
+
+    &--technology {
+      width: px-to-rem(327);
+
+      @include mq(md) {
+        width: px-to-rem(458);
+      }
+
+      @include mq(xxl) {
+        width: revert;
+      }
+    }
+  }
+
+  &__heading {
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    color: $clr-secondary;
+    margin-bottom: px-to-rem(54);
+    line-height: 25px;
+    font-size: px-to-rem(15);
+    text-align: center;
+
+    @include mq(md) {
+      font-size: px-to-rem(22);
+      line-height: 28px;
+
+      max-width: px-to-rem(573);
+      margin-inline: auto;
+    }
+    @include mq(xl) {
+      max-width: revert;
+      margin-inline: revert;
+      font-size: px-to-rem(18);
+      text-align: start;
+
+      line-height: 32px;
+    }
+
+    &--technology {
+      font-size: px-to-rem(15);
+
+      @include mq(md) {
+        font-size: px-to-rem(16);
+        max-width: px-to-rem(573);
+      }
+
+      @include mq(xl) {
+        font-size: px-to-rem(18);
+      }
+    }
+  }
+
+  &__boxes {
+    border-top: 0.5px solid #979797;
+    padding-top: 32px;
+    padding-bottom: 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 32px;
+    text-align: center;
+
+    @include mq(md) {
+      max-width: px-to-rem(573);
+      padding-top: 28px;
+      padding-bottom: 0;
+      margin-inline: auto;
+
+      text-align: start;
+
+      flex-direction: row;
+      justify-content: center;
+      column-gap: 79px;
+    }
+    @include mq(xl) {
+      margin-inline: revert;
+      justify-content: start;
+    }
+  }
+
+  &__box {
+    display: grid;
+    row-gap: 12px;
+    text-align: center;
+
+    @include mq(md) {
+    }
+    @include mq(xl) {
+      text-align: left;
+    }
+  }
+
+  &__label {
+    font-size: px-to-rem(14);
+    color: $clr-secondary;
+    text-transform: uppercase;
+    letter-spacing: 2.36px;
+  }
+
+  &__value {
+    font-size: px-to-rem(28);
+    font-family: 'Bellefair', sans-serif;
+    color: $clr-light;
+    text-transform: uppercase;
+  }
+
+  &--crew {
+    column-gap: 81px;
+  }
+
+  &--technology {
+    @include mq(md) {
+      flex-direction: column;
+    }
+
+    @include mq(xxl) {
+      flex-direction: row;
+    }
+  }
+}

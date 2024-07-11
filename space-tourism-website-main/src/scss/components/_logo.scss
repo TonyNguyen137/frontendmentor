@@ -1,0 +1,7 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+.logo-icon {
+  width: $logo-size;
+  height: $logo-size;
+}

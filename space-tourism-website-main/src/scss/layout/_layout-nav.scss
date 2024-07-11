@@ -1,0 +1,42 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+.layout-nav {
+  @include mq(md) {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-left: 64px;
+  }
+
+  @include mq(lg) {
+    padding-left: 32px;
+  }
+
+  @include mq(xl) {
+    padding-left: 64px;
+  }
+
+  .navbar__menu-toggler {
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  // line
+  &::before {
+    content: '';
+    width: 100%;
+    margin-right: -30px;
+    height: 1px;
+    background-color: grey;
+    position: relative;
+    z-index: 2;
+    display: none;
+
+    @include mq(lg) {
+      display: revert;
+    }
+  }
+}

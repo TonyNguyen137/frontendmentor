@@ -1,0 +1,34 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+$size-desktop: 274;
+$size-tablet: 242;
+$size-mobile: 150;
+.circle {
+  font-size: px-to-rem(20);
+  font-family: 'Bellefair', serif;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  border-radius: 100%;
+  background-color: $clr-light;
+  width: px-to-rem($size-mobile);
+  height: px-to-rem($size-mobile);
+
+  display: grid;
+  place-items: center;
+
+  @include mq(sm) {
+    font-size: px-to-rem(32);
+
+    width: px-to-rem($size-tablet);
+    height: px-to-rem($size-tablet);
+  }
+
+  @include mq(lg) {
+    width: px-to-rem($size-desktop);
+    height: px-to-rem($size-desktop);
+  }
+}

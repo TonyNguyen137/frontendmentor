@@ -1,0 +1,43 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+.image-container {
+  max-width: 170px;
+  margin-inline: auto;
+
+  @include mq(md) {
+    max-width: 300px;
+  }
+
+  @include mq(xl) {
+    flex: 0 1 445px;
+    max-width: revert;
+  }
+
+  &__image {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &--technology {
+    margin-inline: 0;
+    max-width: revert;
+
+    @include mq(md) {
+    }
+
+    @include mq(xl) {
+    }
+
+    &__image {
+      display: none;
+
+      &--active {
+        display: block;
+      }
+    }
+  }
+}

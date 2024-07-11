@@ -1,0 +1,62 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+.grid {
+  display: grid;
+  grid-template-rows: auto;
+
+  .image-container--technology {
+    grid-row: 1 / 2;
+    margin-bottom: 34px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  @include mq(md) {
+    .tabs__tablist--technology {
+      flex-direction: row;
+    }
+  }
+
+  @include mq(xxl) {
+    align-items: center;
+    grid-template-columns: 167px 1fr 1fr;
+
+    .tabs,
+    .heading-1-crew {
+      grid-column: 2 / 3;
+    }
+
+    .tabs__tablist--technology {
+      flex-direction: column;
+      margin-right: 80px;
+    }
+
+    .image-container--technology {
+      grid-row: revert;
+      justify-self: end;
+      margin-bottom: 0;
+    }
+  }
+
+  &--heading {
+    margin-bottom: 32px;
+
+    @include mq(md) {
+      margin-bottom: 60px;
+      grid-template-columns: 39px 1fr;
+
+      .heading-1-crew {
+        grid-column: 2 / 3;
+      }
+    }
+
+    @include mq(xxl) {
+      margin-bottom: 26px;
+
+      grid-template-columns: 167px 1fr 1fr;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 300;
+  font-size: px-to-rem(18);
+  font-style: normal;
+  line-height: 1.4;
+
+  min-height: 100vh;
+
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+select,
+input,
+button,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  display: inline-block;
+}

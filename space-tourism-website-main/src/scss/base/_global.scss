@@ -1,0 +1,197 @@
+@use '../abstract/functions' as *;
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
+%font-heading-serif {
+  font-family: 'Bellefair', serif;
+  text-transform: uppercase;
+}
+
+%font-heading-sans-serif {
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+}
+
+.heading-1 {
+  font-size: px-to-rem(150);
+  @extend %font-heading-serif;
+}
+
+.heading-1-destination {
+  font-size: px-to-rem(16);
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 2.7px;
+
+  text-align: center;
+  @extend %font-heading-sans-serif;
+
+  @include mq(md) {
+    font-size: px-to-rem(20);
+    text-align: left;
+    letter-spacing: 3.38px;
+  }
+
+  @include mq(xl) {
+    font-size: px-to-rem(28);
+    letter-spacing: 4.72px;
+  }
+}
+
+.heading-1-crew {
+  font-size: px-to-rem(16);
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 2.7px;
+
+  text-align: center;
+  @extend %font-heading-sans-serif;
+
+  @include mq(md) {
+    font-size: px-to-rem(20);
+    text-align: left;
+    letter-spacing: 3.38px;
+  }
+
+  @include mq(xl) {
+    font-size: px-to-rem(28);
+    letter-spacing: 4.72px;
+  }
+}
+
+.heading-number {
+  margin-right: px-to-rem(18);
+  font-size: inherit;
+  letter-spacing: inherit;
+  opacity: 25%;
+  font-weight: 700;
+
+  @include mq(md) {
+    margin-right: px-to-rem(19);
+  }
+
+  @include mq(xxl) {
+    margin-right: px-to-rem(28);
+  }
+}
+
+.heading-2 {
+  font-size: px-to-rem(120);
+  @extend %font-heading-serif;
+}
+
+.heading-2-destination {
+  text-align: center;
+  font-size: px-to-rem(56);
+  color: #fff;
+  @extend %font-heading-serif;
+
+  @include mq(md) {
+    font-size: px-to-rem(80);
+  }
+  @include mq(xl) {
+    text-align: left;
+
+    font-size: px-to-rem(100);
+  }
+}
+
+.heading-2-crew {
+  font-size: px-to-rem(24);
+  color: #fff;
+
+  text-align: center;
+  @extend %font-heading-serif;
+
+  @include mq(md) {
+    font-size: px-to-rem(40);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  @include mq(xl) {
+    font-size: px-to-rem(56);
+  }
+
+  @include mq(xxl) {
+    text-align: left;
+  }
+}
+
+.heading-2-technology {
+  color: #fff;
+  font-size: px-to-rem(24);
+  @extend %font-heading-serif;
+
+  @include mq(md) {
+    font-size: px-to-rem(40);
+    margin-bottom: 16px;
+  }
+
+  @include mq(xxl) {
+    font-size: px-to-rem(56);
+    margin-bottom: 0;
+  }
+}
+
+.heading-3 {
+  font-size: px-to-rem(56);
+  @extend %font-heading-serif;
+}
+
+.heading-4 {
+  font-size: px-to-rem(32);
+  @extend %font-heading-serif;
+}
+
+.heading-5 {
+  font-size: px-to-rem(28);
+  letter-spacing: 4.75ch;
+  @extend %font-heading-sans-serif;
+}
+
+.subheading-1 {
+  font-size: px-to-rem(28);
+  @extend %font-heading-serif;
+}
+
+.subheading-2 {
+  font-size: px-to-rem(14);
+  @extend %font-heading-sans-serif;
+  letter-spacing: 2.35ch;
+}
+
+.subheading--crew {
+  font-size: px-to-rem(16);
+  color: $clr-grey;
+  @extend %font-heading-serif;
+
+  @include mq(md) {
+    font-size: px-to-rem(24);
+  }
+
+  @include mq(xxl) {
+    font-size: px-to-rem(32);
+  }
+}
+
+.subheading--technology {
+  display: inline-block;
+  color: $clr-secondary;
+  font-size: px-to-rem(14);
+  margin-bottom: 9px;
+
+  letter-spacing: 2.7px;
+  %font-heading-sans-serif {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+  }
+
+  @include mq(md) {
+    margin-bottom: 16px;
+  }
+
+  @include mq(xxl) {
+    margin-bottom: 0;
+  }
+}
