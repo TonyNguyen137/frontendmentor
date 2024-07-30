@@ -1,0 +1,110 @@
+@use 'functions' as *;
+@use 'sass:map';
+
+$colors: (
+  'grey-700': #333,
+  'grey-800': #1f1f1f,
+  'grey-900': #141414,
+  'green': #c4f823,
+  'light': #fff,
+  'dark': #000,
+);
+
+$default-theme: $colors;
+
+// Grid breakpoints
+$grid-breakpoints: (
+  'sm': px-to-em(576),
+  'md': px-to-em(768),
+  'lg': px-to-em(992),
+  'xl': px-to-em(1200),
+  'xxl': px-to-em(1400),
+) !default;
+
+// Container max-widths
+$container-max-widths: (
+  sm: px-to-rem(540),
+  md: px-to-rem(720),
+  lg: px-to-rem(1320),
+  xl: px-to-rem(1140),
+  xxl: px-to-rem(1320),
+) !default;
+
+// Grid columns
+//
+
+// specify the width of the gutters.
+$grid-gutter-width: 16px !default;
+$grid-col-gap: $grid-gutter-width !default;
+$grid-row-gap: $grid-gutter-width !default;
+
+// Container setting
+//
+
+// - general setting
+$enable-container-classes: true !default;
+$active-theme: $default-theme;
+
+// - padding
+$container-padding-x: 12px !default;
+
+// Spacing
+//
+
+$spacer: 0.25rem !default;
+$spacers: () !default;
+
+@for $i from 0 through 5 {
+  $spacers: map.merge(
+    $spacers,
+    (
+      $i: $spacer * $i,
+    )
+  );
+}
+
+// - extras
+$spacers: map.merge($spacers, ());
+
+// Utilities
+//
+
+// - position values
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%,
+) !default;
+
+// - z-index values
+$zindex-levels: (
+  n1: -1,
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+) !default;
+
+// - main Utilities map
+$utilities: () !default;
+$utilities: map-merge(
+  (
+    'z-index': (
+      property: z-index,
+      class: z,
+      values: $zindex-levels,
+      is_responsive: true,
+    ),
+    'margin-top': (
+      property: margin-top,
+      class: mt,
+      values: $spacers,
+    ),
+    'margin-bot': (
+      property: margin-bottom,
+      class: mb,
+      values: $spacers,
+    ),
+  ),
+  $utilities
+);
