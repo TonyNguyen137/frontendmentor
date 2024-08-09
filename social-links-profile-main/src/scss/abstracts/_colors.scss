@@ -1,0 +1,21 @@
+$color-theme: (
+  default: (
+    'grey': (
+      '900': #141414,
+      '800': #1f1f1f,
+      '700': #333,
+    ),
+    'green': (
+      '400': #c4f82a,
+    ),
+    'white': (
+      '400': #fff,
+    ),
+  ),
+);
+
+$clr-grey-900: var(--clr-grey-900);
+$clr-grey-800: var(--clr-grey-800);
+$clr-grey-700: var(--clr-grey-700);
+$clr-green-400: var(--clr-green-400);
+$clr-white-400: var(--clr-white-400);

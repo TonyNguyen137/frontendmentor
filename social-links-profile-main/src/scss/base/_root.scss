@@ -1,0 +1,68 @@
+@use '../abstracts/' as *;
+@use 'sass:map';
+@use 'sass:meta';
+
+:root {
+  @each $color, $shade-map in $active-theme {
+    @each $shade, $value in $shade-map {
+      --clr-#{$color}-#{$shade}: #{$value};
+    }
+  }
+
+  @if ($enable-media-query-dark-mode) {
+    @media (prefers-color-scheme: dark) {
+      @each $color, $shade-map in map.get($color-theme, dark) {
+        @each $shade, $value in $shade-map {
+          --clr-#{$color}-#{$shade}: #{$value};
+        }
+      }
+    }
+  }
+
+  @each $screen-size, $size-map in $font-sizes {
+    @debug $screen-size, $size-map;
+
+    @if $screen-size == default {
+      @each $size-name, $size-value in $size-map {
+        --fs-#{$size-name}: #{$size-value};
+      }
+    } @else {
+      @include mq($screen-size) {
+        @each $size-name, $size-value in $size-map {
+          --fs-#{$size-name}: #{$size-value};
+        }
+      }
+    }
+  }
+
+  @each $key, $map in $utilities {
+    $hasVar: map.get($map, 'hasVar');
+
+    @if $hasVar {
+      @each $suffix, $value in $valueObject {
+        .#{$class}-#{$suffix} {
+          #{$property}: $value;
+        }
+        @if $responsive {
+          @debug inside responsive;
+
+          @each $breakpoint, $size in $grid-breakpoints {
+            @media (min-width:#{$size}) {
+              .#{$class}-#{$breakpoint}-#{$suffix} {
+                #{$property}: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// :root[data-theme='default'] {
+//   @each $color, $shade-map in map.get($color-theme, default) {
+//     @each $shade, $value in $shade-map {
+//       --#{$color}-#{$shade}: #{$value};
+//     }
+//   }
+// }

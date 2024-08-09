@@ -1,4 +1,4 @@
-@use '../abstract' as *;
+@use '../abstracts' as *;
 @use 'sass:map';
 @use 'sass:meta';
 
@@ -6,7 +6,7 @@
   $class: map.get($map, 'class');
   $property: map.get($map, 'property');
   $valueObject: map.get($map, 'values');
-  $responsive: map.get($map, 'is_responsive');
+  $responsive: map.get($map, 'isResponsive');
 
   @each $suffix, $value in $valueObject {
     .#{$class}-#{$suffix} {

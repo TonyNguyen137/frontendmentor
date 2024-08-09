@@ -14,10 +14,10 @@ module.exports = (env) => {
     },
 
     output: {
-      filename: '[name]-[contenthash].min.js',
+      filename: '[name].[contenthash].min.js',
       path: path.resolve(__dirname, 'public'),
       clean: true,
-      hashDigestLength: 6,
+      // hashDigestLength: 6,
     },
     stats: {
       loggingDebug: ['sass-loader'],
@@ -37,26 +37,29 @@ module.exports = (env) => {
     },
 
     plugins: [
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].min.css', // Output filename for CSS
+      }),
       new HtmlWebpackPlugin({
         template: `./src/index.html`,
         filename: '[name].html',
       }),
       new PurgeCSSPlugin({
         paths: glob.sync(`./src/**/*`, { nodir: true }),
-      }),
-      new MiniCssExtractPlugin({
-        filename: '[name]-[contenthash].css', // Output filename for CSS
+        safelist: {
+          keyframes: ['@charset'],
+        },
       }),
     ],
 
     module: {
       rules: [
         {
-          test: /\.(png|jpe?g|gif|svg)$/i,
+          test: /\.(png|jpe?g|gif|svg|woff2|woff)$/i,
           type: 'asset/resource',
 
           generator: {
-            filename: 'static/[name]-[contenthash][ext]', // Output path and filename pattern
+            filename: 'static/[name][ext]', // Output path and filename pattern
           },
         },
         {
@@ -70,6 +73,13 @@ module.exports = (env) => {
               ? 'style-loader'
               : MiniCssExtractPlugin.loader, // 3. extract css into files
             'css-loader', // 2. Turns css into commonjs
+
+            'sass-loader', // 1. Turns sass into css
+          ],
+        },
+        {
+          test: /\.css/i,
+          use: [
             {
               loader: 'postcss-loader',
               options: {
@@ -90,8 +100,6 @@ module.exports = (env) => {
                 },
               },
             },
-
-            'sass-loader', // 1. Turns sass into css
           ],
         },
       ],

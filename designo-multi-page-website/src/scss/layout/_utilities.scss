@@ -1,0 +1,25 @@
+@use '../abstract' as *;
+@use 'sass:map';
+@use 'sass:meta';
+
+@each $key, $map in $utilities {
+  $class: map.get($map, 'class');
+  $property: map.get($map, 'property');
+  $valueObject: map.get($map, 'values');
+  $responsive: map.get($map, 'is_responsive');
+
+  @each $suffix, $value in $valueObject {
+    .#{$class}-#{$suffix} {
+      #{$property}: $value;
+    }
+    @if $responsive {
+      @each $breakpoint, $size in $grid-breakpoints {
+        @media (min-width:#{$size}) {
+          .#{$class}-#{$breakpoint}-#{$suffix} {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+  }
+}

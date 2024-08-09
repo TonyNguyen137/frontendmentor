@@ -1,10 +1,10 @@
 @charset 'utf-8';
-@use '../abstract/functions' as *;
-@use '../abstract/mixins' as *;
+@use '../abstracts/' as *;
 
 html {
   box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
@@ -14,7 +14,14 @@ html {
 }
 
 body {
-  line-height: 1.5;
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  font-weight: $body-font-weight;
+  color: $body-text-color;
+  @if $body-background-color {
+    background-color: $body-background-color;
+  }
+  line-height: $body-line-height;
 }
 
 img {

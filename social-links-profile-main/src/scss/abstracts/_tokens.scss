@@ -1,0 +1,31 @@
+@use 'colors' as *;
+@use 'typography' as *;
+@use 'functions' as *;
+@use 'sizes' as *;
+@use 'sass:map';
+
+// general
+$active-theme: map.get($color-theme, default);
+$enable-media-query-dark-mode: false;
+$enable-container-classes: true;
+
+// body
+$body-font-family: 'Inter', sans-serif;
+$body-font-size: px-to-rem(14);
+$body-line-height: 1.5;
+$body-font-weight: 700;
+$body-text-color: var(--clr-white-400);
+$body-background-color: null;
+
+// grid setting
+$grid-gutter-width: 16px !default;
+$grid-even-col-gap: $grid-gutter-width !default;
+$grid-even-row-gap: $grid-gutter-width !default;
+
+// container setting
+$enable-container-classes: true;
+$container-padding-x: 12px;
+
+// button
+$button-bg: var(--clr-grey-700);
+$button-bg-hover: var(--clr-green-400);

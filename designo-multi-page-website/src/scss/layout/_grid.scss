@@ -1,0 +1,8 @@
+@use '../abstract' as *;
+
+.grid-even-columns {
+  display: grid;
+  grid-auto-flow: row;
+  column-gap: $grid-col-gap;
+  row-gap: $grid-row-gap;
+}

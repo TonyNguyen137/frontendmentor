@@ -1,17 +1,6 @@
 @use 'functions' as *;
 @use 'sass:map';
 
-$colors: (
-  'grey-700': #333,
-  'grey-800': #1f1f1f,
-  'grey-900': #141414,
-  'green': #c4f823,
-  'light': #fff,
-  'dark': #000,
-);
-
-$default-theme: $colors;
-
 // Grid breakpoints
 $grid-breakpoints: (
   'sm': px-to-em(576),
@@ -43,7 +32,6 @@ $grid-row-gap: $grid-gutter-width !default;
 
 // - general setting
 $enable-container-classes: true !default;
-$active-theme: $default-theme;
 
 // - padding
 $container-padding-x: 12px !default;

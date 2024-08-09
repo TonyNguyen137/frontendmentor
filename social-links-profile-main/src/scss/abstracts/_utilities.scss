@@ -1,0 +1,52 @@
+@use 'functions' as *;
+@use 'sizes' as *;
+
+@use 'sass:map';
+
+// Utilities
+//
+// - position values
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%,
+) !default;
+
+// - z-index values
+$zindex-levels: (
+  n1: -1,
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+) !default;
+
+// - main Utilities map
+$utilities: () !default;
+$utilities: map-merge(
+  (
+    'z-index': (
+      property: z-index,
+      class: z,
+      values: $zindex-levels,
+      isResponsive: true,
+    ),
+    'margin-top': (
+      property: margin-top,
+      class: mt,
+      values: $sizes,
+    ),
+    'margin-bot': (
+      property: margin-bottom,
+      class: mb,
+      values: $sizes,
+    ),
+    'margin-inline': (
+      property: margin-inline,
+      class: mx,
+      values: $sizes,
+      isResponsive: true,
+    ),
+  ),
+  $utilities
+);

@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-display: swap;
+  src: url(static/Inter-Bold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-display: swap;
+  src: url(static/Inter-SemiBold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-display: swap;
+  src: url(static/Inter-Regular.woff2) format('woff2');
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.5;
+}
+:root {
+  --clr-grey-900: #141414;
+  --clr-grey-800: #1f1f1f;
+  --clr-grey-700: #333;
+  --clr-green-400: #c4f82a;
+  --clr-white-400: #fff;
+  --fs-card-body: 2rem;
+}
+@media screen and (min-width: 35em) {
+  :root {
+    --fs-card-body: 3rem;
+  }
+}
