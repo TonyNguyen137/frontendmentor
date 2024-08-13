@@ -3,6 +3,7 @@ const common = require('./webpack.common');
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const glob = require('glob');
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
 
@@ -12,19 +13,6 @@ module.exports = merge(common, {
   output: {
     filename: '[name].[contenthash].min.js',
     // hashDigestLength: 6,
-  },
-  optimization: {
-    minimize: false,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          output: {
-            comments: false,
-          },
-        },
-        extractComments: false,
-      }),
-    ],
   },
 
   plugins: [
@@ -81,6 +69,37 @@ module.exports = merge(common, {
           },
         },
       },
+    ],
+  },
+
+  optimization: {
+    minimize: false,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+        extractComments: false,
+      }),
+      new ImageMinimizerPlugin({
+        generator: [
+          {
+            // You can apply generator using `?as=webp`, you can use any name and provide more options
+            preset: 'webp',
+            implementation: ImageMinimizerPlugin.sharpGenerate,
+            options: {
+              encodeOptions: {
+                // Please specify only one codec here, multiple codecs will not work
+                webp: {
+                  quality: 70,
+                },
+              },
+            },
+          },
+        ],
+      }),
     ],
   },
 });

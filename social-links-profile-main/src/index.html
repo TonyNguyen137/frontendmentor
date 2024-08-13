@@ -15,11 +15,18 @@
     <main>
       <div class="card">
         <header class="card__header">
-          <img
-            class="card__image"
-            src="/src/assets/images/avatar-jessica.jpeg"
-            alt=""
-          />
+          <picture>
+            <source
+              srcset="/src/assets/images/avatar-jessica.jpeg?as=webp"
+              type="image/webp"
+            />
+            <img
+              class="card__image"
+              src="/src/assets/images/avatar-jessica.jpeg"
+              alt=""
+            />
+          </picture>
+
           <div>
             <span class="card__name">Jessica Randall</span>
             <span class="card__location">London, United Kingdom</span>

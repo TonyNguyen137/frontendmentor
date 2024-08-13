@@ -7,14 +7,12 @@ const currentMonth = new Date().getMonth() + 1;
 module.exports = {
   entry: {
     index: './src/index.js',
-    // test: './src/test.scss', // Separate SCSS entry point for test.scss
-    // home: './src/home.scss', // Separate SCSS entry point for home.scss
   },
 
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: `images/${currentYear}/${currentMonth}/[name].[hash][ext]`,
+    // assetModuleFilename: `images/${currentYear}/${currentMonth}/[name].[hash][ext]`,
     clean: true,
   },
 
@@ -33,12 +31,20 @@ module.exports = {
       },
 
       {
-        test: /\.(png|jpe?g|gif|svg|woff2|woff)$/i,
+        test: /\.(png|jpe?g)$/i,
         type: 'asset/resource',
 
-        // generator: {
-        //   filename: 'static/[name][ext]', // Output path and filename pattern
-        // },
+        generator: {
+          filename: `images/[name][ext]`, // Output path and filename pattern
+        },
+      },
+      {
+        test: /\.(woff2|woff)$/i,
+        type: 'asset/resource',
+
+        generator: {
+          filename: 'font/[name][ext]', // Output path and filename pattern
+        },
       },
     ],
   },
