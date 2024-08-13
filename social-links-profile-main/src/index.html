@@ -3,29 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
-
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./assets/images/favicon-32x32.png"
     />
-
     <title>Frontend Mentor | Social links profile</title>
   </head>
   <body>
     <main>
-      <div class="card"></div>
+      <div class="card">
+        <header class="card__header">
+          <img
+            class="card__image"
+            src="/src/assets/images/avatar-jessica.jpeg"
+            alt=""
+          />
+          <div>
+            <span class="card__name">Jessica Randall</span>
+            <span class="card__location">London, United Kingdom</span>
+          </div>
+        </header>
+        <div class="card__body">
+          <blockquote class="card__quote">
+            "Front-end developer and avid reader."
+          </blockquote>
+          <ul class="card__social-media-list">
+            <li class="card__social-media-item">
+              <a class="card__social-media-link" href="#">GitHub</a>
+            </li>
+            <li class="card__social-media-item">
+              <a class="card__social-media-link" href="#">Frontend Mentor</a>
+            </li>
+            <li class="card__social-media-item">
+              <a class="card__social-media-link" href="#">LinkedIn</a>
+            </li>
+            <li class="card__social-media-item">
+              <a class="card__social-media-link" href="#">Twitter</a>
+            </li>
+            <li class="card__social-media-item">
+              <a class="card__social-media-link" href="#">Instagramm</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </main>
-
-    <a href="">a tag</a>
-    <label for="">label</label>
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Tony Nguyen</a>.
-    </div>
   </body>
 </html>

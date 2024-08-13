@@ -1,6 +1,5 @@
 @use 'functions' as *;
-@use 'sizes' as *;
-
+@use 'spacing' as *;
 @use 'sass:map';
 
 // Utilities
@@ -34,17 +33,17 @@ $utilities: map-merge(
     'margin-top': (
       property: margin-top,
       class: mt,
-      values: $sizes,
+      values: $spacers,
     ),
     'margin-bot': (
       property: margin-bottom,
       class: mb,
-      values: $sizes,
+      values: $spacers,
     ),
     'margin-inline': (
       property: margin-inline,
       class: mx,
-      values: $sizes,
+      values: $spacers,
       isResponsive: true,
     ),
   ),

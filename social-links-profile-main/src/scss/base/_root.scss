@@ -1,11 +1,23 @@
-@use '../abstracts/' as *;
+@use '../abstracts' as *;
 @use 'sass:map';
 @use 'sass:meta';
 
 :root {
+  // css variables for default color theme
   @each $color, $shade-map in $active-theme {
-    @each $shade, $value in $shade-map {
-      --clr-#{$color}-#{$shade}: #{$value};
+    $type: meta.type-of($shade-map);
+
+    @if ($type == 'color') {
+      --clr-#{$color}: #{$shade-map};
+    } @else if ($type == 'map') {
+      @each $shade, $value in $shade-map {
+        @if (meta.type-of($value) != 'color') {
+          @error '#{$value} is not a color!';
+        }
+        --clr-#{$color}-#{$shade}: #{$value};
+      }
+    } @else {
+      @error 'the input is not correct';
     }
   }
 
@@ -19,9 +31,8 @@
     }
   }
 
+  // css variables for font-size
   @each $screen-size, $size-map in $font-sizes {
-    @debug $screen-size, $size-map;
-
     @if $screen-size == default {
       @each $size-name, $size-value in $size-map {
         --fs-#{$size-name}: #{$size-value};
@@ -35,6 +46,7 @@
     }
   }
 
+  // css variables for utilities
   @each $key, $map in $utilities {
     $hasVar: map.get($map, 'hasVar');
 
@@ -59,10 +71,27 @@
   }
 }
 
-// :root[data-theme='default'] {
-//   @each $color, $shade-map in map.get($color-theme, default) {
-//     @each $shade, $value in $shade-map {
-//       --#{$color}-#{$shade}: #{$value};
-//     }
-//   }
-// }
+// css variables for other color themes
+@each $theme, $theme-map in $color-theme {
+  @if ($theme != 'default') {
+    :root[data-theme='#{$theme}'] {
+      @each $color, $shade-map in $theme-map {
+        $type: meta.type-of($shade-map);
+
+        @if ($type == 'color') {
+          --clr-#{$color}: #{$shade-map};
+        } @else if ($type == 'map') {
+          @each $shade, $value in $shade-map {
+            @if (meta.type-of($value) != 'color') {
+              @error '#{$value} is not a color!';
+            }
+
+            --clr-#{$color}-#{$shade}: #{$value};
+          }
+        } @else {
+          @error 'the input is not correct';
+        }
+      }
+    }
+  }
+}

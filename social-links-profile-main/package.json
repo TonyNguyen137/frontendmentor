@@ -1,12 +1,17 @@
 {
   "name": "Social-links-profile-main",
+  "private": true,
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --env mode=development --watch",
-    "build": "webpack --env mode=production"
+    "start": "webpack-dev-server --config webpack.dev.js --open",
+    "build": "webpack --config webpack.prod.js",
+    "preview": "webpack-dev-server --config webpack.prev.js --open"
   },
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "babel-loader": "^9.1.3",
+    "bootstrap": "^5.3.3",
     "css-loader": "^7.1.2",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",

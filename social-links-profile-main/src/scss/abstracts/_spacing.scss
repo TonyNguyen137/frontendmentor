@@ -1,0 +1,27 @@
+@use 'sass:map';
+
+$factor: 0.25rem !default;
+$spacers-list: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+
+$spacers: () !default;
+
+@each $size in $spacers-list {
+  $spacers: map.merge(
+    $spacers,
+    (
+      $size: $factor * $size,
+    )
+  );
+}
+
+/*
+  the code above will generate
+  $spacers: (
+    1: 0.25rem
+    2: 0.5rem,
+    3: 0.75rem,
+    4: 1rem,
+    ...
+  )
+
+*/

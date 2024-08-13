@@ -1,3 +1,18 @@
+/*
+  css variable syntax: --prefix-colorName-colorShade 
+  prefix: clr
+  colorName: grey, green, primarym, secondary etc
+  colorShade (optional): 100, 200 etc.
+
+  example: 
+  --clr-green-100
+  --clr-primary  // without shade
+
+  Each color theme except 'default' generates a CSS selector :root[data-theme=${theme}]. 
+  This allows you to dynamically change the color theme using JavaScript.
+
+*/
+
 $color-theme: (
   default: (
     'grey': (
@@ -13,7 +28,6 @@ $color-theme: (
     ),
   ),
 );
-
 $clr-grey-900: var(--clr-grey-900);
 $clr-grey-800: var(--clr-grey-800);
 $clr-grey-700: var(--clr-grey-700);

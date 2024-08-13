@@ -1,21 +1,20 @@
 @use 'colors' as *;
 @use 'typography' as *;
 @use 'functions' as *;
-@use 'sizes' as *;
+@use 'spacing' as *;
 @use 'sass:map';
 
 // general
 $active-theme: map.get($color-theme, default);
 $enable-media-query-dark-mode: false;
 $enable-container-classes: true;
+$enable-bootstrap-grid-system: true;
 
-// body
-$body-font-family: 'Inter', sans-serif;
-$body-font-size: px-to-rem(14);
-$body-line-height: 1.5;
-$body-font-weight: 700;
-$body-text-color: var(--clr-white-400);
-$body-background-color: null;
+// bs grid container
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
+$grid-row-columns: 6 !default;
+$bs-prefix: bs- !default;
 
 // grid setting
 $grid-gutter-width: 16px !default;
@@ -26,6 +25,33 @@ $grid-even-row-gap: $grid-gutter-width !default;
 $enable-container-classes: true;
 $container-padding-x: 12px;
 
-// button
-$button-bg: var(--clr-grey-700);
-$button-bg-hover: var(--clr-green-400);
+// body
+$body-font-family: 'Inter', sans-serif;
+$body-font-size: px-to-rem(14);
+$body-line-height: 1.5;
+$body-font-weight: $fw-400;
+$body-text-color: $clr-white-400;
+$body-background-color: $clr-grey-900;
+
+@debug $body-text-color;
+
+// card
+$card-heading-fs: $text-preset-heading;
+$card-content-fs: $text-preset-content;
+$card-padding: 40px;
+$card-row-gap: 24px;
+$card-row-gap-li: 16px;
+$card-border-r: 12px;
+
+$card-background-clr: $clr-grey-800;
+$card-image-size: px-to-rem(88);
+$card-name-fw: $fw-700;
+$card-network-profils-fw: $fw-700;
+$card-location-color: $clr-green-400;
+$card-location-fw: $fw-700;
+$card-item-bg: $clr-grey-700;
+$card-item-bg-hover: $clr-green-400;
+$card-item-color-hover: $clr-grey-900;
+@debug $card-item-color-hover;
+$card-item-padding-y: 12px;
+$card-item-border-r: 8px;
