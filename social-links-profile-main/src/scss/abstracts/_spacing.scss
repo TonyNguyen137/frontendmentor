@@ -15,7 +15,7 @@ $sizes: () !default;
 }
 
 /*
-  the code above will generate
+  the @each loop above will generate
   $sizes: (
     1: 0.25rem
     2: 0.5rem,

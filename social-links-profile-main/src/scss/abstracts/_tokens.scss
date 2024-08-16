@@ -9,7 +9,7 @@ $active-theme: map.get($color-theme, default);
 $enable-media-query-dark-mode: false;
 $enable-container-classes: true;
 $enable-bootstrap-grid-system: true;
-$prefix: '-';
+$prefix: '';
 
 // bootstrap grid container
 $grid-columns: 12;

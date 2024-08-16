@@ -7,6 +7,7 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const glob = require('glob');
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
 
+// for images folder structure - inspired by wordpress
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth() + 1;
 
@@ -20,8 +21,9 @@ module.exports = merge(common, {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].min.css',
+      filename: '[name][contenthash].min.css',
     }),
+
     new PurgeCSSPlugin({
       paths: glob.sync(`./src/**/*`, { nodir: true }),
       safelist: {
@@ -86,7 +88,7 @@ module.exports = merge(common, {
         },
       },
       {
-        test: /\.(woff2|woff)$/i,
+        test: /\.(ttf|woff2|woff)$/i,
         type: 'asset/resource',
 
         generator: {

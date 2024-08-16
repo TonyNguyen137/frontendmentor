@@ -8,13 +8,13 @@
     $type: meta.type-of($shade-map);
 
     @if ($type == 'color') {
-      --clr-#{$color}: #{$shade-map};
+      --#{$prefix}#{$color-prefix}#{$color}: #{$shade-map};
     } @else if ($type == 'map') {
       @each $shade, $value in $shade-map {
         @if (meta.type-of($value) != 'color') {
           @error '#{$value} is not a color!';
         }
-        --clr-#{$color}-#{$shade}: #{$value};
+        --#{$prefix}#{$color-prefix}-#{$color}-#{$shade}: #{$value};
       }
     } @else {
       @error 'the input is not correct';
@@ -25,7 +25,7 @@
     @media (prefers-color-scheme: dark) {
       @each $color, $shade-map in map.get($color-theme, dark) {
         @each $shade, $value in $shade-map {
-          --clr-#{$color}-#{$shade}: #{$value};
+          --#{$prefix}#{$color-prefix}-#{$color}-#{$shade}: #{$value};
         }
       }
     }
@@ -35,12 +35,12 @@
   @each $screen-size, $size-map in $font-sizes {
     @if $screen-size == default {
       @each $size-name, $size-value in $size-map {
-        --#{$font-size-prefix}#{$size-name}: #{$size-value};
+        --#{$prefix}#{$font-size-prefix}#{$size-name}: #{$size-value};
       }
     } @else {
       @include mq($screen-size) {
         @each $size-name, $size-value in $size-map {
-          --#{$font-size-prefix}#{$size-name}: #{$size-value};
+          --#{$prefix}#{$font-size-prefix}#{$size-name}: #{$size-value};
         }
       }
     }
@@ -50,12 +50,12 @@
   @each $screen-size, $size-map in $spacers {
     @if $screen-size == default {
       @each $size-name, $size-value in $size-map {
-        --#{$spacers-prefix}#{$size-name}: #{$size-value};
+        --#{$prefix}#{$spacers-prefix}#{$size-name}: #{$size-value};
       }
     } @else {
       @include mq($screen-size) {
         @each $size-name, $size-value in $size-map {
-          --#{$spacers-prefix}#{$size-name}: #{$size-value};
+          --#{$prefix}#{$spacers-prefix}#{$size-name}: #{$size-value};
         }
       }
     }
@@ -68,12 +68,12 @@
     @if $hasVar {
       @each $suffix, $value in $valueObject {
         .#{$class}-#{$suffix} {
-          #{$property}: $value;
+          #{$prefix}#{$property}: $value;
         }
         @if $responsive {
           @each $breakpoint, $size in $grid-breakpoints {
             @media (min-width:#{$size}) {
-              .#{$class}-#{$breakpoint}-#{$suffix} {
+              .#{$prefix}#{$class}-#{$breakpoint}-#{$suffix} {
                 #{$property}: $value;
               }
             }
@@ -92,14 +92,14 @@
         $type: meta.type-of($shade-map);
 
         @if ($type == 'color') {
-          --clr-#{$color}: #{$shade-map};
+          --#{$prefix}#{$color-prefix}#{$color}: #{$shade-map};
         } @else if ($type == 'map') {
           @each $shade, $value in $shade-map {
             @if (meta.type-of($value) != 'color') {
               @error '#{$value} is not a color!';
             }
 
-            --clr-#{$color}-#{$shade}: #{$value};
+            --#{$prefix}#{$color-prefix}#{$color}-#{$shade}: #{$value};
           }
         } @else {
           @error 'the input is not correct';
