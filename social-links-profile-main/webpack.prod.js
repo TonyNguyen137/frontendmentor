@@ -7,17 +7,20 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const glob = require('glob');
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
 
+const currentYear = new Date().getFullYear();
+const currentMonth = new Date().getMonth() + 1;
+
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
   output: {
-    filename: '[name].[contenthash].min.js',
+    filename: '[name][contenthash].min.js',
     // hashDigestLength: 6,
   },
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: '[name].[contenthash].min.css',
     }),
     new PurgeCSSPlugin({
       paths: glob.sync(`./src/**/*`, { nodir: true }),
@@ -34,7 +37,10 @@ module.exports = merge(common, {
         test: /\.scss$/i,
         use: [
           MiniCssExtractPlugin.loader, // 3. extract css into files
-          'css-loader', // 2. Turns css into commonjs
+          {
+            loader: 'css-loader',
+            options: {},
+          }, // 2. Turns css into commonjs
           {
             loader: 'postcss-loader',
             options: {
@@ -47,6 +53,7 @@ module.exports = merge(common, {
                       features: {
                         'nesting-rules': true,
                         clamp: true,
+                        'custom-properties': false,
                       },
                     },
                   ],
@@ -69,11 +76,28 @@ module.exports = merge(common, {
           },
         },
       },
+
+      {
+        test: /\.(png|jpe?g)$/i,
+        type: 'asset/resource',
+
+        generator: {
+          filename: `images/${currentYear}/${currentMonth}/[name][ext]`, // Output path and filename pattern
+        },
+      },
+      {
+        test: /\.(woff2|woff)$/i,
+        type: 'asset/resource',
+
+        generator: {
+          filename: 'font/[name][ext]', // Output path and filename pattern
+        },
+      },
     ],
   },
 
   optimization: {
-    minimize: false,
+    // minimize: false,
     minimizer: [
       new TerserPlugin({
         terserOptions: {
@@ -93,6 +117,19 @@ module.exports = merge(common, {
               encodeOptions: {
                 // Please specify only one codec here, multiple codecs will not work
                 webp: {
+                  quality: 70,
+                },
+              },
+            },
+          },
+          {
+            // You can apply generator using `?as=webp`, you can use any name and provide more options
+            preset: 'avif',
+            implementation: ImageMinimizerPlugin.sharpGenerate,
+            options: {
+              encodeOptions: {
+                // Please specify only one codec here, multiple codecs will not work
+                avif: {
                   quality: 70,
                 },
               },

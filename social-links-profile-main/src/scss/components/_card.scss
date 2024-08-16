@@ -11,8 +11,13 @@
   padding: $card-padding;
   row-gap: $card-row-gap;
   background-color: $card-background-clr;
-  width: px-to-rem(384);
+  width: 100%;
+  max-width: px-to-rem(456);
   border-radius: $card-border-r;
+
+  @include mq(xxl) {
+    max-width: px-to-rem(384);
+  }
 
   &__header {
     @extend %v-stack-center;
@@ -35,13 +40,17 @@
 
   &__location {
     color: $card-location-color;
-    font-size: $text-preset-content;
+    font-size: $card-location-fs;
     font-weight: $card-location-fw;
     display: block;
   }
 
   &__quote {
     margin-bottom: $card-row-gap;
+  }
+
+  &__body {
+    width: 100%;
   }
 
   &__social-media-list {

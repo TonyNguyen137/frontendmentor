@@ -9,12 +9,13 @@ $active-theme: map.get($color-theme, default);
 $enable-media-query-dark-mode: false;
 $enable-container-classes: true;
 $enable-bootstrap-grid-system: true;
+$prefix: '-';
 
-// bs grid container
-$grid-columns: 12 !default;
-$grid-gutter-width: 1.5rem !default;
-$grid-row-columns: 6 !default;
-$bs-prefix: bs- !default;
+// bootstrap grid container
+$grid-columns: 12;
+$grid-gutter-width: 1.5rem;
+$grid-row-columns: 6;
+$bs-prefix: bs-;
 
 // grid setting
 $grid-gutter-width: 16px !default;
@@ -33,12 +34,10 @@ $body-font-weight: $fw-400;
 $body-text-color: $clr-white-400;
 $body-background-color: $clr-grey-900;
 
-@debug $body-text-color;
-
 // card
-$card-heading-fs: $text-preset-heading;
-$card-content-fs: $text-preset-content;
-$card-padding: 40px;
+$card-heading-fs: $fs-heading-preset;
+$card-content-fs: $fs-text-content-preset;
+$card-padding: $size-preset-primary;
 $card-row-gap: 24px;
 $card-row-gap-li: 16px;
 $card-border-r: 12px;
@@ -49,9 +48,9 @@ $card-name-fw: $fw-700;
 $card-network-profils-fw: $fw-700;
 $card-location-color: $clr-green-400;
 $card-location-fw: $fw-700;
+$card-location-fs: $fs-text-content-preset;
 $card-item-bg: $clr-grey-700;
 $card-item-bg-hover: $clr-green-400;
 $card-item-color-hover: $clr-grey-900;
-@debug $card-item-color-hover;
 $card-item-padding-y: 12px;
 $card-item-border-r: 8px;

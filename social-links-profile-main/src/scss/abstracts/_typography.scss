@@ -1,5 +1,13 @@
 @use 'functions' as *;
 
+$font-size-prefix: fs-;
+$font-sizes: (
+  'default': (
+    'text-content-preset': px-to-rem(14),
+    'heading-preset': px-to-rem(24),
+  ),
+);
+
 $font-family-base: 'Inter', sans-serif;
 // $font-family-accent: $-ff-serif;
 
@@ -7,11 +15,5 @@ $fw-400: 400;
 $fw-600: 600;
 $fw-700: 700;
 
-$font-sizes: (
-  'default': (
-    'text-preset-content': px-to-rem(14),
-    'text-preset-heading': px-to-rem(24),
-  ),
-);
-$text-preset-content: var(--fs-text-preset-content);
-$text-preset-heading: var(--fs-text-preset-heading);
+$fs-text-content-preset: var(--fs-text-content-preset);
+$fs-heading-preset: var(--fs-heading-preset);

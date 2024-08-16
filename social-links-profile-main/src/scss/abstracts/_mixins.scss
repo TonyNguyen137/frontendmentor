@@ -5,6 +5,7 @@
 @use 'breakpoints' as *;
 @use 'tokens' as *;
 
+// media query
 @mixin mq($size) {
   @if map.has-key($grid-breakpoints, $size) {
     $breakpoint: map.get($grid-breakpoints, $size);
@@ -42,7 +43,7 @@
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   @if $min {
-    @media (min-width: $min) {
+    @media screen and (min-width: $min) {
       @content;
     }
   } @else {

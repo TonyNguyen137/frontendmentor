@@ -5,9 +5,13 @@ const { merge } = require('webpack-merge');
 module.exports = merge(common, {
   mode: 'development',
 
-  output: {
-    filename: '[name].min.js',
-  },
+  // output: {
+  //   filename: '[name].js',
+  // },
+  // optimization: {
+  //   runtimeChunk: 'single',
+  // },
+
   stats: {
     loggingDebug: ['sass-loader'],
   },

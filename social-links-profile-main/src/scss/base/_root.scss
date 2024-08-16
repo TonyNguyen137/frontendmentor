@@ -35,12 +35,27 @@
   @each $screen-size, $size-map in $font-sizes {
     @if $screen-size == default {
       @each $size-name, $size-value in $size-map {
-        --fs-#{$size-name}: #{$size-value};
+        --#{$font-size-prefix}#{$size-name}: #{$size-value};
       }
     } @else {
       @include mq($screen-size) {
         @each $size-name, $size-value in $size-map {
-          --fs-#{$size-name}: #{$size-value};
+          --#{$font-size-prefix}#{$size-name}: #{$size-value};
+        }
+      }
+    }
+  }
+
+  // css variables for spacers
+  @each $screen-size, $size-map in $spacers {
+    @if $screen-size == default {
+      @each $size-name, $size-value in $size-map {
+        --#{$spacers-prefix}#{$size-name}: #{$size-value};
+      }
+    } @else {
+      @include mq($screen-size) {
+        @each $size-name, $size-value in $size-map {
+          --#{$spacers-prefix}#{$size-name}: #{$size-value};
         }
       }
     }
@@ -56,8 +71,6 @@
           #{$property}: $value;
         }
         @if $responsive {
-          @debug inside responsive;
-
           @each $breakpoint, $size in $grid-breakpoints {
             @media (min-width:#{$size}) {
               .#{$class}-#{$breakpoint}-#{$suffix} {
