@@ -52,32 +52,6 @@ $clamp-map: map.merge($font-size-clamp, $spacer-clamp);
     }
   }
 
-  // css variables for clamp()
-
-  @each $class, $map in $clamp-map {
-    $keys: map.keys($map);
-    $min-width: list.nth($keys, 1);
-    $max-width: list.nth($keys, length($keys));
-
-    @debug meta.type-of($min-width);
-    @debug meta.type-of($max-width);
-
-    @if meta.type-of($max-width) == string {
-      @if map.has-key($grid-breakpoints, $max-width) {
-        $max-width-em: map.get($grid-breakpoints, $max-width);
-
-        $max-width: math.div($max-width-em, 1em);
-        @debug max-width;
-      }
-    }
-
-    // $min-value: map.get($map, $min-width);
-    // $max-value: map.get($map, $max-width);
-
-    // $slope: ($max-value - $min-value) / ($max-width - $min-width);
-    // $intercept: $min-value - $slope * $min-width;
-  }
-
   // css variables for spacers
   @each $screen-size, $size-map in $spacers {
     @if $screen-size == default {
