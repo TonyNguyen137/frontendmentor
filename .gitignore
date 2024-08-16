@@ -13,11 +13,11 @@
 
 # Avoid your project being littered with annoying .DS_Store files!
 .DS_Store/
-.DS_Store
 .prettierignore/
 .parcel-cache/
 dist/
 node_modules/
 blog-preview-card-figma
 space-tourism-website-figma
+social-links-profile-figma/
 .hintrc

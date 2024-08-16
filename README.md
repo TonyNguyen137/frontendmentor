@@ -43,6 +43,8 @@ The projects are hosted online for free on [netlify](https://www.netlify.com/). 
 - blog-preview-card-main: [https://tn-blog-preview-card-main.netlify.app/](https://tn-blog-preview-card-main.netlify.app/)
 - space-tourism-website-main: [https://master--frontendmentor-spacetourism.netlify.app/](https://master--frontendmentor-spacetourism.netlify.app/)
 
+- socila-links-profile-main: [https://profil-links.netlify.app/](https://profil-links.netlify.app/)
+
 #### Since I don't have the Figma Design files for many projects, the results aren't pixel-perfect.
 
 # Goals
