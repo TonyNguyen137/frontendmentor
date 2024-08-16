@@ -1,6 +1,7 @@
 @use 'sass:meta';
 @use 'sass:math';
 @use 'sass:map';
+@use 'sass:list';
 @use 'functions' as *;
 @use 'breakpoints' as *;
 @use 'tokens' as *;
@@ -180,12 +181,12 @@
 // clamp
 
 @mixin clamp($map) {
-  $keys: map-keys($map);
+  $keys: map.keys($map);
   $min-width: nth($keys, 1);
   $max-width: nth($keys, length($keys));
 
-  $min-value: map-get($map, $min-width);
-  $max-value: map-get($map, $max-width);
+  $min-value: map.get($map, $min-width);
+  $max-value: map.get($map, $max-width);
 
   $slope: ($max-value - $min-value) / ($max-width - $min-width);
   $intercept: $min-value - $slope * $min-width;

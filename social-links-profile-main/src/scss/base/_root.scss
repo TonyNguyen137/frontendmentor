@@ -1,6 +1,11 @@
 @use '../abstracts' as *;
 @use 'sass:map';
 @use 'sass:meta';
+@use 'sass:list';
+
+$clamp-map: map.merge($font-size-clamp, $spacer-clamp);
+
+@debug $clamp-map;
 
 :root {
   // css variables for default color theme
@@ -14,7 +19,7 @@
         @if (meta.type-of($value) != 'color') {
           @error '#{$value} is not a color!';
         }
-        --#{$prefix}#{$color-prefix}-#{$color}-#{$shade}: #{$value};
+        --#{$prefix}#{$color-prefix}#{$color}-#{$shade}: #{$value};
       }
     } @else {
       @error 'the input is not correct';
@@ -25,7 +30,7 @@
     @media (prefers-color-scheme: dark) {
       @each $color, $shade-map in map.get($color-theme, dark) {
         @each $shade, $value in $shade-map {
-          --#{$prefix}#{$color-prefix}-#{$color}-#{$shade}: #{$value};
+          --#{$prefix}#{$color-prefix}#{$color}-#{$shade}: #{$value};
         }
       }
     }
@@ -44,6 +49,23 @@
         }
       }
     }
+  }
+
+  // css variables for clamp()
+
+  @each $class, $map in $clamp-map {
+    @debug $class;
+    @debug $map;
+
+    $keys: map.keys($map);
+    $min-width: list.nth($keys, 1);
+    $max-width: list.nth($keys, length($keys));
+
+    // $min-value: map.get($map, $min-width);
+    // $max-value: map.get($map, $max-width);
+
+    // $slope: ($max-value - $min-value) / ($max-width - $min-width);
+    // $intercept: $min-value - $slope * $min-width;
   }
 
   // css variables for spacers
