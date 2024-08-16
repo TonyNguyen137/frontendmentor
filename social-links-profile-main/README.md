@@ -8,9 +8,7 @@ This is a solution to the [Social links profile on Frontend Mentor](https://www.
 
 ### Live Site URL
 
-[https://recipe-page-tn.netlify.app/](https://recipe-page-tn.netlify.app/)
-
-## My process
+[https://profil-links.netlify.app/](https://profil-links.netlify.app/)
 
 ### Built with
 
