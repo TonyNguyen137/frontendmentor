@@ -1,0 +1,26 @@
+@use 'functions' as *;
+
+$font-size-prefix: fs-;
+$font-sizes: (
+  'default': (
+    'text-content-preset': px-to-rem(14),
+    'heading-preset': px-to-rem(24),
+  ),
+);
+
+$font-size-clamp: (
+  heading: (
+    576: 16,
+    1400: 128,
+  ),
+);
+
+$font-family-base: sans-serif;
+$font-family-accent: serif;
+
+$fw-400: 400;
+$fw-600: 600;
+$fw-700: 700;
+
+$fs-text-content-preset: var(--fs-text-content-preset);
+$fs-heading-preset: var(--fs-heading-preset);

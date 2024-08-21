@@ -1,0 +1,36 @@
+@use 'colors' as *;
+@use 'fonts' as *;
+@use 'functions' as *;
+@use 'spacing' as *;
+@use 'sass:map';
+
+// general
+$active-theme: map.get($color-theme, default);
+$enable-media-query-dark-mode: false;
+$enable-container-classes: true;
+$enable-bootstrap-grid-system: true;
+$prefix: '';
+
+// bootstrap grid container
+$grid-columns: 12;
+$grid-gutter-width: 1.5rem;
+$grid-row-columns: 6;
+$bs-prefix: bs-;
+
+// grid setting
+$grid-gutter-width: 16px !default;
+$grid-even-col-gap: $grid-gutter-width !default;
+$grid-even-row-gap: $grid-gutter-width !default;
+
+// container setting
+$enable-container-classes: true;
+$container-padding-x: 12px;
+
+// body
+$body-font-family: $font-family-base;
+$body-font-size: px-to-rem(16);
+$body-line-height: 1.5;
+$body-font-weight: null;
+$body-text-color: null;
+$body-background-color: null;
+$body-min-height: null;
