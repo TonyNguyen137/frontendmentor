@@ -3,24 +3,24 @@
 $font-size-prefix: fs-;
 $font-sizes: (
   'default': (
-    'text-content-preset': px-to-rem(14),
-    'heading-preset': px-to-rem(24),
+    'fs-nav': px-to-rem(24),
+  ),
+  'md': (
+    'fs-nav': px-to-rem(14),
   ),
 );
 
 $font-size-clamp: (
-  heading: (
-    576: 16,
+  heading-1: (
+    375: 16,
     1400: 128,
   ),
 );
 
-$font-family-base: sans-serif;
+$font-family-base: 'Jost', sans-serif;
 $font-family-accent: serif;
 
-$fw-400: 400;
-$fw-600: 600;
-$fw-700: 700;
+$fw-regular: 400;
+$fw-medium: 500;
 
-$fs-text-content-preset: var(--fs-text-content-preset);
-$fs-heading-preset: var(--fs-heading-preset);
+$fs-nav: var(--fs-nav);

@@ -2,6 +2,9 @@
 @use 'fonts' as *;
 @use 'functions' as *;
 @use 'spacing' as *;
+@use 'container-width' as *;
+@use 'breakpoints' as *;
+
 @use 'sass:map';
 
 // general
@@ -29,8 +32,27 @@ $container-padding-x: 12px;
 // body
 $body-font-family: $font-family-base;
 $body-font-size: px-to-rem(16);
-$body-line-height: 1.5;
-$body-font-weight: null;
+$body-line-height: 1.625;
+$body-font-weight: $fw-regular;
 $body-text-color: null;
 $body-background-color: null;
 $body-min-height: null;
+
+//navbar
+$navbar-expand-bp: 'md'; // defined breakpoints in abstracts/_breakpoints.scss.
+$navbar-max-width: map.get($container-max-widths, 'xl');
+$navbar-px: $sc-navbar-x;
+$navbar-py: $sc-navbar-y;
+
+$navbar-col-gap: px-to-rem(42);
+$navbar-alignment: end;
+
+$navbar-fs: $fs-nav;
+$navbar-clr: $clr-white;
+$navbar-expanded-clr: $clr-secondary-dark;
+$navbar-text-tf: uppercase;
+$navbar-letter-sp: 2px;
+// $navbar-line-h: 1;
+
+$navbar-menu-p: $sc-collapse-p;
+$navbar-menu-row-g: 32px;

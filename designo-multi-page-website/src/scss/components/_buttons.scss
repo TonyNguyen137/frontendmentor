@@ -1,1 +1,29 @@
 @use '../abstracts' as *;
+
+.btn {
+  font-size: px-to-rem(15);
+  letter-spacing: 1px;
+  padding: 18px 25px 16px 24px;
+  display: inline-block;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &--light {
+    background-color: $clr-white;
+    &:hover {
+      background-color: $clr-secondary;
+      color: $clr-white;
+    }
+  }
+
+  &--dark {
+    background-color: $clr-primary;
+    color: $clr-white;
+
+    &:hover {
+      background-color: $clr-secondary;
+    }
+  }
+}

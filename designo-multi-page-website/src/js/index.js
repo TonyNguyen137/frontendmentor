@@ -1,1 +1,3 @@
-console.log('hello');
+import { Navbar } from './components/index';
+
+new Navbar('.navbar-js');

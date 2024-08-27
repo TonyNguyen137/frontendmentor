@@ -1,0 +1,18 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-index, 2);
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+
+  &[data-transition='fade'] {
+    transition: opacity var(--transition-duration, 150ms) linear;
+    opacity: 0;
+  }
+
+  &[data-state='show'] {
+    opacity: var(--opacity, 0.5);
+  }
+}

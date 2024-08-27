@@ -28,15 +28,20 @@ $color-variable-prefix: clr-;
 
 $color-theme: (
   default: (
-    'primary': $primary,
-    'secondary': $secondary,
-    'success': $success,
-    'info': $info,
-    'warning': $warning,
-    'danger': $danger,
-    'light': $light,
-    'dark': $dark,
+    'primary': #e7816b,
+    'primary-dark': #1d1c1e,
+    'secondary': #ffad9b,
+    'secondary-dark': #333136,
+    'secondary-light': #f1f3f5,
     'black': #000,
     'white': #fff,
   ),
 );
+
+$clr-primary: var(--clr-primary);
+$clr-primary-dark: var(--clr-primary-dark);
+$clr-secondary: var(--clr-secondary);
+$clr-secondary-dark: var(--clr-secondary-dark);
+$clr-secondary-light: var(--clr-secondary-light);
+$clr-black: var(--clr-black);
+$clr-white: var(--clr-white);

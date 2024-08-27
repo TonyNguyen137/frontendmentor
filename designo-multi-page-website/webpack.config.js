@@ -1,10 +1,20 @@
 const path = require('path');
 const HtmlBundlerPlugin = require('html-bundler-webpack-plugin');
+const glob = require('glob');
+const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const PATHS = {
+  src: path.join(__dirname, 'src'),
+};
 
 module.exports = (env) => {
   return {
     mode: env.mode,
-
+    devtool: env.mode === 'production' ? false : 'source-map',
+    stats: {
+      loggingDebug: ['sass-loader'],
+    },
     output: {
       path: path.resolve(__dirname, 'dist'),
       clean: true,
@@ -12,9 +22,11 @@ module.exports = (env) => {
 
     resolve: {
       alias: {
-        '@scripts': path.join(__dirname, 'src/js'),
-        '@styles': path.join(__dirname, 'src/scss'),
-        //   '@images': path.join(__dirname, 'src/images'),
+        '@scripts': path.join(__dirname, 'src', 'js'),
+        '@styles': path.join(__dirname, 'src', 'scss'),
+        '@images': path.join(__dirname, 'src', 'assets', 'images'),
+
+        '@fonts': path.join(__dirname, 'src', 'assets', 'fonts'),
       },
     },
 
@@ -22,30 +34,94 @@ module.exports = (env) => {
       new HtmlBundlerPlugin({
         // path to templates
         entry: 'src/views/',
+        entryFilter: (file) => {
+          if (/includes/.test(file)) return false; // ignore files containing the `include` in the path
+        },
+
         js: {
           // output filename for JS
-          filename: 'js/[name].[contenthash:8].js',
+          filename: 'static/[name].[contenthash:8].js',
         },
         css: {
           // output filename for CSS
-          filename: 'css/[name].[contenthash:8].css',
+          filename: 'static/[name].[contenthash:8].css',
         },
+        exclude: [
+          'src/include/header.html', // Adjust this path as per your file structure
+        ],
         preprocessor: 'pug', // use Pug templating engine
       }),
+      // new PurgeCSSPlugin({
+      //   paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+      //   content: ['**/*.js', '**/*.html', '**/*.pug'],
+      //   safelist: {
+      //     standard: [/aria/, /data/],
+      //     deep: [/aria/, /data/, /^.*\[/],
+      //     greedy: [/aria/, /data/, /^.*\[/],
+      //   },
+      // }),
     ],
 
     module: {
       rules: [
         {
           test: /\.(scss)$/,
-          use: ['css-loader', 'sass-loader'],
+          use: [
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [
+                    [
+                      'postcss-preset-env',
+                      {
+                        stage: 3,
+                        features: {
+                          'nesting-rules': true,
+                          clamp: true,
+                          'custom-properties': false,
+                        },
+                      },
+                    ],
+                    ['postcss-sort-media-queries'],
+                  ],
+                },
+              },
+            },
+            ,
+            'sass-loader',
+          ],
         },
         {
-          test: /\.(ico|png|jp?g|svg)/,
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        },
+        {
+          test: /\.(ico|png|jpe?g|svg)/,
           type: 'asset',
           generator: {
             // save images to file
-            filename: 'img/[name].[hash:8][ext]',
+            filename: (ob) => {
+              const params = new URLSearchParams(
+                ob.module.resourceResolveData.query
+              );
+
+              // Get the value of the 'w' parameter
+              const width = params.get('w');
+              // console.log('WIDTH: ', width);
+
+              if (width) {
+                return `static/[name]-w${width}[ext]`;
+              }
+              return `static/[name][ext]`;
+            },
           },
           parser: {
             dataUrlCondition: {
@@ -54,6 +130,61 @@ module.exports = (env) => {
             },
           },
         },
+
+        {
+          test: /\.(ttf|woff2|woff)/,
+          type: 'asset',
+          generator: {
+            // save fonts to file
+            filename: 'static/[name].[ext]',
+          },
+        },
+      ],
+    },
+    optimization: {
+      // minimize: false,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            output: {
+              comments: false,
+            },
+          },
+          extractComments: false,
+        }),
+        new ImageMinimizerPlugin({
+          minimizer: {
+            implementation: ImageMinimizerPlugin.sharpMinify,
+          },
+          generator: [
+            {
+              // You can apply generator using `?as=webp`, you can use any name and provide more options
+              preset: 'webp',
+              implementation: ImageMinimizerPlugin.sharpGenerate,
+              options: {
+                encodeOptions: {
+                  // Please specify only one codec here, multiple codecs will not work
+                  webp: {
+                    quality: 70,
+                  },
+                },
+              },
+            },
+            {
+              // You can apply generator using `?as=avif`, you can use any name and provide more options
+              preset: 'avif',
+              implementation: ImageMinimizerPlugin.sharpGenerate,
+              options: {
+                encodeOptions: {
+                  // Please specify only one codec here, multiple codecs will not work
+                  avif: {
+                    quality: 70,
+                  },
+                },
+              },
+            },
+          ],
+        }),
       ],
     },
 

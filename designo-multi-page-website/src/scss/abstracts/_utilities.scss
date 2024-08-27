@@ -24,14 +24,18 @@ $zindex-levels: (
 
 /* 
   MAIN UTILITIES MAP
-  
   syntax of a utility class: $class-$value, 
   syntax of a utility class with responsivness; $class-$breakpoint-$value
 
   example 1: 
   class: z,
   property: z-index,
-  values: 1, 2, 3, 4
+  values: (
+    1: 1, 
+    2: 2, 
+    3: 3, 
+    4: 4
+  )
   isResponsive: true,
   output: .z-1, .z-2, .z-3, .z-4;
   output responsive: .z-sm-1, z-md-1, z-lg-1 etc.
@@ -40,17 +44,20 @@ $zindex-levels: (
   class: d,
   property: display,
   values: grid
-  output: .d-grid
+  output: .d
+
 
   example 3:
   class: justify,
   property: justify-content,
   value: (
     between: space-between,
+    even: space-evenly,
   )
 
-  output: .justify-content-between
-
+  output: 
+  .justify-content-between
+  .justify-content-even
 
 */
 
@@ -61,6 +68,15 @@ $utilities: map-merge(
       property: z-index,
       class: z,
       values: $zindex-levels,
+    ),
+    'position': (
+      property: position,
+      class: position,
+      values: (
+        absolute: absolute,
+        relative: relative,
+        static: static,
+      ),
     ),
     'margin-top': (
       property: margin-top,
@@ -122,10 +138,18 @@ $utilities: map-merge(
       class: px,
       values: $sizes,
     ),
-    'grid': (
+    'display': (
       property: display,
       class: d,
-      values: grid,
+      values: (
+        flex: flex,
+        grid: grid,
+        none: none,
+        block: block,
+        inline-block: inline-block,
+        inline: inline,
+        contents: contents,
+      ),
       isResponsive: true,
     ),
     'place-items': (
@@ -133,11 +157,7 @@ $utilities: map-merge(
       class: place-items,
       values: center,
     ),
-    'flex': (
-      property: display,
-      class: d,
-      values: flex,
-    ),
+
     'justify-content': (
       isResponsive: true,
       property: justify-content,

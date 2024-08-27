@@ -2,7 +2,7 @@
 @use 'functions';
 
 $factor: 0.25rem;
-$sizes-list: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 24;
+$sizes-list: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 24;
 $sizes: ();
 
 /*
@@ -25,13 +25,16 @@ $sizes: ();
   );
 }
 
-$spacers-prefix: 'sc-';
 $spacers: (
   'default': (
-    size-preset-primary: 24px,
+    sc-navbar-y: 34px,
+    sc-navbar-x: 24px,
+    sc-collapse-p: 48px 24px,
   ),
   'md': (
-    size-preset-primary: 40px,
+    sc-navbar-y: 64px,
+    sc-navbar-x: 40px,
+    sc-collapse-p: 0,
   ),
 );
 
@@ -42,4 +45,6 @@ $spacer-clamp: (
   ),
 );
 
-$size-preset-primary: var(--sc-size-preset-primary);
+$sc-navbar-y: var(--sc-navbar-y);
+$sc-navbar-x: var(--sc-navbar-x);
+$sc-collapse-p: var(--sc-collapse-p);

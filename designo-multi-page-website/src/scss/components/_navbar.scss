@@ -1,0 +1,125 @@
+@use '../abstracts' as *;
+
+.navbar {
+  box-sizing: content-box;
+  max-width: $navbar-max-width;
+
+  position: relative;
+
+  margin-inline: auto;
+  padding-inline: $navbar-px;
+  padding-block: $navbar-py;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+
+  &__toggler {
+    display: block;
+    line-height: 1;
+
+    svg {
+      vertical-align: baseline;
+    }
+
+    &[aria-expanded='false'] {
+      #hamburger {
+        display: inline;
+      }
+      #close {
+        display: none;
+      }
+    }
+
+    &[aria-expanded='true'] {
+      #hamburger {
+        display: none;
+      }
+      #close {
+        display: inline;
+      }
+    }
+  }
+
+  &__collapse {
+    box-sizing: border-box;
+    width: 100%;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    transform: translateY(100%);
+    overflow: hidden;
+
+    background-color: $clr-primary-dark;
+
+    &[data-state='collapsed'] {
+      display: none;
+    }
+
+    &[data-state='collapsing'] {
+      overflow: hidden;
+      height: 0;
+      transition: height var(--transition-duration);
+    }
+  }
+
+  &__menu-list {
+    padding: $navbar-menu-p;
+
+    overflow: hidden;
+    list-style: none;
+    color: $navbar-clr;
+    align-items: $navbar-alignment;
+    column-gap: $navbar-col-gap;
+    font-size: $navbar-fs;
+    text-transform: $navbar-text-tf;
+
+    display: grid;
+    row-gap: $navbar-menu-row-g;
+  }
+
+  &__link {
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing: $navbar-letter-sp;
+    transition: back-ground-image;
+    background-image: linear-gradient(to bottom, transparent 96%, black 96%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: center;
+    transition: background-size 200ms;
+
+    @media (hover: hover) {
+      &:hover {
+        background-size: 100% 100%;
+      }
+    }
+  }
+
+  // menu collapse at selected breakpoint
+  @include mq($navbar-expand-bp) {
+    &__toggler {
+      display: none;
+    }
+
+    &__collapse {
+      width: revert;
+      height: revert;
+      position: static;
+      transform: none;
+      background-color: var(--clr-white);
+
+      &[data-state='collapsed'] {
+        display: block;
+      }
+    }
+
+    &__menu-list {
+      display: flex;
+      color: $navbar-expanded-clr;
+    }
+  }
+}
