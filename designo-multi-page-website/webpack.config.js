@@ -51,15 +51,15 @@ module.exports = (env) => {
         ],
         preprocessor: 'pug', // use Pug templating engine
       }),
-      // new PurgeCSSPlugin({
-      //   paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-      //   content: ['**/*.js', '**/*.html', '**/*.pug'],
-      //   safelist: {
-      //     standard: [/aria/, /data/],
-      //     deep: [/aria/, /data/, /^.*\[/],
-      //     greedy: [/aria/, /data/, /^.*\[/],
-      //   },
-      // }),
+      new PurgeCSSPlugin({
+        paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+        content: ['**/*.js', '**/*.html', '**/*.pug'],
+        safelist: {
+          standard: [/aria/, /data/, /:focus/],
+          deep: [/aria/, /data/, /^.*\[/],
+          greedy: [/aria/, /data/, /^.*\[/],
+        },
+      }),
     ],
 
     module: {
@@ -104,7 +104,7 @@ module.exports = (env) => {
           },
         },
         {
-          test: /\.(ico|png|jpe?g|svg)/,
+          test: /\.(png|jp?g|webp)$/,
           type: 'asset',
           generator: {
             // save images to file
@@ -123,11 +123,20 @@ module.exports = (env) => {
               return `static/[name][ext]`;
             },
           },
+
           parser: {
             dataUrlCondition: {
               // inline images < 2 KB
               maxSize: 2 * 1024,
             },
+          },
+        },
+
+        {
+          test: /\.(ico|svg)$/,
+          type: 'asset/resource',
+          generator: {
+            filename: 'static/[name].[hash:8][ext][query]',
           },
         },
 

@@ -10,6 +10,8 @@ export class KeyDown {
     this.#openBtnEl = navbarEl.openBtnEl;
     this.#menubarWrapperEl = navbarEl.menubarWrapperEl;
     document.addEventListener('keydown', this.#initKeydownHandler.bind(this));
+
+    console.log(this.#firstTabbableEl);
   }
 
   #initKeydownHandler(e) {

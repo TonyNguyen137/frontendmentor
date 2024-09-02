@@ -53,9 +53,24 @@ textarea {
   color: inherit;
 }
 
+svg {
+  display: block;
+}
+
+address {
+  font-style: normal;
+}
+
 button {
   border: none;
   background-color: transparent;
+}
+
+@if ($focus-ring) {
+  :focus-visible {
+    outline: $focus-ring;
+    outline-offset: $focus-ring-offset;
+  }
 }
 
 h1 {

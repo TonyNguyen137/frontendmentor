@@ -4,7 +4,6 @@
 @use 'spacing' as *;
 @use 'container-width' as *;
 @use 'breakpoints' as *;
-
 @use 'sass:map';
 
 // general
@@ -12,6 +11,8 @@ $active-theme: map.get($color-theme, default);
 $enable-media-query-dark-mode: false;
 $enable-container-classes: true;
 $enable-bootstrap-grid-system: true;
+$focus-ring: 2px dashed $clr-primary;
+$focus-ring-offset: 1px;
 $prefix: '';
 
 // bootstrap grid container
@@ -47,7 +48,8 @@ $navbar-py: $sc-navbar-y;
 $navbar-col-gap: px-to-rem(42);
 $navbar-alignment: end;
 
-$navbar-fs: $fs-nav;
+$navbar-fs: $fs-res-nav;
+$navbar-sub-fs: px-to-rem(14);
 $navbar-clr: $clr-white;
 $navbar-expanded-clr: $clr-secondary-dark;
 $navbar-text-tf: uppercase;
@@ -55,4 +57,5 @@ $navbar-letter-sp: 2px;
 // $navbar-line-h: 1;
 
 $navbar-menu-p: $sc-collapse-p;
+
 $navbar-menu-row-g: 32px;

@@ -1,0 +1,8 @@
+@use '../abstracts' as *;
+
+.banner {
+  background-image: url('@images/shared/desktop/bg-pattern-three-circles.svg');
+  background-color: $clr-primary;
+  max-width: $navbar-max-width;
+  margin-inline: auto;
+}

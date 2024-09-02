@@ -1,12 +1,22 @@
 @use 'functions' as *;
 
-$font-size-prefix: fs-;
+$font-family-base: 'Jost', sans-serif;
+$font-family-accent: serif;
+
+$font-weight: (
+  'regular': 400,
+  'medium': 500,
+);
+
+$fw-regular: 400;
+$fw-medium: 500;
+
 $font-sizes: (
   'default': (
-    'fs-nav': px-to-rem(24),
+    'fs-res-nav': px-to-rem(24),
   ),
   'md': (
-    'fs-nav': px-to-rem(14),
+    'fs-res-nav': px-to-rem(14),
   ),
 );
 
@@ -17,10 +27,4 @@ $font-size-clamp: (
   ),
 );
 
-$font-family-base: 'Jost', sans-serif;
-$font-family-accent: serif;
-
-$fw-regular: 400;
-$fw-medium: 500;
-
-$fs-nav: var(--fs-nav);
+$fs-res-nav: var(--fs-res-nav);

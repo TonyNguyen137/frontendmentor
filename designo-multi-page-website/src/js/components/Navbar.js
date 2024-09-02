@@ -1,29 +1,30 @@
-import { $, Backdrop, KeyPresser } from '../utils/index';
-
-// import { MenuToggle } from '../modules/menuToggler.js';
-// import { KeyDown } from '../modules/keyDown.js';
-// import { MediaQuery } from '../modules/mediaQuery.js';
+import { $, Backdrop } from '../utils';
+import { Tabber } from '../modules';
 
 export class Navbar {
   constructor(navbarEl, transitionDuration = 300) {
     // init member variables
+    this._modules = [Tabber];
     this._navbarEl = typeof navbarEl === 'string' ? $(navbarEl) : navbarEl;
     this._togglerEl = this._navbarEl.querySelector('.navbar__toggler');
     this._collapseEl = this._navbarEl.querySelector('.navbar__collapse');
-    this._menuListEl = this._navbarEl.querySelector('ul');
-    this._isExpanded =
-      this._togglerEl.getAttribute('aria-expanded') === 'true' ? true : false;
-    this._backdropEl = new Backdrop();
-    this._modules = [];
+    this._menuEl = this._navbarEl.querySelector('.navbar__menu-list');
+    this._firstTabbableEl = this._togglerEl;
+    this._lastTabbableEl = Array.from(
+      document.querySelectorAll('.navbar-js .navbar__link')
+    ).at(-1);
 
-    // set transition duration
+    this._backdropEl = new Backdrop();
     this._navbarEl.style.setProperty(
       '--transition-duration',
       `${transitionDuration}ms`
     );
 
+    // Make the element focusable when the navigation menu is expanded
+    this._menuEl.setAttribute('tabindex', '-1');
+
     this._initEventHandlers();
-    this._mount(...this._modules);
+    this._mount(this._modules);
   }
 
   _initEventHandlers() {
@@ -32,68 +33,68 @@ export class Navbar {
       'transitionend',
       this._onMenuTransitionEnd.bind(this)
     );
-    new KeyPresser(window, 'Escape', () => {
-      if (!this._isExpanded) return;
 
-      this._closeMenu();
+    document.addEventListener('keypress', (e) => {
+      if (!this.expanded) return;
+      if (e.key === 'Escape') this._closeMenu();
     });
   }
 
-  _mount(...modules) {
+  get expanded() {
+    return this._togglerEl.getAttribute('aria-expanded') === 'true'
+      ? true
+      : false;
+  }
+
+  set expanded(state) {
+    this._togglerEl.setAttribute('aria-expanded', state);
+  }
+
+  _mount(modules) {
+    if (modules.length < 1) return;
+
     modules.forEach((Module) => {
       new Module(this);
     });
   }
 
   // Event handlers
-  _toggleMenu() {
-    if (!this._isExpanded) {
+  _toggleMenu(e) {
+    if (!this.expanded) {
       this._openMenu();
     } else {
       this._closeMenu();
     }
   }
 
-  _openMenu() {
-    this._togglerEl.setAttribute('aria-expanded', !this._isExpanded);
-    this._isExpanded = !this._isExpanded;
-    console.log('inside openMenu: ', this._isExpanded);
-
+  _openMenu(e) {
+    this._togglerEl.setAttribute('aria-expanded', !this.expanded);
     this._collapseEl.removeAttribute('data-state');
     let height = this._collapseEl.offsetHeight / 16;
     this._collapseEl.setAttribute('data-state', 'collapsing');
-    this._togglerEl.disabled = true;
     this._backdropEl.addTo($('body'));
+    this._menuEl.focus();
+
     setTimeout(() => {
       this._collapseEl.style.setProperty('height', `${height}rem`);
     });
   }
 
-  _closeMenu() {
-    this._togglerEl.setAttribute('aria-expanded', !this._isExpanded);
-    this._isExpanded = !this._isExpanded;
+  _closeMenu(e) {
+    this._togglerEl.setAttribute('aria-expanded', !this.expanded);
     this._collapseEl.style.removeProperty('height');
-
     this._backdropEl.kill();
-
     this._collapseEl.setAttribute('data-state', 'collapsing');
-    this._togglerEl.disabled = true;
+    this._togglerEl.focus();
   }
 
   _onMenuTransitionEnd() {
-    if (this._isExpanded) {
+    if (this.expanded) {
       this._collapseEl.removeAttribute('data-state');
     } else {
       this._collapseEl.setAttribute('data-state', 'collapsed');
     }
-    this._togglerEl.disabled = false;
   }
-
-  //   #mountModules() {
-  //     this.#modules.forEach((Module) => {
-  //       new Module(this);
-  //     });
-  //   }
 }
 
 // export class NavbarOffset {

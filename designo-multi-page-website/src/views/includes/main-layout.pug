@@ -1,0 +1,99 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel="icon" href="@images/favicon-32x32.png" type="image/png")
+    link(rel="preload" href="@fonts/Jost-Regular.woff2" as="font" type="font/woff2" crossorigin )
+    link(rel="preload" href="@fonts/Jost-Medium.woff2" as="font" type="font/woff2" crossorigin )
+
+    block cssHook
+      link(href='@styles/style.scss' rel='stylesheet')
+    block scriptHook 
+      script(src='@scripts/index.js' defer='defer')
+    block titleHook
+      title Document
+  body 
+    header.position-relative.z-3.bg-white
+      nav.navbar.navbar-js
+        a(href='/')
+          picture
+            img(src='@images/shared/desktop/logo-dark.png?w=202&h=27' width="202" height="27" alt="Company logo")  
+
+        button.navbar__toggler(aria-label="Toggle navigation" aria-expanded="false" aria-controls="collapse")
+          <svg aria-hidden="true" id="hamburger" width="24" height="20" xmlns="http://www.w3.org/2000/svg"><g fill="#1D1C1E" fill-rule="evenodd"><path d="M0 0h24v4H0zM0 8h24v4H0zM0 16h24v4H0z"/></g></svg>
+          <svg aria-hidden="true" id="close" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M17.071.1L19.9 2.93l-7.071 7.07 7.071 7.072-2.828 2.828L10 12.828l-7.071 7.071L.1 17.071 7.17 10 .102 2.929 2.929.1l7.07 7.07 7.072-7.07z" fill="#1D1C1E" fill-rule="evenodd"/></svg>
+
+        div#collapse.navbar__collapse(data-state="collapsed")
+          ul.navbar__menu-list(aria-label="menu bar")
+            li 
+              a.navbar__link(href="/about-us") Our company
+            li 
+              a.navbar__link(href="/locations") Locations 
+            li 
+              a.navbar__link(href="/contact") Contact 
+    
+    block contentHook
+
+    div.banner 
+      .grid-even-columns 
+        div 
+          .text-block 
+            h2.text-block__heading Let’s talk about your project
+            p.text-block__paragraph 
+              Ready to take it to the next level? Contact us today and find out how our expertise can help your business grow. 
+          button.button.button--link get in touch
+    footer.footer.bg-black.text-white.footer-py-res
+      div.container-fluid-xl.mx-auto.px-10.box-content
+        nav.navbar.navbar--sub
+          a(href='/')
+            picture
+              img(src='@images/shared/desktop/logo-light.png?w=202&h=27' width="202" height="27" alt="Company logo")  
+          ul.navbar__menu-list
+            li
+              a.navbar__link(href="/company") Our company 
+            li
+              a.navbar__link(href="/locations") Locations
+            li
+              a.navbar__link(href="/contact") Contact
+        div.border-top-solid.d-flex.fw-medium.pt-8
+          div.text-white.opacity-5.d-flex.flex-column.flex-grow-1
+            span.footer__col-heading Designo Central Office
+            address.footer__address.d-flex.flex-column.fw-regular
+              span 3886 Wellington Street
+              span Toronto, Ontario M9C 3J5
+
+          div.text-white.opacity-5.d-flex.flex-column.flex-grow-1 
+            span.footer__col-heading Contact Us (Central Office)
+            a(href="tel:+12538638967 ").decoration-none P : +1 253-863-8967 
+            a(href="mailto:contact@designo.co").decoration-none M : contact@designo.co 
+
+          div.d-flex.align-items-end.gap-4
+            a(href="#" aria-label="Facebook" class="footer__link") 
+              <svg class="footer__icon" aria-hidden="true" width="24px" height="24px">
+                <use xlink:href="@images/shared/sprite.svg#icon-facebook"></use>
+              </svg>
+            a(href="#" aria-label="Youtube" class="footer__link")
+              <svg class="footer__icon" aria-hidden="true" width="24px" height="24px">
+                <use xlink:href="@images/shared/sprite.svg#icon-youtube"></use>
+              </svg> 
+            a(href="#" aria-label="Twitter" class="footer__link")
+              <svg class="footer__icon" aria-hidden="true" width="24px" height="24px">
+                <use xlink:href="@images/shared/sprite.svg#icon-twitter"></use>
+              </svg>
+            a(href="#" aria-label="Pinterest" class="footer__link")
+              <svg class="footer__icon" aria-hidden="true" width="24px" height="24px">
+                <use xlink:href="@images/shared/sprite.svg#icon-pinterest"></use>
+              </svg> 
+            a(href="#" aria-label="Instagram" class="footer__link")
+              <svg class="footer__icon" aria-hidden="true" width="24px" height="24px">
+                <use xlink:href="@images/shared/sprite.svg#icon-instagram"></use>
+              </svg> 
+
+            
+
+
+
+   
+              
+            

@@ -1,6 +1,7 @@
 @use 'functions' as *;
 @use 'spacing' as *;
 @use 'colors' as *;
+@use 'fonts' as *;
 @use 'tokens' as *;
 @use 'sass:map';
 
@@ -64,6 +65,19 @@ $zindex-levels: (
 $utilities: () !default;
 $utilities: map-merge(
   (
+    'footer-padding-y-res': (
+      property: padding-block,
+      class: footer-py-res,
+      values: $sc-res-footer-py,
+    ),
+    'box-sizing': (
+      property: box-sizing,
+      class: box,
+      values: (
+        content: content-box,
+        border: border-box,
+      ),
+    ),
     'z-index': (
       property: z-index,
       class: z,
@@ -76,6 +90,12 @@ $utilities: map-merge(
         absolute: absolute,
         relative: relative,
         static: static,
+      ),
+    ),
+    'border-top': (
+      property: border-top,
+      values: (
+        solid: 1px solid #979797,
       ),
     ),
     'margin-top': (
@@ -91,7 +111,13 @@ $utilities: map-merge(
     'margin-left': (
       property: margin-left,
       class: ms,
-      values: $sizes,
+      values:
+        map-merge(
+          $sizes,
+          (
+            auto: auto,
+          )
+        ),
     ),
     'margin-right': (
       property: margin-right,
@@ -101,7 +127,13 @@ $utilities: map-merge(
     'margin-inline': (
       property: margin-inline,
       class: mx,
-      values: $sizes,
+      values:
+        map-merge(
+          $sizes,
+          (
+            auto: auto,
+          )
+        ),
     ),
     'margin-block': (
       property: margin-block,
@@ -137,6 +169,7 @@ $utilities: map-merge(
       property: padding-inline,
       class: px,
       values: $sizes,
+      isResponsive: true,
     ),
     'display': (
       property: display,
@@ -151,6 +184,14 @@ $utilities: map-merge(
         contents: contents,
       ),
       isResponsive: true,
+    ),
+    'flex-direction': (
+      property: flex-direction,
+      class: flex,
+      values: (
+        column: column,
+        row: row,
+      ),
     ),
     'place-items': (
       property: place-items,
@@ -170,7 +211,60 @@ $utilities: map-merge(
         evenly: space-evenly,
       ),
     ),
-
+    'align-items': (
+      isResponsive: true,
+      property: align-items,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        between: space-between,
+        around: space-around,
+        evenly: space-evenly,
+      ),
+    ),
+    'flex-grow': (
+      property: flex-grow,
+      class: flex-grow,
+      values: (
+        1: 1,
+        2: 2,
+        3: 3,
+      ),
+    ),
+    'gap': (
+      property: gap,
+      class: gap,
+      values: $sizes,
+    ),
+    'font-weight': (
+      property: font-weight,
+      class: fw,
+      values: $font-weight,
+    ),
+    'text-decoration': (
+      property: text-decoration,
+      class: decoration,
+      values: (
+        none: none,
+      ),
+    ),
+    'opacity': (
+      property: opacity,
+      class: opacity,
+      values: (
+        1: 10%,
+        2: 20%,
+        3: 30%,
+        4: 40%,
+        5: 50%,
+        6: 60%,
+        7: 70%,
+        8: 80%,
+        9: 90%,
+        10: 100%,
+      ),
+    ),
     /* The background-colors and text-colors keys must remain unchanged. */
       'background-colors':
       (

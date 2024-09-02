@@ -2,7 +2,7 @@
 @use 'functions';
 
 $factor: 0.25rem;
-$sizes-list: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 24;
+$sizes-list: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 24;
 $sizes: ();
 
 /*
@@ -30,11 +30,16 @@ $spacers: (
     sc-navbar-y: 34px,
     sc-navbar-x: 24px,
     sc-collapse-p: 48px 24px,
+    sc-res-footer-py: 253px 64px,
   ),
   'md': (
     sc-navbar-y: 64px,
     sc-navbar-x: 40px,
     sc-collapse-p: 0,
+    sc-res-footer-py: 166px 80px,
+  ),
+  'xl': (
+    sc-res-footer-py: 144px 72px,
   ),
 );
 
@@ -48,3 +53,4 @@ $spacer-clamp: (
 $sc-navbar-y: var(--sc-navbar-y);
 $sc-navbar-x: var(--sc-navbar-x);
 $sc-collapse-p: var(--sc-collapse-p);
+$sc-res-footer-py: var(--sc-res-footer-py);

@@ -51,7 +51,7 @@
     bottom: 0;
 
     transform: translateY(100%);
-    overflow: hidden;
+    // overflow: hidden;
 
     background-color: $clr-primary-dark;
 
@@ -69,7 +69,7 @@
   &__menu-list {
     padding: $navbar-menu-p;
 
-    overflow: hidden;
+    // overflow: hidden;
     list-style: none;
     color: $navbar-clr;
     align-items: $navbar-alignment;
@@ -90,7 +90,7 @@
     background-repeat: no-repeat;
     background-size: 0% 100%;
     background-position-x: center;
-    transition: background-size 200ms;
+    transition: background-size 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
     @media (hover: hover) {
       &:hover {
@@ -120,6 +120,22 @@
     &__menu-list {
       display: flex;
       color: $navbar-expanded-clr;
+    }
+  }
+
+  &--sub {
+    padding: 0;
+    margin-bottom: px-to-rem(31);
+    .navbar__menu-list {
+      display: flex;
+      column-gap: 42px;
+      color: inherit;
+      padding: 0;
+      font-size: $navbar-sub-fs;
+    }
+
+    .navbar__link {
+      background-image: unset;
     }
   }
 }
