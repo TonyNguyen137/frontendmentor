@@ -1,1 +1,145 @@
 @use '../abstracts' as *;
+$_bp-one: md;
+$_bp-two: xxl;
+.footer {
+  background-color: $clr-black;
+  color: $clr-white;
+  margin-top: calc(379px / 2);
+  padding-top: calc(379px / 2 + 64px);
+  padding-bottom: 64px;
+  position: relative;
+
+  // injected component
+  .cta {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__logo {
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  &__list {
+    padding-top: 32px;
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $clr-white;
+    font-size: px-to-rem(14);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid $clr-black;
+    transition: border-color 0.2s linear;
+    @media (hover: hover) {
+      &:hover {
+        border-bottom: 1px solid $clr-white;
+      }
+    }
+  }
+
+  /* contact section */
+
+  &__contact-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    text-align: center;
+  }
+
+  &__col-heading {
+    font-weight: 700;
+  }
+
+  %opacity {
+    opacity: 0.5;
+  }
+
+  &__address-col {
+    @extend %opacity;
+  }
+
+  &__contact-col {
+    @extend %opacity;
+
+    & > * {
+      display: block;
+    }
+  }
+
+  &__social-col {
+    display: flex;
+    justify-content: center;
+    column-gap: 16px;
+  }
+
+  &__social-link {
+    color: $clr-primary;
+    transition: color 0.3s linear;
+    @media (hover: hover) {
+      &:hover {
+        color: $clr-secondary;
+      }
+    }
+  }
+
+  /* breakpoint*/
+  @include mq($_bp-one) {
+    padding-top: calc(379px * 0.25 + 65px);
+    padding-bottom: 80px;
+
+    .cta {
+      transform: translate(-50%, -75%);
+    }
+
+    &__navbar {
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 31px;
+      padding-bottom: 46px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    &__logo {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    &__list {
+      flex-direction: row;
+      padding-top: 0;
+    }
+
+    &__contact-section {
+      flex-direction: row;
+      align-items: end;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    &__address-col,
+    &__contact-col {
+      flex: 1;
+    }
+  }
+
+  @include mq($_bp-two) {
+    padding-top: 144px;
+    padding-bottom: 72px;
+  }
+}

@@ -6,7 +6,7 @@ export class Navbar {
     // init member variables
     this._modules = [Tabber];
     this._navbarEl = typeof navbarEl === 'string' ? $(navbarEl) : navbarEl;
-    this._togglerEl = this._navbarEl.querySelector('.navbar__toggler');
+    this._togglerEl = this._navbarEl.querySelector('.navbar__toggle');
     this._collapseEl = this._navbarEl.querySelector('.navbar__collapse');
     this._menuEl = this._navbarEl.querySelector('.navbar__menu-list');
     this._firstTabbableEl = this._togglerEl;

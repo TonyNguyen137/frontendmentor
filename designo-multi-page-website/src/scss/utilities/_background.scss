@@ -1,0 +1,8 @@
+@use '../abstracts' as *;
+@include mq(xl) {
+  .bg-xl-leaf {
+    background-image: url('@images/shared/desktop/bg-pattern-leaf-2.svg');
+    background-repeat: no-repeat;
+    background-position: 100% -200%;
+  }
+}

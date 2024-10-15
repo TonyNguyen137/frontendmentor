@@ -9,6 +9,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  border: none;
 
   &--light {
     background-color: $clr-white;
@@ -24,6 +25,21 @@
 
     &:hover {
       background-color: $clr-secondary;
+    }
+  }
+
+  &--link-light {
+    background-color: $clr-white;
+    padding: px-to-rem(17) px-to-rem(19);
+    font-size: px-to-rem(15);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $clr-black;
+    font-weight: 500;
+
+    &:hover {
+      background-color: $clr-secondary;
+      color: $clr-white;
     }
   }
 }

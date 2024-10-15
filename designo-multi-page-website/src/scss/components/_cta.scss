@@ -1,0 +1,75 @@
+@use '../abstracts' as *;
+@use 'sass:map';
+
+$_bp-one: md;
+$_bp-two: xxl;
+.cta {
+  position: relative;
+  background-color: $clr-primary;
+  max-width: map.get($container-max-widths, 'xl');
+  width: calc(100% - 48px);
+  border-radius: 15px;
+  margin-inline: auto;
+  color: $clr-white;
+  background-image: url('@images/shared/tablet/bg-pattern-5-circles.svg');
+  background-position: 40% 50%;
+  background-repeat: no-repeat;
+
+  padding-block: 64px;
+  padding-inline: 24px;
+  text-align: center;
+
+  &__heading {
+    font-size: map.get($sizes, 8);
+    line-height: 1.125;
+    font-weight: 500;
+    font-size: px-to-rem(32);
+    margin-bottom: px-to-rem(16);
+  }
+
+  &__paragraph {
+    line-height: 1.66;
+    margin-bottom: 32px;
+    font-size: px-to-rem(15);
+  }
+
+  @include mq($_bp-one) {
+    padding: 57px;
+
+    &__heading {
+      font-size: px-to-rem(40);
+      width: 50%;
+      margin-inline: auto;
+    }
+
+    &__paragraph {
+      font-size: px-to-rem(16);
+      width: 75%;
+      margin-inline: auto;
+    }
+  }
+
+  @include mq($_bp-two) {
+    text-align: left;
+
+    padding-block: 72px;
+    padding-inline: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-position: 100% 50%;
+    .btn {
+      flex-shrink: 0;
+    }
+
+    &__wrapper > * {
+      margin: 0;
+    }
+
+    &__heading {
+      margin-inline: 0;
+      margin-bottom: 10px;
+    }
+  }
+}

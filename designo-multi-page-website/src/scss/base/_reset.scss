@@ -16,23 +16,11 @@ html {
 }
 
 body {
-  font-family: $body-font-family;
-  font-size: $body-font-size;
-  line-height: $body-line-height;
+  font-family: 'Jost', sans-serif;
+  font-size: px-to-rem(16);
+  line-height: 1.625;
 
-  @if $body-text-color {
-    color: $body-text-color;
-  }
-
-  @if $body-font-weight {
-    font-weight: $body-font-weight;
-  }
-  @if $body-background-color {
-    background-color: $body-background-color;
-  }
-  @if $body-min-height {
-    min-height: $body-min-height;
-  }
+  font-weight: $fw-regular;
 }
 
 img {
@@ -59,11 +47,6 @@ svg {
 
 address {
   font-style: normal;
-}
-
-button {
-  border: none;
-  background-color: transparent;
 }
 
 @if ($focus-ring) {

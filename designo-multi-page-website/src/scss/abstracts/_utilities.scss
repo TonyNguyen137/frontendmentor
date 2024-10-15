@@ -2,11 +2,17 @@
 @use 'spacing' as *;
 @use 'colors' as *;
 @use 'fonts' as *;
-@use 'tokens' as *;
+@use 'variables' as *;
 @use 'sass:map';
 
 // Utilities
 
+$line-height-sizes: (
+  '1': 1,
+  '1-2': 1.2,
+  '1-5': 1.5,
+  '2': 2,
+);
 // position values
 $position-values: (
   0: 0,
@@ -65,11 +71,6 @@ $zindex-levels: (
 $utilities: () !default;
 $utilities: map-merge(
   (
-    'footer-padding-y-res': (
-      property: padding-block,
-      class: footer-py-res,
-      values: $sc-res-footer-py,
-    ),
     'box-sizing': (
       property: box-sizing,
       class: box,
@@ -192,6 +193,7 @@ $utilities: map-merge(
         column: column,
         row: row,
       ),
+      isResponsive: true,
     ),
     'place-items': (
       property: place-items,
@@ -236,6 +238,49 @@ $utilities: map-merge(
       property: gap,
       class: gap,
       values: $sizes,
+    ),
+    'row-gap': (
+      property: row-gap,
+      class: row-gap,
+      values: $sizes,
+    ),
+    'col-gap': (
+      property: column-gap,
+      class: col-gap,
+      values: $sizes,
+    ),
+    'line-height': (
+      property: line-height,
+      class: lh,
+      values: $line-height-sizes,
+    ),
+    'text-align': (
+      property: text-align,
+      class: text,
+      values: (
+        center: center,
+        start: left,
+        end: right,
+      ),
+    ),
+    'font-size': (
+      property: font-size,
+      class: fs,
+      values: $sizes,
+    ),
+    'letter-spacing': (
+      property: letter-spacing,
+      class: letter-spacing,
+      values: (
+        5: 5px,
+      ),
+    ),
+    'text-transform': (
+      property: text-transform,
+      class: text,
+      values: (
+        uppercase: uppercase,
+      ),
     ),
     'font-weight': (
       property: font-weight,

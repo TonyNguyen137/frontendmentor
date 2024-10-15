@@ -33,6 +33,7 @@ $color-theme: (
     'secondary': #ffad9b,
     'secondary-dark': #333136,
     'secondary-light': #f1f3f5,
+    'neutral': #979797,
     'black': #000,
     'white': #fff,
   ),
@@ -44,4 +45,5 @@ $clr-secondary: var(--clr-secondary);
 $clr-secondary-dark: var(--clr-secondary-dark);
 $clr-secondary-light: var(--clr-secondary-light);
 $clr-black: var(--clr-black);
+$clr-neutral: var(--clr-neutral);
 $clr-white: var(--clr-white);

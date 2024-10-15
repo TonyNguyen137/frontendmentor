@@ -1,23 +1,27 @@
 @use '../abstracts' as *;
+@use 'sass:map';
+$_expand-bp: md;
 
 .navbar {
   box-sizing: content-box;
-  max-width: $navbar-max-width;
+  max-width: map.get($container-max-widths, 'xl');
 
   position: relative;
 
   margin-inline: auto;
-  padding-inline: $navbar-px;
-  padding-block: $navbar-py;
+  padding-inline: $sc-navbar-x;
+  padding-block: $sc-navbar-y;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: end;
 
-  &__toggler {
+  &__toggle {
     display: block;
     line-height: 1;
+    border: none;
+    background-color: transparent;
 
     svg {
       vertical-align: baseline;
@@ -67,24 +71,24 @@
   }
 
   &__menu-list {
-    padding: $navbar-menu-p;
+    padding: $sc-collapse-p;
 
     // overflow: hidden;
     list-style: none;
-    color: $navbar-clr;
-    align-items: $navbar-alignment;
-    column-gap: $navbar-col-gap;
-    font-size: $navbar-fs;
-    text-transform: $navbar-text-tf;
+    color: $clr-white;
+    align-items: end;
+    column-gap: px-to-rem(42);
+    font-size: $fs-res-nav;
+    text-transform: uppercase;
 
     display: grid;
-    row-gap: $navbar-menu-row-g;
+    row-gap: 32px;
   }
 
   &__link {
     display: inline-block;
     text-decoration: none;
-    letter-spacing: $navbar-letter-sp;
+    letter-spacing: 2px;
     transition: back-ground-image;
     background-image: linear-gradient(to bottom, transparent 96%, black 96%);
     background-repeat: no-repeat;
@@ -100,8 +104,8 @@
   }
 
   // menu collapse at selected breakpoint
-  @include mq($navbar-expand-bp) {
-    &__toggler {
+  @include mq($_expand-bp) {
+    &__toggle {
       display: none;
     }
 
@@ -119,23 +123,7 @@
 
     &__menu-list {
       display: flex;
-      color: $navbar-expanded-clr;
-    }
-  }
-
-  &--sub {
-    padding: 0;
-    margin-bottom: px-to-rem(31);
-    .navbar__menu-list {
-      display: flex;
-      column-gap: 42px;
-      color: inherit;
-      padding: 0;
-      font-size: $navbar-sub-fs;
-    }
-
-    .navbar__link {
-      background-image: unset;
+      color: $clr-secondary-dark;
     }
   }
 }
