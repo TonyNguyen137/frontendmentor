@@ -1,0 +1,62 @@
+@use 'colors' as *;
+@use 'functions' as *;
+@use 'sizes' as *;
+@use 'sass:map';
+
+// general
+$prefix: '';
+
+$enable-negative-margins: false;
+$enable-negative-margins-irregular: false;
+$enable-media-query-dark-mode: false;
+$enable-color-themes: true;
+
+// bootstrap grid-system and container
+$bs-prefix: bs-;
+$enable-bootstrap-grid-system: true;
+$enable-cssgrid: false;
+$enable-container-classes: false;
+
+$grid-columns: 12;
+$grid-gutter-width: 1.5rem;
+$grid-row-columns: 6;
+$gutters: $sizes-regular;
+
+// grid setting
+$grid-gutter-width: 16px !default;
+$grid-even-col-gap: $grid-gutter-width;
+$grid-even-row-gap: $grid-gutter-width;
+
+// container setting
+$enable-container-classes: true;
+$container-padding-x: 12px;
+
+// colors
+$clr-primary: var(--clr-primary);
+$clr-secondary: var(--clr-secondary);
+$clr-success: var(--clr-success);
+$clr-info: var(--clr-info);
+$clr-warning: var(--clr-warning);
+$clr-danger: var(--clr-danger);
+$clr-light: var(--clr-light);
+$clr-dark: var(--clr-dark);
+$clr-black: var(--clr-black);
+$clr-white: var(--clr-white);
+
+// font-weight
+$fw-thin: 100;
+$fw-extra-light: 200;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semi-bold: 600;
+$fw-bold: 700;
+$fw-extra-bold: 800;
+$fw-black: 900;
+
+// Z-index master list
+
+$zindex-level-1: 1000;
+$zindex-level-2: 999;
+$zindex-level-3: 998;
+$zindex-level-4: 997;
