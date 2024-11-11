@@ -1,5 +1,5 @@
 @use 'functions' as *;
-@use 'spacing' as *;
+@use 'sizes' as *;
 @use 'colors' as *;
 @use 'fonts' as *;
 @use 'variables' as *;
@@ -77,6 +77,22 @@ $utilities: map-merge(
       values: (
         content: content-box,
         border: border-box,
+      ),
+    ),
+    'height': (
+      property: height,
+      class: h,
+      values: (
+        auto: auto,
+        200: 200px,
+      ),
+      isResponsive: true,
+    ),
+    'border-radius': (
+      property: border-radius,
+      class: border-radius,
+      values: (
+        15: 15px,
       ),
     ),
     'z-index': (
@@ -243,6 +259,7 @@ $utilities: map-merge(
       property: row-gap,
       class: row-gap,
       values: $sizes,
+      isResponsive: true,
     ),
     'col-gap': (
       property: column-gap,
@@ -267,11 +284,18 @@ $utilities: map-merge(
       property: font-size,
       class: fs,
       values: $sizes,
+      isResponsive: true,
+    ),
+    'font-size-i': (
+      property: font-size,
+      class: fs-i,
+      values: $sizes-irregular,
     ),
     'letter-spacing': (
       property: letter-spacing,
       class: letter-spacing,
       values: (
+        2: 2px,
         5: 5px,
       ),
     ),
@@ -287,11 +311,25 @@ $utilities: map-merge(
       class: fw,
       values: $font-weight,
     ),
+    'cursor': (
+      property: cursor,
+      class: cursor,
+      values: (
+        pointer: pointer,
+      ),
+    ),
     'text-decoration': (
       property: text-decoration,
       class: decoration,
       values: (
         none: none,
+      ),
+    ),
+    'overflow': (
+      property: overflow,
+      class: overflow,
+      values: (
+        hidden: hidden,
       ),
     ),
     'opacity': (

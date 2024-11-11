@@ -1,9 +1,9 @@
 @use 'functions' as *;
 
 $grid-breakpoints: (
-  sm: px-to-em(576),
-  md: px-to-em(768),
-  lg: px-to-em(992),
-  xl: px-to-em(1200),
-  xxl: px-to-em(1400),
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
 );

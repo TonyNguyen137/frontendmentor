@@ -6,3 +6,34 @@
   column-gap: $grid-even-col-gap;
   row-gap: $grid-even-row-gap;
 }
+
+.image-section-grid {
+  display: grid;
+  column-gap: 30px;
+  row-gap: 24px;
+
+  @include mq(xl) {
+    grid-template-columns: 1fr 1fr;
+    > :first-child {
+      grid-row: 1 / 3;
+    }
+  }
+}
+
+.grid-image-stack {
+  display: grid;
+  grid-template-areas: 'stack';
+  place-items: center;
+
+  > * {
+    grid-area: stack;
+  }
+
+  @include mq(md) {
+    grid-auto-rows: 200px;
+  }
+
+  @include mq(xl) {
+    grid-auto-rows: revert;
+  }
+}

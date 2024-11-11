@@ -1,0 +1,24 @@
+@use '../abstracts' as *;
+
+.hero {
+  background-color: $clr-primary;
+  color: $clr-white;
+  position: relative;
+  overflow-y: hidden;
+  margin-bottom: 120px;
+
+  &__headline {
+    font-size: px-to-rem(32);
+  }
+
+  &__paragraph {
+    font-size: px-to-rem(15);
+  }
+
+  &__image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(50%);
+  }
+}

@@ -51,15 +51,16 @@ module.exports = (env) => {
         ],
         preprocessor: 'pug', // use Pug templating engine
       }),
-      new PurgeCSSPlugin({
-        paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-        content: ['**/*.js', '**/*.html', '**/*.pug'],
-        safelist: {
-          standard: [/aria/, /data/, /:focus/],
-          deep: [/aria/, /data/, /^.*\[/],
-          greedy: [/aria/, /data/, /^.*\[/],
-        },
-      }),
+      env.mode === 'production' &&
+        new PurgeCSSPlugin({
+          paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+          content: ['**/*.js', '**/*.html', '**/*.pug'],
+          safelist: {
+            standard: [/aria/, /data/, /:focus/],
+            deep: [/aria/, /data/, /^.*\[/],
+            greedy: [/aria/, /data/, /^.*\[/],
+          },
+        }),
     ],
 
     module: {

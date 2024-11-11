@@ -1,9 +1,45 @@
 extends includes/main-layout.pug
 
+
+
 block titleHook
   title Home
 
+
 block contentHook
+  section.hero
+    img.hero__image(src="@images/home/desktop/image-hero-phone.png?as=webp", alt="phone")
+    h1.hero__headline Award-winning custom designs and digital branding solutions
+    p.hero__paragraph With over 10 years in the industry, we are experienced in creating fully responsive websites, app design, and engaging brand experiences. Find out more about our services.
+    a(href="#") Learn more 
+  section.image-section.mb-40
+    div.container.image-section-grid.px-6
+          div(class=`bg-dark-50`).image-wrapper.grid-image-stack.border-radius-15.overflow-hidden.cursor-pointer
+            picture.z-n1.full-cover
+              source(media="(min-width:1200px)" srcset="@images/home/desktop/image-web-design-large.jpg") 
+              img(src=`@images/home/desktop/image-web-design-small.jpg`, alt='web design')
+            div.d-flex.flex-column.text-center.row-gap-3.row-gap-md-6.text-white
+              h3.fs-7.fs-md-10.fw-medium.text-uppercase.letter-spacing-2 Web Design
+              div.d-flex.col-gap-5.align-items-center.justify-content-center
+                a(href="#").fs-i-15.letter-spacing-5.text-uppercase.decoration-none view Projects
+                span.text-primary &#8250;
+
+          div(class=`bg-dark-50`).image-wrapper.grid-image-stack.border-radius-15.overflow-hidden.cursor-pointer
+            img(src=`@images/home/desktop/image-app-design.jpg`, alt='app design').z-n1.full-cover
+            div.d-flex.flex-column.text-center.row-gap-3.row-gap-md-6.text-white
+              h3.fs-7.fs-md-10.fw-medium.text-uppercase.letter-spacing-2 App Design
+              div.d-flex.col-gap-5.align-items-center.justify-content-center
+                a(href="#").fs-i-15.letter-spacing-5.text-uppercase.decoration-none view Projects
+                span.text-primary &#8250;
+
+          div(class=`bg-dark-50`).image-wrapper.grid-image-stack.border-radius-15.overflow-hidden.cursor-pointer
+            img(src=`@images/home/desktop/image-graphic-design.jpg`, alt='graphic design').z-n1.full-cover
+            div.d-flex.flex-column.text-center.row-gap-3.row-gap-md-6.text-white
+              h3.fs-7.fs-md-10.fw-medium.text-uppercase.letter-spacing-2 Graphic Design
+              div.d-flex.col-gap-5.align-items-center.justify-content-center
+                a(href="#").fs-i-15.letter-spacing-5.text-uppercase.decoration-none view Projects
+                span.text-primary &#8250;
+   
   section.pb-30.pb-xl-40.bg-xl-leaf 
     .container.d-flex.flex-column.row-gap-20.col-gap-8.flex-xl-row 
       .image-text-block 
