@@ -7,7 +7,6 @@
 @use 'functions' as *;
 @use 'breakpoints' as *;
 @use 'variables' as *;
-@use 'colors' as *;
 
 // media query
 
@@ -243,7 +242,7 @@
     $properties: map.get($utility, property);
 
     // Multiple properties are possible, for example with vertical or horizontal margins or paddings
-    @if type-of($properties) == 'string' {
+    @if meta.type-of($properties) == 'string' {
       $properties: list.append((), $properties);
     }
     // @debug $properties;

@@ -1,7 +1,6 @@
 @use 'functions' as *;
 @use 'sass:map';
 @use 'sizes' as *;
-@use 'colors' as *;
 @use 'variables' as *;
 
 // Utilities
@@ -129,7 +128,7 @@ $fixed-values: (
 */
 
 $utilities: ();
-$utilities: map-merge(
+$utilities: map.merge(
   (
     'z-highest': (
       property: z-index,
@@ -406,7 +405,7 @@ $utilities: map-merge(
       property: margin-top,
       class: mt,
       values:
-        map-merge(
+        map.merge(
           $sizes-regular,
           (
             auto: auto,
@@ -424,7 +423,7 @@ $utilities: map-merge(
       property: margin-bottom,
       class: mb,
       values:
-        map-merge(
+        map.merge(
           $sizes-regular,
           (
             auto: auto,
@@ -443,7 +442,7 @@ $utilities: map-merge(
       class: ms,
       responsive: true,
       values:
-        map-merge(
+        map.merge(
           $sizes-regular,
           (
             auto: auto,
@@ -460,7 +459,7 @@ $utilities: map-merge(
       property: margin-right,
       class: me,
       values:
-        map-merge(
+        map.merge(
           $sizes-regular,
           (
             auto: auto,
@@ -479,7 +478,7 @@ $utilities: map-merge(
       class: mx,
       responsive: true,
       values:
-        map-merge(
+        map.merge(
           $sizes-regular,
           (
             auto: auto,
@@ -811,54 +810,6 @@ $utilities: map-merge(
     'opacity': (
       property: opacity,
       class: opacity,
-      values: $opacity,
-    ),
-    'background-colors': (
-      property: background-color,
-      local-vars: (
-        'alpha': 1,
-      ),
-      class: bg,
-      values:
-        map.merge(
-          map-loop(
-            $active-theme-rgb,
-            rgba-css-var,
-            '$key',
-            'alpha',
-            $color-prefix
-          ),
-          (
-            'transparent': transparent,
-          )
-        ),
-      responsive: true,
-    ),
-    'text-colors': (
-      property: color,
-      local-vars: (
-        'alpha': 1,
-      ),
-      class: text,
-      values:
-        map.merge(
-          map-loop(
-            $active-theme-rgb,
-            rgba-css-var,
-            '$key',
-            'alpha',
-            $color-prefix
-          ),
-          (
-            'transparent': transparent,
-          )
-        ),
-      responsive: true,
-    ),
-    'alpha-channel': (
-      css-var: true,
-      class: alpha,
-      responsive: true,
       values: $opacity,
     ),
   ),

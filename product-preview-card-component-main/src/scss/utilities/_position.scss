@@ -31,7 +31,7 @@
     .sticky#{$infix}-bottom {
       position: sticky;
       bottom: 0;
-      z-index: $zindex-sticky;
+      z-index: $zindex-level-1;
     }
   }
 }
