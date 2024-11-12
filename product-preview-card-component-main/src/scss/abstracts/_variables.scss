@@ -31,16 +31,25 @@ $enable-container-classes: true;
 $container-padding-x: 12px;
 
 // colors
-$clr-primary: var(--clr-primary);
-$clr-secondary: var(--clr-secondary);
-$clr-success: var(--clr-success);
-$clr-info: var(--clr-info);
-$clr-warning: var(--clr-warning);
-$clr-danger: var(--clr-danger);
-$clr-light: var(--clr-light);
-$clr-dark: var(--clr-dark);
-$clr-black: var(--clr-black);
-$clr-white: var(--clr-white);
+$clr-cream: hsl(30, 38%, 92%);
+$clr-deep-aquamarin: hsl(158, 36%, 37%);
+$clr-hover-deep-aquamarin: #1a4032;
+
+$clr-gunmetal: #1c232b;
+$clr-aurometal-saurus: #6c7289;
+$clr-light: hsl(0, 0%, 100%);
+
+$bg-colors: (
+  'cream': $clr-cream,
+  'deep-aquamarin': $clr-deep-aquamarin,
+  'gunmetal': $clr-gunmetal,
+  'aurometal-saurus': $clr-aurometal-saurus,
+  'light': $clr-light,
+);
+
+$colors-hover: (
+  'deep-dark-aquamarin': $clr-hover-deep-aquamarin,
+);
 
 // font-weight
 $fw-thin: 100;
@@ -54,7 +63,6 @@ $fw-extra-bold: 800;
 $fw-black: 900;
 
 // Z-index master list
-
 $zindex-level-1: 1000;
 $zindex-level-2: 999;
 $zindex-level-3: 998;

@@ -130,6 +130,14 @@ $fixed-values: (
 $utilities: ();
 $utilities: map.merge(
   (
+    'min-height': (
+      property: min-height,
+      class: min-height,
+      values: (
+        '100vh': 100vh,
+      ),
+      responsive: true,
+    ),
     'z-highest': (
       property: z-index,
       css-variable-name: z-level-1,
@@ -270,11 +278,18 @@ $utilities: map.merge(
       ),
       responsive: true,
     ),
-
+    'border': (
+      property: border,
+      class: border,
+      values: (
+        none: none,
+      ),
+    ),
     'border-radius': (
       property: border-radius,
-      class: radius,
-      values: $sizes-regular,
+      class: border-radius,
+      values: map.merge($sizes-regular, $sizes-irregular),
+      responsive: true,
     ),
     'border-solid-black': (
       property: border,
@@ -310,6 +325,11 @@ $utilities: map.merge(
       property: width,
       class: w,
       values: $percentage-values,
+    ),
+    'max-width': (
+      property: max-width,
+      class: mw,
+      values: $sizes-regular,
     ),
     'height': (
       property: height,
@@ -650,7 +670,7 @@ $utilities: map.merge(
     'padding-block': (
       property: padding-block,
       class: py,
-      values: $sizes-regular,
+      values: map.merge($sizes-regular, $sizes-irregular),
       responsive: true,
     ),
     'padding-block-irregular': (
@@ -684,7 +704,23 @@ $utilities: map.merge(
         contents: contents,
       ),
       responsive: true,
-      important: true,
+    ),
+    'grid-direction': (
+      responsive: true,
+      property: grid-auto-flow,
+      class: grid,
+      values: (
+        column: column,
+        row: row,
+      ),
+    ),
+    'grid-template-columns': (
+      responsive: true,
+      property: grid-template-columns,
+      class: grid,
+      values: (
+        '1fr-1fr': 1fr 1fr,
+      ),
     ),
     'flex-direction': (
       property: flex-direction,
@@ -702,6 +738,15 @@ $utilities: map.merge(
         wrap: wrap,
       ),
     ),
+    'flex': (
+      property: flex,
+      class: flex,
+      values: (
+        1: 1,
+      ),
+      responsive: true,
+    ),
+
     'place-items': (
       property: place-items,
       class: place-items,
@@ -717,6 +762,37 @@ $utilities: map.merge(
         between: space-between,
         around: space-around,
         evenly: space-evenly,
+      ),
+    ),
+    'border-top-radius-left': (
+      responsive: true,
+      property: border-top-left-radius,
+      class: border-radius-tl,
+      values: (
+        none: none,
+        10: 10px,
+      ),
+    ),
+    'border-top-radius-right': (
+      responsive: true,
+      property: border-top-right-radius,
+      class: border-radius-tr,
+      values: (
+        none: none,
+        10: 10px,
+      ),
+    ),
+    'letter-spacing': (
+      property: letter-spacing,
+      values: (
+        5: 5px,
+      ),
+    ),
+    'font-family': (
+      property: font-family,
+      class: ff,
+      values: (
+        secondary: 'Fraunces',
       ),
     ),
     'align-items': (
@@ -779,7 +855,13 @@ $utilities: map.merge(
     'font-size': (
       property: font-size,
       class: fs,
-      values: $sizes-regular,
+      values:
+        map.merge(
+          $sizes-regular,
+          (
+            14p: px-to-rem(14),
+          )
+        ),
     ),
     'font-size-irregular': (
       property: font-size,
@@ -796,6 +878,7 @@ $utilities: map.merge(
       class: decoration,
       values: (
         none: none,
+        'line-through': line-through,
       ),
     ),
     'text-align': (
@@ -807,10 +890,42 @@ $utilities: map.merge(
         'center': center,
       ),
     ),
+    'line-height': (
+      property: line-height,
+      class: line-height,
+      values: (
+        21p: 21.5px,
+      ),
+    ),
+    'cursor': (
+      property: cursor,
+      class: cursor,
+      values: (
+        pointer: pointer,
+      ),
+    ),
     'opacity': (
       property: opacity,
       class: opacity,
       values: $opacity,
+    ),
+
+    'background-color': (
+      property: background-color,
+      class: bg,
+      values: $bg-colors,
+    ),
+    'background-color-hover': (
+      property: background-color,
+      class: bg,
+      state: hover,
+      values: $colors-hover,
+    ),
+
+    'text-color': (
+      property: color,
+      class: text,
+      values: $bg-colors,
     ),
   ),
   $utilities
