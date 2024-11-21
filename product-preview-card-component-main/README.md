@@ -8,7 +8,7 @@ This is a solution to the [Product preview card component](https://www.frontendm
 
 ### Live Site URL
 
-[https://recipe-page-tn.netlify.app/](https://recipe-page-tn.netlify.app/)
+[https://cardcomponent-main.netlify.app/](https://cardcomponent-main.netlify.app/)
 
 ## My process
 

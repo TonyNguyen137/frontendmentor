@@ -45,6 +45,8 @@ The projects are hosted online for free on [netlify](https://www.netlify.com/). 
 
 - socila-links-profile-main: [https://profil-links.netlify.app/](https://profil-links.netlify.app/)
 
+- product-preview-card-component-main: [https://cardcomponent-main.netlify.app/](https://cardcomponent-main.netlify.app/)
+
 #### Since I don't have the Figma Design files for many projects, the results aren't pixel-perfect.
 
 # Goals
