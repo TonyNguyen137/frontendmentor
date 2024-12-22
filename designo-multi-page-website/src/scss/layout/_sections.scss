@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use '../abstracts' as *;
+
+.section-attributes {
+  svg {
+    display: none;
+  }
+
+  @include mq(lg) {
+    max-width: 1440px;
+    margin-inline: auto;
+    position: relative;
+    isolation: isolate;
+    svg {
+      display: block;
+      z-index: -1;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: translateY(50%);
+    }
+  }
+}
+
+.section-cards {
+  margin-bottom: 120px;
+
+  @include mq(lg) {
+    margin-bottom: 160px;
+  }
+}

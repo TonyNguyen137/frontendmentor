@@ -1,145 +1,144 @@
 @use '../abstracts' as *;
-$_bp-one: md;
-$_bp-two: xxl;
+
 .footer {
+  --_gap: 32px;
+  --_opacity: 0.5;
+  --_line: 1px solid rgba(var(--clr-white-rgb), 0.15);
   background-color: $clr-black;
   color: $clr-white;
-  margin-top: calc(379px / 2);
-  padding-top: calc(379px / 2 + 64px);
+  text-align: center;
+  padding-top: 253px;
   padding-bottom: 64px;
-  position: relative;
 
-  // injected component
-  .cta {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &__navbar {
+  &__nav {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
   }
 
-  &__logo {
-    padding-bottom: 32px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  &__home-link {
+    padding-bottom: var(--_gap);
+  }
+  &__nav-list {
+    padding-top: var(--_gap);
+    border-top: var(--_line);
   }
 
-  &__list {
-    padding-top: 32px;
-    list-style: none;
-    display: flex;
-    gap: 32px;
-    flex-direction: column;
+  &__nav-li + &__nav-li {
+    margin-top: 32px;
   }
 
-  &__link {
-    text-decoration: none;
-    color: $clr-white;
-    font-size: px-to-rem(14);
-    letter-spacing: 2px;
+  &__nav-link {
     text-transform: uppercase;
-    border-bottom: 1px solid $clr-black;
-    transition: border-color 0.2s linear;
+    font-size: px-to-rem(14);
+    line-height: 1;
+    letter-spacing: 2px;
+
     @media (hover: hover) {
       &:hover {
-        border-bottom: 1px solid $clr-white;
+        text-decoration: underline;
+        text-decoration-color: #979797;
       }
     }
   }
 
-  /* contact section */
-
-  &__contact-section {
+  // bottom bar
+  &__bar-bottom {
     display: flex;
     flex-direction: column;
     row-gap: 40px;
-    text-align: center;
+  }
+
+  &__col--address {
+    font-style: normal;
+    opacity: var(--_opacity);
+  }
+
+  &__col--contact {
+    opacity: var(--_opacity);
   }
 
   &__col-heading {
-    font-weight: 700;
+    display: block;
+    font-weight: $fw-bold;
   }
 
-  %opacity {
-    opacity: 0.5;
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
 
-  &__address-col {
-    @extend %opacity;
-  }
-
-  &__contact-col {
-    @extend %opacity;
-
-    & > * {
-      display: block;
-    }
-  }
-
-  &__social-col {
+  &__col--sns {
     display: flex;
-    justify-content: center;
     column-gap: 16px;
+    justify-content: center;
+    align-items: end;
   }
-
-  &__social-link {
+  &__sn-icon {
     color: $clr-primary;
-    transition: color 0.3s linear;
-    @media (hover: hover) {
-      &:hover {
-        color: $clr-secondary;
-      }
+    transition: color 0.2s;
+  }
+
+  @media (hover: hover) {
+    &__sn-icon:hover {
+      color: var(--clr-secondary);
     }
   }
 
-  /* breakpoint*/
-  @include mq($_bp-one) {
-    padding-top: calc(379px * 0.25 + 65px);
+  // media queries
+  @include mq(md) {
+    --_gap: 0;
     padding-bottom: 80px;
+    text-align: left;
+    padding-top: 166px;
 
-    .cta {
-      transform: translate(-50%, -75%);
-    }
-
-    &__navbar {
+    &__nav {
       flex-direction: row;
-      align-items: center;
-      margin-bottom: 31px;
-      padding-bottom: 46px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      justify-content: space-between;
+      border-bottom: var(--_line);
     }
 
-    &__logo {
-      border-bottom: none;
-      padding-bottom: 0;
+    &__nav-list {
+      display: flex;
+      column-gap: 40px;
+      border-top: none;
     }
 
-    &__list {
+    &__nav-li + &__nav-li {
+      margin-top: 0;
+    }
+
+    &__bar-bottom {
+      padding-top: 31px;
       flex-direction: row;
-      padding-top: 0;
+      justify-content: space-between;
     }
 
-    &__contact-section {
-      flex-direction: row;
-      align-items: end;
-      font-weight: 700;
-      text-align: left;
-    }
-
-    &__address-col,
-    &__contact-col {
-      flex: 1;
+    &__contact-link {
+      font-weight: $fw-bold;
     }
   }
 
-  @include mq($_bp-two) {
+  @include mq(md) {
+    &__link {
+      font-weight: 700;
+    }
+  }
+
+  @include mq(lg) {
     padding-top: 144px;
     padding-bottom: 72px;
+
+    &__bar-bottom {
+      justify-content: revert;
+    }
+    &__col--contact {
+      margin-left: 202px;
+    }
+
+    &__col--sns {
+      margin-left: auto;
+    }
   }
 }

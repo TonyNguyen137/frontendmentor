@@ -1,0 +1,36 @@
+@use 'sass:map';
+@use '../abstracts' as *;
+
+.block-attribute {
+  text-align: center;
+  color: var(--clr-dark-grey);
+  &__image {
+    margin-bottom: 48px;
+  }
+  &__heading {
+    font-size: px-to-rem(20);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  @include mq(md) {
+    display: flex;
+    align-items: center;
+    column-gap: 48px;
+    text-align: left;
+
+    &__image {
+      margin-bottom: 0;
+    }
+  }
+
+  @include mq(lg) {
+    flex-direction: column;
+    text-align: center;
+
+    &__image {
+      margin-bottom: 48px;
+    }
+  }
+}

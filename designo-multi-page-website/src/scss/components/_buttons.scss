@@ -1,45 +1,29 @@
 @use '../abstracts' as *;
 
+a.btn {
+  text-decoration: none;
+}
+
 .btn {
-  font-size: px-to-rem(15);
-  letter-spacing: 1px;
-  padding: 18px 25px 16px 24px;
   display: inline-block;
+  padding: 17px 18px;
   text-transform: uppercase;
   border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  border: none;
-
-  &--light {
-    background-color: $clr-white;
-    &:hover {
-      background-color: $clr-secondary;
-      color: $clr-white;
-    }
-  }
-
+  font-size: px-to-rem(15);
+  font-weight: $fw-medium;
+  letter-spacing: 1px;
+  transition: background-color 0.2s;
+  background-color: var(--clr-white);
+  color: var(--clr-black);
   &--dark {
-    background-color: $clr-primary;
-    color: $clr-white;
-
-    &:hover {
-      background-color: $clr-secondary;
-    }
+    background-color: var(--clr-primary);
+    color: var(--clr-white);
   }
 
-  &--link-light {
-    background-color: $clr-white;
-    padding: px-to-rem(17) px-to-rem(19);
-    font-size: px-to-rem(15);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: $clr-black;
-    font-weight: 500;
-
+  @media (hover: hover) {
     &:hover {
-      background-color: $clr-secondary;
-      color: $clr-white;
+      background-color: var(--clr-secondary);
+      color: var(--clr-white);
     }
   }
 }
