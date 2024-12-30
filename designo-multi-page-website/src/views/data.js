@@ -24,15 +24,15 @@ exports.data = {
     cards: [
       {
         title: 'Web Design',
-        href: 'web-design',
+        slug: 'web-design',
       },
       {
         title: 'App Design',
-        href: 'app-design',
+        slug: 'app-design',
       },
       {
         title: 'Graphic Design',
-        href: 'graphic-design',
+        slug: 'graphic-design',
       },
     ],
   },

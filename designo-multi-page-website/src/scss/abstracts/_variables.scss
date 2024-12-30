@@ -56,7 +56,7 @@ $clr-black: var(--clr-black);
 $clr-white: var(--clr-white);
 
 // The loop reduces the structure of $color-theme from nesting greater than 2 levels to a 2-level hierarchy.
-// $color-theme-map: ();
+$color-theme-map: ();
 // @each $theme-name, $map in $color-theme {
 //   $color-theme-map: map.merge(
 //     $color-theme-map,
@@ -66,7 +66,13 @@ $clr-white: var(--clr-white);
 //   );
 // }
 
-$active-theme: map.get($color-theme, default, color);
+$selected-theme: default;
+$active-theme: map.get(
+  if($color-theme-map == (), $color-theme, $color-theme-map),
+  $selected-theme,
+  color
+);
+
 $active-theme-rgb: map-loop($active-theme, to-rgb, '$value');
 
 // ------------------------------------------------------
@@ -193,6 +199,19 @@ $z-level-3: 997;
 $z-level-4: 996;
 $z-default: 0;
 $z--1: -1;
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* transitions
+/* ****************************************************** */
+$enable-transitions: true;
+$enable-reduced-motion: false;
+$transition-base: all 0.2s ease-in-out !default;
+$transition-fade: opacity 0.15s linear !default;
+// scss-docs-start collapse-transition
+$transition-collapse: height 0.35s ease !default;
+$transition-collapse-width: width 0.35s ease !default;
 
 // ------------------------------------------------------
 

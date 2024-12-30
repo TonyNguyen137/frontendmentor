@@ -18,24 +18,92 @@ $negative-sizes: if(
 $utilities: ();
 $utilities: map.merge(
   (
+    'clear-float': (
+      class: clear-float,
+      state: '::after',
+      property: (
+        content: '',
+        display: block,
+        clear: both,
+      ),
+      // responsive: true,
+    ),
+    'sticky-top': (
+      class: sticky-top,
+      property: (
+        position: sticky,
+        top: 0,
+        z-index: $z-level-1,
+      ),
+      // responsive: true,
+    ),
+    'sticky-bottom': (
+      class: sticky-bottom,
+      property: (
+        position: sticky,
+        bottom: 0,
+        z-index: $z-level-1,
+      ),
+      responsive: true,
+    ),
+    'fixed-top': (
+      class: fixed-top,
+      property: (
+        position: fixed,
+        top: 0,
+        right: 0,
+        left: 0,
+        z-index: $z-level-1,
+      ),
+    ),
+    'fixed-bottom': (
+      class: fixed-bottom,
+      property: (
+        position: fixed,
+        bottom: 0,
+        right: 0,
+        left: 0,
+        z-index: $z-level-1,
+      ),
+    ),
+    'bottom-right': (
+      property: bottom right,
+      class: bottom-right,
+      values: 0,
+    ),
+    'bottom-left': (
+      property: bottom left,
+      class: bottom-left,
+      values: 0,
+    ),
+    'top-right': (
+      property: top right,
+      class: top-right,
+      values: 0,
+    ),
+    'top-left': (
+      property: top left,
+      class: top-left,
+      values: 0,
+    ),
     'z-highest': (
       property: z-index,
-      css-variable-name: z-level-1,
+      custom-property-value: z-level-1,
       class: z-level-1,
     ),
     'z-2nd-highest': (
       property: z-index,
-      css-variable-name: z-level-2,
+      custom-property-value: z-level-2,
       class: z-level-2,
     ),
     'z-3rd-highest': (
       property: z-index,
-      css-variable-name: z-level-3,
+      custom-property-value: z-level-3,
       class: z-level-3,
     ),
     'z-4th-highest': (
       property: z-index,
-      css-variable-name: z-level-4,
+      custom-property-value: z-level-4,
       class: z-level-4,
     ),
     'translate-negative-center': (
@@ -179,28 +247,23 @@ $utilities: map.merge(
     ),
     'overflow': (
       property: overflow,
-      class: oveflow,
+      class: overflow,
       values: hidden visible auto scroll,
     ),
     'overflow-x': (
       property: overflow,
-      class: oveflow,
+      class: overflow-x,
       values: hidden visible auto scroll clip,
     ),
     'overflow-y': (
       property: overflow,
-      class: oveflow,
+      class: overflow-y,
       values: hidden visible auto scroll clip,
     ),
     'width': (
       property: width,
       class: w,
       values: $percentage-values,
-    ),
-    'max-width': (
-      property: max-width,
-      class: max-w,
-      values: map.merge($percentage-values, $fixed-values),
     ),
     'height': (
       property: height,
@@ -458,10 +521,7 @@ $utilities: map.merge(
     'flex-wrap': (
       property: flex-wrap,
       class: flex,
-      values: (
-        nowrap: nowrap,
-        wrap: wrap,
-      ),
+      values: nowrap wrap,
     ),
     'place-items': (
       property: place-items,
@@ -530,13 +590,7 @@ $utilities: map.merge(
     'object-fit': (
       responsive: true,
       property: object-fit,
-      values: (
-        contain: contain,
-        cover: cover,
-        fill: fill,
-        scale: scale-down,
-        none: none,
-      ),
+      values: contain cover fill scale-down none,
     ),
     'float': (
       property: float,
@@ -550,7 +604,11 @@ $utilities: map.merge(
     'clear': (
       property: clear,
       class: clear,
-      values: left right both,
+      values: (
+        start: left,
+        end: right,
+        none: none,
+      ),
     ),
     'font-size': (
       property: font-size,
@@ -591,15 +649,12 @@ $utilities: map.merge(
     'background-colors-hover': (
       property: background-color,
       class: bg-hover,
-      state: hover,
+      state: ':hover',
       values:
         map-loop(map.get($color-theme, default, hover), hover-color, '$key', 'alpha', $hover-prefix),
     ),
     'background-colors-alpha': (
       property: background-color,
-      local-vars: (
-        'alpha': 1,
-      ),
       class: bga,
       values:
         map.merge(
@@ -622,11 +677,14 @@ $utilities: map.merge(
         ),
       responsive: true,
     ),
-    'text-colors-alpha': (
+    'text-color-hover': (
       property: color,
-      local-vars: (
-        'alpha': 1,
-      ),
+      class: text-hover,
+      state: ':hover',
+      values: $active-theme,
+    ),
+    'text-color-alpha': (
+      property: color,
       class: texta,
       values:
         map.merge(
@@ -637,7 +695,7 @@ $utilities: map.merge(
         ),
       responsive: true,
     ),
-    'text-colors': (
+    'text-color': (
       property: color,
       class: text,
       values:
@@ -650,7 +708,7 @@ $utilities: map.merge(
       responsive: true,
     ),
     'alpha-channel': (
-      css-var: true,
+      css-var: alpha,
       class: alpha,
       responsive: true,
       values: $opacity,

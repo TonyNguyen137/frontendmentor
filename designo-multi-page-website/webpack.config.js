@@ -9,11 +9,10 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const PATHS = {
   src: path.join(__dirname, 'src'),
 }
-console.log('dataHome: ', data.home)
 
 module.exports = (env) => {
   console.log('env ', env)
-
+  console.log('build mode? ', env.WEBPACK_BUILD)
   return {
     devtool: env.WEBPACK_SERVE ? 'source-map' : false,
 
@@ -67,12 +66,12 @@ module.exports = (env) => {
       env.WEBPACK_BUILD &&
         new PurgeCSSPlugin({
           paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-          content: ['**/*.js', '**/*.html', '**/*.hbs'],
-          safelist: {
-            // standard: [/aria/, /data/, /:focus/],
-            // deep: [/aria/, /data/, /^.*\[/],
-            // greedy: [/aria/, /data/, /^.*\[/],
-          },
+          content: ['**/*.js', '**/*.hbs'],
+          // safelist: {
+          //   // standard: [/aria/, /data/, /:focus/],
+          //   // deep: [/aria/, /data/, /^.*\[/],
+          //   // greedy: [/aria/, /data/, /^.*\[/],
+          // },
         }),
       // new FaviconsBundlerPlugin({
       //   enabled: 'auto', // true, false, auto - generate favicons in production mode only

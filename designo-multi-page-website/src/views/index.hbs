@@ -1,39 +1,70 @@
 {{> head }}
 
-<section class="section-cards">
+<section class="section-hero position-relative max-w-1440px mx-auto">
+  <div class="hero">
+    <div class="container hero__container">
+      <div class="hero__wrapper">
+        <h1 class="hero__heading">Award-winning custom designs and digital branding solutions</h1>
+        <p class="hero__text">
+          With over 10 years in the industry, we are experienced in creating fully responsive
+          websites, app design, and engaging brand experiences. Find out more about our services.
+        </p>
+        <a class="btn" href="/our-company">Learn more</a>
+      </div>
+      <img
+        class="hero__image"
+        width="280"
+        height="573"
+        src="@images/home/desktop/phone.png?as=webp"
+        alt="phone"
+        loading="eager"
+      />
+    </div>
+  </div>
+  <svg
+    width="1006"
+    height="594"
+    class="position-absolute bottom-left-0 translate-y-50 z-n1 d-none d-lg-block"
+    aria-hidden="true"
+  >
+    <use href="@images/sprite.svg#leaf" />
+  </svg>
+</section>
+
+<section class="section-cards mb-30 mb-lg-40">
   <div class="container px-md-0 grid-cards">
     {{#each cards}}
     <div class="card">
       <picture class="card__picture">
         <source
-          srcset="@images/home/desktop/image-{{ this.href }}-desktop.jpg?as=avif"
+          srcset="@images/home/desktop/image-{{ this.slug }}-desktop.jpg?as=avif"
           type="image/avif"
           media="(min-width: 1200px)"
         />
         <source
-          srcset="@images/home/desktop/image-{{ this.href }}-desktop.jpg?as=webp"
+          srcset="@images/home/desktop/image-{{ this.slug }}-desktop.jpg?as=webp"
           type="image/webp"
           media="(min-width: 1200px)"
         />
         <source
-          srcset="@images/home/tablet/image-{{ this.href }}-tablet.jpg?as=avif"
+          srcset="@images/home/tablet/image-{{ this.slug }}-tablet.jpg?as=avif"
           type="image/avif"
           media="(min-width: 768px)"
         />
         <source
-          srcset="@images/home/tablet/image-{{ this.href }}-tablet.jpg?as=webp"
+          srcset="@images/home/tablet/image-{{ this.slug }}-tablet.jpg?as=webp"
           type="image/webp"
           media="(min-width: 768px)"
         />
         <img
           class="card__background"
-          src="@images/home/mobile/image-{{ this.href }}.jpg?as=webp"
+          src="@images/home/mobile/image-{{ this.slug }}.jpg?as=webp"
           alt=""
         />
       </picture>
       <div class="card__wrapper">
         <h2 class="card__heading">{{ this.title }}</h2>
-        <a class="card__link" href="/{{ this.href }}">
+        <a class="card__link" href="/{{ this.slug }}">
           view Projects
           <svg width="7" height="8" class="card__icon-arrow" aria-hidden="true">
             <use href="@images/sprite.svg#chevron-right" />
@@ -45,8 +76,13 @@
   </div>
 </section>
 
-<section class="section-attributes">
-  <svg width="1006" height="594" aria-hidden="true">
+<section class="section-attributes max-w-1440px mx-auto position-relative i-isolate">
+  <svg
+    class="d-none d-lg-block z-n1 position-absolute bottom-right-0 translate-y-50"
+    width="1006"
+    height="594"
+    aria-hidden="true"
+  >
     <use href="@images/sprite.svg#leaf-2" />
   </svg>
   <div class="container px-sm-0 grid-block--attributes">
@@ -69,4 +105,5 @@
     {{/each}}
   </div>
 </section>
+
 {{> footer}}

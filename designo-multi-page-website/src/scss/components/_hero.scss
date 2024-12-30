@@ -1,0 +1,103 @@
+@use '../abstracts/' as *;
+
+.hero {
+  text-align: center;
+  margin-bottom: 120px;
+  color: var(--clr-white);
+  overflow: hidden;
+  position: relative;
+
+  &__container {
+    position: relative;
+    padding-top: 80px;
+    background-image: url('@images/home/desktop/bg-pattern-hero-home.svg');
+    background-position: 0% 52%;
+    background-repeat: no-repeat;
+    background-color: var(--clr-primary);
+    isolation: isolate;
+    display: grid;
+    row-gap: 80px;
+    grid-template-rows: auto 371px;
+  }
+  &__heading {
+    font-size: px-to-rem(32);
+    margin-bottom: 14px;
+  }
+
+  &__text {
+    font-size: px-to-rem(15);
+    line-height: 25px;
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    grid-row: 2 / 3;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  @include mq(sm) {
+    &__container {
+      border-radius: 15px;
+      row-gap: 69px;
+    }
+  }
+
+  @include mq(md) {
+    &__container {
+      padding-top: 60px;
+      background-position: 356% 49%;
+      grid-template-rows: auto 388px;
+    }
+
+    &__heading {
+      font-size: px-to-rem(48);
+      margin-bottom: 25px;
+    }
+
+    &__text {
+      font-size: inherit;
+      max-width: 65%;
+      margin-inline: auto;
+      margin-bottom: 19px;
+      line-height: 26px;
+    }
+  }
+
+  @include mq(lg) {
+    text-align: left;
+    margin-bottom: 160px;
+
+    &__container {
+      padding-top: 145px;
+      justify-content: space-between;
+      grid-template-columns: 52% 284px;
+      grid-template-rows: auto 145px;
+      grid-auto-flow: column;
+      padding-inline: 95px;
+      row-gap: 0;
+      background-position: right top;
+    }
+
+    &__image {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      transform: none;
+      top: 0;
+      right: 0;
+      left: unset;
+    }
+
+    &__heading {
+      margin-bottom: 28px;
+    }
+
+    &__text {
+      max-width: revert;
+      margin-inline: 0;
+      width: 85%;
+    }
+  }
+}

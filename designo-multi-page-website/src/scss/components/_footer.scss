@@ -33,6 +33,7 @@
     font-size: px-to-rem(14);
     line-height: 1;
     letter-spacing: 2px;
+    color: inherit;
 
     @media (hover: hover) {
       &:hover {

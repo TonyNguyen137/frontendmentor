@@ -1,3 +1,3 @@
-import { Tabber } from './navbar/tabber.js';
+// import { Tabber } from './navbar/tabber.js';
 
-export { Tabber };
+// export { Tabber };

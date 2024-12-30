@@ -26,10 +26,16 @@
     </defs>
   </symbol>
 
+  <symbol id="close" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.071.1L19.9 2.93l-7.071 7.07 7.071 7.072-2.828 2.828L10 12.828l-7.071 7.071L.1 17.071 7.17 10 .102 2.929 2.929.1l7.07 7.07 7.072-7.07z" fill="#1D1C1E" fill-rule="evenodd"/></symbol>
+
+  <symbol id="hamburger" viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><g fill="#1D1C1E" fill-rule="evenodd"><path d="M0 0h24v4H0zM0 8h24v4H0zM0 16h24v4H0z"/></g></symbol>
+
+  <symbol id="leaf" viewBox="0 0 1006 594" xmlns="http://www.w3.org/2000/svg"><path d="M297 0h412c164.029 0 297 132.971 297 297S873.029 594 709 594H0V297C0 132.971 132.971 0 297 0z" fill="#F1F3F5" fill-rule="evenodd" opacity=".502"/></symbol>
   
   <symbol id="leaf-2" viewBox="0 0 1006 594" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path opacity="0.502255" d="M1006 297C1006 461.029 873.029 594 709 594H297C132.971 594 0 461.029 0 297C0 132.971 132.971 0 297 0H1006V297Z" fill="#F1F3F5"/>
   </symbol>
 
+ 
 
 </svg>

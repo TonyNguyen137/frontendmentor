@@ -4,7 +4,6 @@ Source: https://github.com/twbs/bootstrap/blob/main/scss/_functions.scss
 These functions are used in accordance with Bootstrap's open-source license (MIT).
 Modifications may have been made to the original functions.
 */
-
 @use 'sass:math';
 @use 'sass:map';
 @use 'sass:meta';
@@ -97,10 +96,7 @@ Modifications may have been made to the original functions.
     $_args: ();
     @each $arg in $args {
       // @debug arg $arg;
-      $_args: list.append(
-        $_args,
-        if($arg == '$key', $key, if($arg == '$value', $value, $arg))
-      );
+      $_args: list.append($_args, if($arg == '$key', $key, if($arg == '$value', $value, $arg)));
       // @debug append arg $_args;
     }
 
@@ -120,8 +116,9 @@ Modifications may have been made to the original functions.
 
 @function to-rgb($value) {
   // @debug value $value;
-  @return color.channel($value, 'red'), color.channel($value, 'green'),
-    color.channel($value, 'blue');
+  $_value: if($value == null, #000, $value);
+  @return color.channel($_value, 'red'), color.channel($_value, 'green'),
+    color.channel($_value, 'blue');
 }
 
 @function hover-color($identifier, $target, $color-prefix, $prefix: '') {
@@ -135,21 +132,12 @@ Modifications may have been made to the original functions.
 
 @function rgba-css-var($identifier, $target, $color-prefix, $prefix: '') {
   @if $identifier == 'body' and $target == 'bg' {
-    @return rgba(
-      var(--#{$prefix}#{$color-prefix}#{$identifier}-bg-rgb),
-      var(--#{$target})
-    );
+    @return rgba(var(--#{$prefix}#{$color-prefix}#{$identifier}-bg-rgb), var(--#{$target}));
   }
   @if $identifier == 'body' and $target == 'text' {
-    @return rgba(
-      var(--#{$prefix}#{$color-prefix}#{$identifier}-color-rgb),
-      var(--#{$target})
-    );
+    @return rgba(var(--#{$prefix}#{$color-prefix}#{$identifier}-color-rgb), var(--#{$target}));
   } @else {
-    @return rgba(
-      var(--#{$prefix}#{$color-prefix}#{$identifier}-rgb),
-      var(--#{$target})
-    );
+    @return rgba(var(--#{$prefix}#{$color-prefix}#{$identifier}-rgb), var(--#{$target}, 1));
   }
 }
 

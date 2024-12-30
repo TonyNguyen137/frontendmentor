@@ -1,0 +1,84 @@
+@use '../abstracts/' as *;
+@use 'sass:map';
+
+.navbar {
+  padding-block: 35px 34px;
+  position: relative;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__toggle {
+    background-color: transparent;
+    border: none;
+
+    &[aria-expanded='false'] .navbar__i-close {
+      display: none;
+    }
+
+    &[aria-expanded='true'] .navbar__i-hamburger {
+      display: none;
+    }
+  }
+
+  &__collapse {
+    display: none;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    padding-block: 48px;
+    background: black;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateY(100%);
+    z-index: 1;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    max-width: map.get($container-max-widths, sm);
+    margin-inline: auto;
+    row-gap: 32px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    font-size: px-to-rem(25);
+    letter-spacing: 2px;
+    color: var(--clr-white);
+  }
+
+  // media queries
+
+  @include mq(md) {
+    padding-block: 64px;
+
+    &__toggle {
+      display: none;
+    }
+
+    &__collapse {
+      all: unset;
+      display: block;
+      background-color: transparent;
+    }
+
+    &__list {
+      flex-direction: row;
+      column-gap: 42px;
+      row-gap: revert;
+    }
+
+    &__link {
+      font-size: px-to-rem(14);
+      color: inherit;
+    }
+  }
+
+  @include mq(lg) {
+    padding-block: 67px 64px;
+  }
+}

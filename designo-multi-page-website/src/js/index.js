@@ -1,3 +1,3 @@
-// import { Navbar } from './components/index';
+import { Navbar } from './components'
 
-// new Navbar('.navbar-js');
+new Navbar()
