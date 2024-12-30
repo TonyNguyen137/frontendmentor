@@ -4,6 +4,8 @@
 .navbar {
   padding-block: 35px 34px;
   position: relative;
+  z-index: $z-level-1;
+  background-color: var(--clr-white);
 
   &__container {
     display: flex;
@@ -12,6 +14,7 @@
   &__toggle {
     background-color: transparent;
     border: none;
+    cursor: pointer;
 
     &[aria-expanded='false'] .navbar__i-close {
       display: none;
@@ -23,11 +26,7 @@
   }
 
   &__collapse {
-    display: none;
-    height: 0;
-    overflow: hidden;
     position: absolute;
-    padding-block: 48px;
     background: black;
     left: 0;
     right: 0;
@@ -40,6 +39,9 @@
     display: flex;
     flex-direction: column;
     max-width: map.get($container-max-widths, sm);
+    padding-block: 48px;
+
+    padding-inline: 24px;
     margin-inline: auto;
     row-gap: 32px;
   }
@@ -52,6 +54,12 @@
   }
 
   // media queries
+
+  @include mq(sm) {
+    &__list {
+      padding-inline: 0px;
+    }
+  }
 
   @include mq(md) {
     padding-block: 64px;
@@ -67,6 +75,7 @@
     }
 
     &__list {
+      padding-block: 0;
       flex-direction: row;
       column-gap: 42px;
       row-gap: revert;
@@ -74,11 +83,32 @@
 
     &__link {
       font-size: px-to-rem(14);
-      color: inherit;
     }
   }
 
   @include mq(lg) {
     padding-block: 67px 64px;
+  }
+
+  // expanded navbar
+  @each $breakpoint in map.keys($grid-breakpoints) {
+    @if $breakpoint != 'xs' {
+      @include mq($breakpoint) {
+        &[data-expand='#{$breakpoint}'] {
+          .navbar__collapse {
+            display: block;
+          }
+
+          .navbar__link {
+            color: inherit;
+            @media (hover: hover) and (pointer: fine) {
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

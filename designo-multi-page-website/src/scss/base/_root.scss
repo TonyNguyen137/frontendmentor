@@ -5,6 +5,8 @@
 @use 'sass:math';
 
 :root {
+  @include generate-breakpoints($grid-breakpoints);
+
   // custom properties for default color theme
   @include generate-color-custom-properties(
     if($active-theme == null or $active-theme == (), (), $active-theme),

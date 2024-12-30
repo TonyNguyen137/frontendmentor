@@ -1,31 +1,31 @@
 import { $ } from '../utils'
+import { Backdrop, Tabber } from '../modules'
+
+const documentEl = document.documentElement
 
 export class Navbar {
-  constructor(rootEl = '.navbar') {
+  constructor(rootEl = '.navbar', options = {}) {
     this._rootEl = typeof rootEl === 'string' ? $(rootEl) : rootEl
+    this._expandBreakpoint = this._rootEl.dataset.expand
+    this._expandWidth = getComputedStyle(documentEl).getPropertyValue(`--${this._expandBreakpoint}`)
     this._toggleEl = this._rootEl.querySelector('.navbar__toggle')
     this._collapseEl = this._rootEl.querySelector('.navbar__collapse')
-    this._listEl = this._rootEl.querySelector('.navbar__list')
-    this._isExpanded = null
-    // this._firstTabbableEl = this._togglerEl
-    // this._lastTabbableEl = Array.from(document.querySelectorAll('.navbar-js .navbar__link')).at(-1)
-    // this._backdropEl = new Backdrop()
+    this._tabbableEls = this._rootEl.querySelectorAll('.navbar__toggle, .navbar__link')
 
-    // Make the element focusable when the navigation menu is expanded
-    // this._menuEl.setAttribute('tabindex', '-1')
+    this._isExpanded = false
+    this._isTransitioning = false
+    this._hasModuleInstance = false
+    this._modules = [Backdrop, Tabber, ...(options?.modules || [])]
 
     this._initEventHandlers()
-    // this._mount(this._modules)
+    this._media = window.matchMedia(`(min-width: ${this._expandWidth})`)
+    this._media.addEventListener('change', this._handleMediaChange.bind(this))
+    this._handleMediaChange(this._media)
   }
 
   _initEventHandlers() {
     this._toggleEl.addEventListener('click', this._toggleMenu.bind(this))
     this._collapseEl.addEventListener('transitionend', this._onMenuTransitionEnd.bind(this))
-
-    // document.addEventListener('keypress', (e) => {
-    //   if (!this.expanded) return
-    //   if (e.key === 'Escape') this._closeMenu()
-    // })
   }
 
   _setExpanded(state) {
@@ -36,48 +36,83 @@ export class Navbar {
     return this._toggleEl.ariaExpanded === 'true'
   }
 
-  // _mount(modules) {
-  //   if (modules.length < 1) return
-
-  //   modules.forEach((Module) => {
-  //     new Module(this)
-  //   })
-  // }
+  _dispatchEvent() {
+    const event = new CustomEvent('custom:toggled', { detail: { isExpanded: this._isExpanded } })
+    this._rootEl.dispatchEvent(event)
+  }
 
   // Event handlers
+  _handleMediaChange(e) {
+    if (e.matches) {
+      this._resetMenu()
+      return
+    }
+
+    this._instantiateModules()
+  }
+
+  _instantiateModules() {
+    if (!this._hasModuleInstance) {
+      this._modules.forEach((Module) => {
+        new Module({ rootEl: this._rootEl, tabbableEls: this._tabbableEls })
+      })
+      this._hasModuleInstance = true
+    }
+  }
   _toggleMenu(e) {
+    if (this._isTransitioning) return
+    this._isTransitioning = true
     this._isExpanded = this._getExpanded()
     this._isExpanded ? this._closeMenu() : this._openMenu()
+    this._dispatchEvent()
   }
 
   _openMenu() {
-    this._setExpanded(!this._isExpanded)
+    this._toggleExpanded()
+    this._setExpanded(this._isExpanded)
+    this._collapseEl.classList.remove('collapse')
+    const scrollHeight = this._collapseEl.scrollHeight
+    this._collapseEl.classList.add('collapsing')
 
-    // this._collapseEl.removeAttribute('data-state')
-    // let height = this._collapseEl.offsetHeight / 16
-    // this._collapseEl.setAttribute('data-state', 'collapsing')
-    // this._backdropEl.addTo($('body'))
-    // this._menuEl.focus()
-
-    // setTimeout(() => {
-    //   this._collapseEl.style.setProperty('height', `${height}rem`)
-    // })
+    // Use requestAnimationFrame for smoother rendering
+    requestAnimationFrame(() => {
+      this._collapseEl.style.height = `${scrollHeight}px`
+    })
   }
 
   _closeMenu(e) {
-    this._setExpanded(!this._isExpanded)
+    this._toggleExpanded()
+    this._setExpanded(this._isExpanded)
 
-    // this._collapseEl.style.removeProperty('height')
-    // this._backdropEl.kill()
-    // this._collapseEl.setAttribute('data-state', 'collapsing')
-    // this._togglerEl.focus()
+    this._collapseEl.classList.remove('collapse', 'show')
+    this._collapseEl.classList.add('collapsing')
+    this._collapseEl.style = ''
+  }
+
+  _resetMenu() {
+    if (!this._isExpanded) return
+
+    this._toggleExpanded() // this._isExpanded = false
+    this._setExpanded(this._isExpanded)
+    this._collapseEl.classList.remove('show')
+    this._collapseEl.style = ''
+
+    this._dispatchEvent()
+  }
+
+  _toggleExpanded() {
+    this._isExpanded = !this._isExpanded
   }
 
   _onMenuTransitionEnd() {
-    if (this.expanded) {
-      this._collapseEl.removeAttribute('data-state')
+    if (this._isExpanded) {
+      this._collapseEl.classList.remove('collapsing')
+      this._collapseEl.classList.add('collapse', 'show')
+      // this._collapseEl.style = ''
     } else {
-      this._collapseEl.setAttribute('data-state', 'collapsed')
+      this._collapseEl.classList.remove('collapsing')
+      this._collapseEl.classList.add('collapse')
     }
+    this._isTransitioning = false
   }
 }
