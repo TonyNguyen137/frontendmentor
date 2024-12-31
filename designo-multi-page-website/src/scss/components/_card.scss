@@ -1,55 +1,57 @@
-@use 'sass:map';
 @use '../abstracts' as *;
+
 .card {
-  color: var(--clr-white);
   border-radius: 15px;
-  position: relative;
   overflow: hidden;
 
-  &__picture {
-    position: relative;
-    z-index: -1;
-  }
   &__wrapper {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    row-gap: 12px;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.2s;
-    background-color: rgba(var(--clr-black-rgb), 0.5);
-  }
+    text-align: center;
+    background-color: var(--clr-tertiary);
+    padding: 32px 29px;
+    transition: all 0.3s ease-in-out;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: var(--clr-primary);
+      }
 
-  &__wrapper:hover {
-    background-color: rgba(var(--clr-primary-rgb), 0.8);
+      &:hover > * {
+        color: var(--clr-white);
+      }
+    }
   }
 
   &__heading {
-    font-size: px-to-rem(28);
-    letter-spacing: 1.4px;
-  }
-  &__link {
-    display: flex;
-    column-gap: 16px;
-    align-items: center;
-    text-decoration: none;
-    text-transform: uppercase;
+    font-size: px-to-rem(20);
     letter-spacing: 5px;
-    font-size: px-to-rem(15);
-    font-weight: $fw-medium;
-    color: inherit;
+    color: var(--clr-primary);
+    margin-bottom: 16px;
+    text-transform: uppercase;
   }
 
-  &__icon-arrow {
-    color: var(--clr-primary);
-  }
+  // media queries
 
   @include mq(md) {
-    &__heading {
-      font-size: px-to-rem(40);
-      letter-spacing: 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  @include mq(lg) {
+    grid-template-columns: none;
+    grid-template-rows: 320px 1fr;
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &__wrapper {
+      flex-grow: 1;
+      padding: 32px;
     }
   }
 }

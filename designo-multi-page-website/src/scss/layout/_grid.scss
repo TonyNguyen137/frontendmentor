@@ -6,10 +6,10 @@
   gap: 16px;
 }
 
-.grid-cards {
+.grid-teasers {
   display: grid;
-  grid-template-columns: minmax(0, 327px);
-  justify-content: center;
+  // grid-template-columns: minmax(0, 327px);
+  // justify-content: center;
   row-gap: 24px;
 
   @include mq(md) {
@@ -48,6 +48,27 @@
   @include mq(lg) {
     grid-auto-flow: column;
     column-gap: 30px;
+  }
+}
+
+.grid-teasers--service {
+  display: grid;
+  // justify-content: center;
+  row-gap: 24px;
+  column-gap: 30px;
+
+  @include mq(lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.grid-cards {
+  display: grid;
+  row-gap: 40px;
+
+  @include mq(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
   }
 }
 

@@ -15,7 +15,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-
+    transition: box-shadow 0.15s ease-in-out;
     &[aria-expanded='false'] .navbar__i-close {
       display: none;
     }

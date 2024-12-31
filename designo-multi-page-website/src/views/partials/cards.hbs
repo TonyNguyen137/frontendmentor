@@ -1,0 +1,22 @@
+<section class="section-cards mb-24">
+  <div class="container grid-cards px-sm-0">
+    {{#each cards}}
+
+    <div class="card">
+      <img
+        class="card__image"
+        width="700"
+        height="640"
+        src="@images/{{ ../imageFolder }}/desktop/image-{{#if this.image}}{{ this.image }}{{else}}{{
+          this.heading
+        }}{{/if}}.jpg?as=avif"
+        alt="image of {{ this.heading }} website"
+      />
+      <div class="card__wrapper">
+        <h2 class="card__heading">{{ this.heading }}</h2>
+        <p class="card__description">{{ this.description }}</p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>

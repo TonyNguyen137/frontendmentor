@@ -2,7 +2,7 @@
 
 <section class="section-hero position-relative max-w-1440px mx-auto">
   <div class="hero">
-    <div class="container hero__container">
+    <div class="container px-sm-0 hero__container">
       <div class="hero__wrapper">
         <h1 class="hero__heading">Award-winning custom designs and digital branding solutions</h1>
         <p class="hero__text">
@@ -31,21 +31,22 @@
   </svg>
 </section>
 
-<section class="section-cards mb-30 mb-lg-40">
-  <div class="container px-md-0 grid-cards">
-    {{#each cards}}
-    <div class="card">
-      <picture class="card__picture">
+<section class="section-teasers mb-30 mb-lg-40">
+  <div class="container px-sm-0 grid-teasers">
+    {{#each teasers}}
+    <div class="teaser">
+      <picture class="teaser__picture">
         <source
-          srcset="@images/home/desktop/image-{{ this.slug }}-desktop.jpg?as=avif"
+          srcset="@images/home/desktop/image-{{#if this.imageDesktop }}{{ this.imageDesktop }}{{else}}{{ this.slug }}{{/if}}-desktop.jpg?as=avif"
           type="image/avif"
           media="(min-width: 1200px)"
         />
         <source
-          srcset="@images/home/desktop/image-{{ this.slug }}-desktop.jpg?as=webp"
+          srcset="@images/home/desktop/image-{{#if this.imageDesktop }}{{ this.imageDesktop }}{{else}}{{ this.slug }}{{/if}}-desktop.jpg?as=webp"
           type="image/webp"
           media="(min-width: 1200px)"
         />
+
         <source
           srcset="@images/home/tablet/image-{{ this.slug }}-tablet.jpg?as=avif"
           type="image/avif"
@@ -57,16 +58,18 @@
           media="(min-width: 768px)"
         />
         <img
-          class="card__background"
+          class="teaser__background"
           src="@images/home/mobile/image-{{ this.slug }}.jpg?as=webp"
+          width="690"
+          height="200"
           alt=""
         />
       </picture>
-      <div class="card__wrapper">
-        <h2 class="card__heading">{{ this.title }}</h2>
-        <a class="card__link" href="/{{ this.slug }}">
+      <div class="teaser__wrapper">
+        <h2 class="teaser__heading">{{ this.title }}</h2>
+        <a class="teaser__link" href="/{{ this.slug }}">
           view Projects
-          <svg width="7" height="8" class="card__icon-arrow" aria-hidden="true">
+          <svg width="7" height="8" class="teaser__icon-arrow" aria-hidden="true">
             <use href="@images/sprite.svg#chevron-right" />
           </svg>
         </a>

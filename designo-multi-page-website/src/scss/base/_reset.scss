@@ -64,3 +64,8 @@ h4 {
 :target {
   scroll-margin-block: 5ex;
 }
+
+:focus {
+  outline: 0;
+  box-shadow: 0 0 0 4px var(--clr-primary);
+}

@@ -39,9 +39,26 @@ module.exports = (env) => {
         // path to templates
         entry: [
           {
-            import: 'src/views/index.hbs', // template file
+            import: 'src/views/pages/index.hbs', // template file
             filename: 'index.html', // => dist/index.html
             data: data.home, // pass variables into template
+          },
+
+          {
+            import: 'src/views/pages/web-design/index.hbs',
+            filename: 'web-design/index.html', // => dist/web-design/index.html
+            data: data.webdesign,
+          },
+          {
+            import: 'src/views/pages/app-design/index.hbs',
+            filename: 'app-design/index.html', // => dist/app-design/index.html
+            data: data.appdesign,
+          },
+
+          {
+            import: 'src/views/pages/graphic-design/index.hbs',
+            filename: 'graphic-design/index.html', // => dist/app-design/index.html
+            data: data.graphicdesign,
           },
         ],
         // use handlebars templating engine
@@ -140,11 +157,11 @@ module.exports = (env) => {
               const params = new URLSearchParams(ob.module.resourceResolveData.query)
 
               // Get the value of the 'w' parameter
-              const width = params.get('w')
-              // console.log('WIDTH: ', width);
+              const widthValue = params.get('w')
+              const heightValue = params.get('h')
 
-              if (width) {
-                return `static/[name]-w${width}[ext]`
+              if (widthValue) {
+                return `static/[name]-${widthValue}x${heightValue}[ext]`
               }
               return `static/[name][ext]`
             },

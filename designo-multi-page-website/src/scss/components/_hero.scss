@@ -100,4 +100,45 @@
       width: 85%;
     }
   }
+
+  &--service {
+    margin-bottom: 96px;
+    .hero__container {
+      display: block;
+      padding-block: 105px;
+      background-size: 292px;
+      background-position: right;
+    }
+
+    .hero__heading {
+      margin-bottom: 24px;
+    }
+
+    @include mq(md) {
+      margin-bottom: 120px;
+      .hero__container {
+        background-image: url('@images/web-design/desktop/bg-pattern-intro-web.svg');
+        background-size: revert;
+        background-position: 0% 50%;
+        padding-block: 64px;
+      }
+
+      .hero__text {
+        margin-inline: auto;
+        max-width: 57%;
+      }
+    }
+
+    @include mq(lg) {
+      text-align: center;
+      margin-bottom: 160px;
+
+      .hero__container {
+        background-position: right;
+      }
+      .hero__text {
+        max-width: 44%;
+      }
+    }
+  }
 }

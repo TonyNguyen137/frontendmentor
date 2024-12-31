@@ -26,6 +26,7 @@ $hover-prefix: hover-;
 
 $primary: #e7816b;
 $secondary: #ffad9b;
+$tertiary: #fdf3f0;
 $dark-grey: #333136;
 $light-grey: #f1f3f5;
 $black: #1d1c1e;
@@ -36,6 +37,7 @@ $color-theme: (
     color: (
       'primary': $primary,
       'secondary': $secondary,
+      'tertiary': $tertiary,
       'dark-grey': $dark-grey,
       'light-grey': $light-grey,
       'black': $black,
@@ -93,19 +95,11 @@ $sizes-irregular: (
     $sizes-regular,
     (
       $i: if($i == 0, $i, $factor * $i),
+      30: 30 * $factor,
       40: 40 * $factor,
     )
   );
 }
-
-// @each $size in $sizes-list {
-//   $sizes-regular: map.merge(
-//     $sizes-regular,
-//     (
-//       $size: if($size == 0, $size, $factor * $size),
-//     )
-//   );
-// }
 
 // ------------------------------------------------------
 

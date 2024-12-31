@@ -10,8 +10,6 @@ export class Backdrop {
   }
 
   _handleMenuToggled(event) {
-    console.log('event backdrop: ', event)
-
     const { isExpanded } = event.detail
     isExpanded ? this._showBackdrop() : this._removeBackdrop()
   }
