@@ -13,6 +13,7 @@ const PATHS = {
 module.exports = (env) => {
   console.log('env ', env)
   console.log('build mode? ', env.WEBPACK_BUILD)
+
   return {
     devtool: env.WEBPACK_SERVE ? 'source-map' : false,
 
@@ -59,6 +60,21 @@ module.exports = (env) => {
             import: 'src/views/pages/graphic-design/index.hbs',
             filename: 'graphic-design/index.html', // => dist/app-design/index.html
             data: data.graphicdesign,
+          },
+          {
+            import: 'src/views/pages/about/index.hbs',
+            filename: 'about/index.html', // => dist/about/index.html
+            data: data.about,
+          },
+          {
+            import: 'src/views/pages/locations/index.hbs',
+            filename: 'locations/index.html', // => dist/locations/index.html
+            data: data.graphicdesign,
+          },
+          {
+            import: 'src/views/pages/contact/index.hbs',
+            filename: 'contact/index.html', // => dist/contact/index.html
+            data: data.contact,
           },
         ],
         // use handlebars templating engine

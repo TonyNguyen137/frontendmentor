@@ -81,6 +81,10 @@
     transition: color 0.2s;
   }
 
+  &--contact {
+    padding-top: 64px;
+  }
+
   @media (hover: hover) {
     &__sn-icon:hover {
       color: var(--clr-secondary);
@@ -110,6 +114,10 @@
       margin-top: 0;
     }
 
+    &__link {
+      font-weight: 700;
+    }
+
     &__bar-bottom {
       padding-top: 31px;
       flex-direction: row;
@@ -119,11 +127,9 @@
     &__contact-link {
       font-weight: $fw-bold;
     }
-  }
 
-  @include mq(md) {
-    &__link {
-      font-weight: 700;
+    &--contact {
+      padding-top: 80px;
     }
   }
 
@@ -140,6 +146,10 @@
 
     &__col--sns {
       margin-left: auto;
+    }
+
+    &--contact {
+      padding-top: 72px;
     }
   }
 }

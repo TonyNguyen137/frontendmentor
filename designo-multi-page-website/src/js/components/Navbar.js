@@ -36,15 +36,17 @@ export class Navbar {
     return this._toggleEl.ariaExpanded === 'true'
   }
 
-  _dispatchEvent() {
-    const event = new CustomEvent('custom:toggled', { detail: { isExpanded: this._isExpanded } })
+  _dispatchEvent(data) {
+    const options = { isExpanded: this._isExpanded, ...(data || {}) }
+
+    const event = new CustomEvent('custom:toggled', { detail: options })
     this._rootEl.dispatchEvent(event)
   }
 
   // Event handlers
   _handleMediaChange(e) {
     if (e.matches) {
-      this._resetMenu()
+      this._resetMenu({ removeBackdropImmidiately: true })
       return
     }
 
@@ -54,7 +56,11 @@ export class Navbar {
   _instantiateModules() {
     if (!this._hasModuleInstance) {
       this._modules.forEach((Module) => {
-        new Module({ rootEl: this._rootEl, tabbableEls: this._tabbableEls })
+        new Module({
+          rootEl: this._rootEl,
+          tabbableEls: this._tabbableEls,
+          collapseEl: this._collapseEl,
+        })
       })
       this._hasModuleInstance = true
     }
@@ -72,12 +78,14 @@ export class Navbar {
     this._setExpanded(this._isExpanded)
     this._collapseEl.classList.remove('collapse')
     const scrollHeight = this._collapseEl.scrollHeight
+
     this._collapseEl.classList.add('collapsing')
+    // Force reflow
+    this._collapseEl.offsetHeight
+    this._collapseEl.style.height = `${scrollHeight}px`
 
     // Use requestAnimationFrame for smoother rendering
-    requestAnimationFrame(() => {
-      this._collapseEl.style.height = `${scrollHeight}px`
-    })
+    requestAnimationFrame(() => {})
   }
 
   _closeMenu(e) {
@@ -89,7 +97,7 @@ export class Navbar {
     this._collapseEl.style = ''
   }
 
-  _resetMenu() {
+  _resetMenu(additionalData) {
     if (!this._isExpanded) return
 
     this._toggleExpanded() // this._isExpanded = false
@@ -97,7 +105,7 @@ export class Navbar {
     this._collapseEl.classList.remove('show')
     this._collapseEl.style = ''
 
-    this._dispatchEvent()
+    this._dispatchEvent(additionalData)
   }
 
   _toggleExpanded() {

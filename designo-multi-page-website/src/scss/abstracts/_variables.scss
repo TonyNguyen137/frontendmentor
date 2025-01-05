@@ -86,8 +86,10 @@ $active-theme-rgb: map-loop($active-theme, to-rgb, '$value');
 $factor: 4px;
 $sizes-regular: ();
 $sizes-irregular: (
-  121px: 121px,
+  17px: 17px,
+  58px: 58px,
   67px: 67px,
+  121px: 121px,
 );
 
 @for $i from 0 through 25 {
@@ -213,12 +215,7 @@ $transition-collapse-width: width 0.35s ease !default;
 /* responsive custom Properties - xs is default
 /* ****************************************************** */
 $custom-properties: (
-  'xs': (
-    'z-level-1': 999,
-    'z-level-2': 998,
-    'z-level-3': 997,
-    'z-level-4': 996,
-  ),
+  'xs': (),
   'md': (),
   'lg': (),
 );
@@ -304,7 +301,10 @@ $opacity: (
   100: 1,
 );
 
+$translateXYValues: (
+  '40-70': translate(40%, 70%),
+);
 $fixed-values: (
-  200: 200px,
-  1440: 1440px,
+  200px: 200px,
+  1440px: 1440px,
 );

@@ -1,8 +1,7 @@
 {{> head }}
-
 <section class="section-hero position-relative max-w-1440px mx-auto">
   <div class="hero">
-    <div class="container px-sm-0 hero__container">
+    <div class="container hero__container">
       <div class="hero__wrapper">
         <h1 class="hero__heading">Award-winning custom designs and digital branding solutions</h1>
         <p class="hero__text">
@@ -79,34 +78,6 @@
   </div>
 </section>
 
-<section class="section-attributes max-w-1440px mx-auto position-relative i-isolate">
-  <svg
-    class="d-none d-lg-block z-n1 position-absolute bottom-right-0 translate-y-50"
-    width="1006"
-    height="594"
-    aria-hidden="true"
-  >
-    <use href="@images/sprite.svg#leaf-2" />
-  </svg>
-  <div class="container px-sm-0 grid-block--attributes">
-    {{#each attributes}}
-    <div class="block-attribute">
-      <img
-        class="block-attribute__image"
-        src="@images/home/desktop/illustration-{{ this.title }}.svg"
-        width="202"
-        height="202"
-        alt=""
-      />
-      <div class="block-attribute__wrapper">
-        <h3 class="block-attribute__heading">{{ this.title }}</h3>
-        <p>
-          {{ this.text }}
-        </p>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-</section>
+{{> block-attribute attributes=attributes}}
 
 {{> footer}}

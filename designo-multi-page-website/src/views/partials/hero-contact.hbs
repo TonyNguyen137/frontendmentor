@@ -1,0 +1,85 @@
+<section class="section-hero position-relative max-w-1440px mx-auto">
+  <div class="hero hero--contact">
+    <div class="container px-md-58px hero__container">
+      <div class="hero__wrapper">
+        <h1 class="hero__heading">{{ hero.heading }}</h1>
+        <p class="hero__text">
+          {{ hero.text }}
+        </p>
+      </div>
+      <form class="hero__form">
+        <div class="hero__form-group">
+          <input
+            placeholder="Name"
+            required
+            class="hero__input"
+            type="text"
+            name="name"
+            aria-label="name"
+            data-index="0"
+          />
+
+          <div class="hero__form-error-group d-none">
+            <span class="hero__form-error-msg">can't be empty or invalid</span>
+            <svg width="20" height="20">
+              <use href="@images/sprite.svg#error"></use>
+            </svg>
+          </div>
+        </div>
+
+        <div class="hero__form-group">
+          <input
+            class="hero__input"
+            required
+            type="email"
+            name="email"
+            placeholder="E-mail Address"
+            aria-label="E-mail Address"
+            data-index="1"
+          />
+          <div class="hero__form-error-group d-none">
+            <span class="hero__form-error-msg">can't be empty or invalid</span>
+            <svg width="20" height="20">
+              <use href="@images/sprite.svg#error"></use>
+            </svg>
+          </div>
+        </div>
+        <div class="hero__form-group">
+          <input
+            required
+            class="hero__input"
+            aria-label="phone"
+            type="tel"
+            name="phone"
+            placeholder="Phone"
+            data-index="2"
+          />
+          <div class="hero__form-error-group d-none">
+            <span class="hero__form-error-msg">can't be empty or invalid</span>
+            <svg width="20" height="20">
+              <use href="@images/sprite.svg#error"></use>
+            </svg>
+          </div>
+        </div>
+        <div class="hero__form-group">
+          <textarea
+            required
+            class="hero__input resize-none"
+            placeholder="Your message"
+            aria-label="message"
+            name="message"
+            data-index="3"
+          ></textarea>
+          <div class="hero__form-error-group d-none">
+            <span class="hero__form-error-msg">can't be empty or invalid</span>
+            <svg width="20" height="20">
+              <use href="@images/sprite.svg#error"></use>
+            </svg>
+          </div>
+        </div>
+
+        <button class="btn px-12 py-17px cursor-pointer">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>

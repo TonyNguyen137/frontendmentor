@@ -1,0 +1,38 @@
+<section
+  class="section-attributes max-w-1440px mx-auto position-relative i-isolate{{ marginBottom }}"
+>
+  <svg
+    class="d-none d-lg-block z-n1 position-absolute bottom-right-0{{#if translate}}{{
+      translate
+    }}{{else}} translate-y-50{{/if}}"
+    width="1006"
+    height="594"
+    aria-hidden="true"
+  >
+    <use href="@images/sprite.svg#leaf{{#if leafNo }}{{ leafNo }}{{/if}}" />
+  </svg>
+  <div class="container px-sm-0 grid-block--attributes">
+    {{#each attributes}}
+    <div class="block-attribute{{ ../modifier }}">
+      <img
+        class="block-attribute__image"
+        src="@images/{{ this.imagePath }}"
+        width="202"
+        height="202"
+        alt=""
+      />
+      <div class="block-attribute__wrapper">
+        <h3 class="block-attribute__heading">{{ this.title }}</h3>
+        {{#if this.text}}
+        <p>
+          {{ this.text }}
+        </p>
+        {{/if}}
+        {{#if this.link}}
+        <a class="block-attribute__link btn btn--dark" href="{{ this.link }}">see location</a>
+        {{/if}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>

@@ -1,1 +1,14 @@
-<svg width="876" height="946" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="a"><stop stop-color="#5D0202" stop-opacity="0" offset="0%"/><stop stop-color="#5D0202" stop-opacity=".498" offset="100%"/></linearGradient></defs><g transform="matrix(1 0 0 -1 0 946)" fill="none" fill-rule="evenodd" opacity=".309"><circle fill="url(#a)" transform="scale(-1 1) rotate(-90 0 1529.37)" cx="730" cy="799.37" r="146"/><circle fill="url(#a)" transform="matrix(-1 0 0 1 876 0)" cx="438" cy="799.37" r="146"/><circle transform="matrix(0 1 1 0 -653.37 653.37)" cx="146" cy="799.37" r="146"/><circle transform="matrix(0 -1 -1 0 876.63 876.63)" cx="730" cy="146.63" r="146"/><circle transform="matrix(-1 0 0 1 876 0)" cx="438" cy="146.63" r="146"/></g></svg>
+<svg width="584" height="292" viewBox="0 0 584 292" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle opacity="0.308943" cx="438" cy="146" r="146" transform="rotate(90 438 146)" fill="url(#paint0_linear_61_4)"/>
+<circle opacity="0.308943" cx="146" cy="146" r="146" transform="rotate(-180 146 146)" fill="url(#paint1_linear_61_4)"/>
+<defs>
+<linearGradient id="paint0_linear_61_4" x1="292" y1="292" x2="584" y2="292" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5D0202" stop-opacity="0.01"/>
+<stop offset="1" stop-color="#5D0202" stop-opacity="0.497569"/>
+</linearGradient>
+<linearGradient id="paint1_linear_61_4" x1="0" y1="292" x2="292" y2="292" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5D0202" stop-opacity="0.01"/>
+<stop offset="1" stop-color="#5D0202" stop-opacity="0.497569"/>
+</linearGradient>
+</defs>
+</svg>

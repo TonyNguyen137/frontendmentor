@@ -101,6 +101,7 @@
 
           .navbar__link {
             color: inherit;
+
             @media (hover: hover) and (pointer: fine) {
               &:hover {
                 text-decoration: underline;

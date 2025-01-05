@@ -30,11 +30,9 @@ export class Tabber {
       const shiftPressed = event.shiftKey
 
       let borderElem = shiftPressed ? this._firstTabbableEl : this._lastTabbableEl
-      console.log('borderElem: ', borderElem)
 
       if (target === borderElem) {
         event.preventDefault()
-        console.log('in if')
 
         borderElem === this._firstTabbableEl
           ? this._lastTabbableEl.focus()

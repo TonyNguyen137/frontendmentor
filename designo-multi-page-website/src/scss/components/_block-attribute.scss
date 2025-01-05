@@ -4,6 +4,7 @@
 .block-attribute {
   text-align: center;
   color: var(--clr-dark-grey);
+
   &__image {
     margin-bottom: 48px;
   }
@@ -22,6 +23,11 @@
 
     &__image {
       margin-bottom: 0;
+    }
+
+    &--location {
+      display: block;
+      text-align: center;
     }
   }
 
