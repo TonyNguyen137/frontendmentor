@@ -32,6 +32,7 @@ module.exports = (env) => {
         '@styles': path.join(__dirname, 'src', 'scss'),
         '@images': path.join(__dirname, 'src', 'assets', 'images'),
         '@fonts': path.join(__dirname, 'src', 'assets', 'fonts'),
+        '@node': path.join(__dirname, 'node_modules'),
       },
     },
 
@@ -69,7 +70,7 @@ module.exports = (env) => {
           {
             import: 'src/views/pages/locations/index.hbs',
             filename: 'locations/index.html', // => dist/locations/index.html
-            data: data.graphicdesign,
+            data: data.locations,
           },
           {
             import: 'src/views/pages/contact/index.hbs',

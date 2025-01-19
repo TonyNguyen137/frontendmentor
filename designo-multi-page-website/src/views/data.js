@@ -244,4 +244,63 @@ exports.data = {
       },
     ],
   },
+  locations: {
+    leaflet: true,
+    places: [
+      {
+        lat: 43.70011,
+        long: -79.4163,
+        country: 'Canada',
+        office: {
+          name: 'Designo Central Office',
+          address: {
+            street: '3886 Wellington Street',
+            city: 'Toronto',
+            province: 'Ontario',
+            postalCode: 'M9C 3J5',
+          },
+          contact: {
+            phone: '+1 253-863-8967',
+            mail: 'contact@designo.co',
+          },
+        },
+      },
+      {
+        country: 'Australia',
+        left: true,
+
+        lat: -30.3245,
+        long: 149.7858,
+        office: {
+          name: 'Designo AU Office',
+          address: {
+            street: '19 Balonne Street',
+            city: 'Narrabri',
+            postalCode: '2443',
+          },
+          contact: {
+            phone: '(02) 6720 9092',
+            mail: 'contact@designo.au',
+          },
+        },
+      },
+      {
+        lat: 51.141529,
+        long: 1.29764,
+        country: 'United Kingdom',
+        office: {
+          name: 'Designo UK Office',
+          address: {
+            street: '13 Colorado Way',
+            city: 'Rhyd-y-fro',
+            postalCode: 'SA8 9GA',
+          },
+          contact: {
+            phone: '078 3115 1400',
+            mail: 'contact@designo.uk',
+          },
+        },
+      },
+    ],
+  },
 }

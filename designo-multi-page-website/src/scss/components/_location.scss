@@ -1,0 +1,90 @@
+@use '../abstracts/' as *;
+
+.location {
+  display: flex;
+  flex-direction: column;
+  column-gap: 30px;
+
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  &__col-information {
+    background-color: var(--clr-tertiary);
+    background-image: url('@images/shared/desktop/bg-pattern-two-circles.svg');
+    padding: 80px 24px;
+    text-align: center;
+    order: 1;
+  }
+  &__country {
+    font-size: px-to-rem(40);
+    font-weight: $fw-medium;
+    color: var(--clr-primary);
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    column-gap: 105px;
+    row-gap: 24px;
+  }
+  &__address,
+  &__contact {
+    display: flex;
+    flex-direction: column;
+  }
+  &__office-name,
+  &__col-name {
+    font-weight: $fw-bold;
+  }
+
+  &__col-map {
+    height: 320px;
+  }
+  @include mq(md) {
+    row-gap: 31px;
+    &:not(:last-child) {
+      margin-bottom: 120px;
+    }
+    &__col-information,
+    &__col-map {
+      border-radius: 15px;
+    }
+
+    &__wrapper {
+      flex-direction: row;
+    }
+
+    &__col-information {
+      padding: 88px 74px;
+      text-align: left;
+    }
+  }
+  @include mq(lg) {
+    flex-direction: row;
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    &__col-information {
+      padding: 88px 95px;
+      width: 730px;
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      text-align: left;
+      order: 0;
+    }
+
+    // &__wrapper {
+    //   flex-direction: row;
+    // }
+
+    &__col-map {
+      height: auto;
+      border-radius: 15px;
+      flex-grow: 1;
+    }
+  }
+}
