@@ -1,0 +1,310 @@
+/* 
+This file contains SCSS variables sourced from the Bootstrap framework.
+Source: https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+The code used in accordance with Bootstrap's open-source license (MIT).
+Modifications may have been made to the original code.
+*/
+@use 'functions' as *;
+@use 'sass:map';
+
+/* ****************************************************** */
+/* general setting
+/* ****************************************************** */
+$prefix: '';
+$enable-negative-margins: true;
+$enable-media-query-dark-mode: false;
+$enable-color-themes: true;
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* color theme
+/* ****************************************************** */
+
+$color-prefix: clr-;
+$hover-prefix: hover-;
+
+$primary: #e7816b;
+$secondary: #ffad9b;
+$tertiary: #fdf3f0;
+$dark-grey: #333136;
+$light-grey: #f1f3f5;
+$black: #1d1c1e;
+$white: #fff;
+
+$color-theme: (
+  default: (
+    color: (
+      'primary': $primary,
+      'secondary': $secondary,
+      'tertiary': $tertiary,
+      'dark-grey': $dark-grey,
+      'light-grey': $light-grey,
+      'black': $black,
+      'white': #fff,
+    ),
+    hover: (
+      'primary': #c5e0d4,
+      'secondary': #ffc107,
+    ),
+  ),
+);
+
+$clr-primary: var(--clr-primary);
+$clr-secondary: var(--clr-secondary);
+$clr-dark-grey: var(--clr-dark-grey);
+$clr-light-grey: var(--clr-light-grey);
+$clr-black: var(--clr-black);
+$clr-white: var(--clr-white);
+
+// The loop reduces the structure of $color-theme from nesting greater than 2 levels to a 2-level hierarchy.
+$color-theme-map: ();
+// @each $theme-name, $map in $color-theme {
+//   $color-theme-map: map.merge(
+//     $color-theme-map,
+//     (
+//       $theme-name: deep-loop($map),
+//     )
+//   );
+// }
+
+$selected-theme: default;
+$active-theme: map.get(
+  if($color-theme-map == (), $color-theme, $color-theme-map),
+  $selected-theme,
+  color
+);
+
+$active-theme-rgb: map-loop($active-theme, to-rgb, '$value');
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* Spacing */
+/* ****************************************************** */
+
+$factor: 4px;
+$sizes-regular: ();
+$sizes-irregular: (
+  17px: 17px,
+  58px: 58px,
+  67px: 67px,
+  121px: 121px,
+);
+
+@for $i from 0 through 25 {
+  $sizes-regular: map.merge(
+    $sizes-regular,
+    (
+      $i: if($i == 0, $i, $factor * $i),
+      30: 30 * $factor,
+      40: 40 * $factor,
+    )
+  );
+}
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* Bootstrap Grid System */
+/* ****************************************************** */
+$bs-prefix: bs-;
+$enable-bootstrap-grid-system: true;
+$grid-columns: 12;
+$grid-gutter-width: 24px;
+$grid-row-columns: 6;
+$enable-gutters: false;
+$gutters: $sizes-regular;
+
+// container setting
+$enable-container-classes: true;
+$enable-max-container-classes: true;
+$container-padding-x: 24px;
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* breakpoints
+/* ****************************************************** */
+
+/* px values */
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1200px,
+);
+
+/* em values */
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: px-to-em(576),
+//   md: px-to-em(768),
+//   lg: px-to-em(992),
+//   xl: px-to-em(1200),
+//   xxl: px-to-em(1400),
+// );
+
+/* rem values */
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: px-to-rem(576),
+//   md: px-to-rem(768),
+//   lg: px-to-rem(992),
+//   xl: px-to-rem(1200),
+//   xxl: px-to-rem(1400),
+// );
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* container max-widths
+/* ****************************************************** */
+
+$container-max-widths: (
+  sm: 540px,
+  md: 690px,
+  lg: 1111px,
+);
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* Font weight */
+/* ****************************************************** */
+
+$fw-thin: 100;
+$fw-extra-light: 200;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semi-bold: 600;
+$fw-bold: 700;
+$fw-extra-bold: 800;
+$fw-black: 900;
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* Z-index master list
+/* ****************************************************** */
+
+$z-level-1: 999;
+$z-level-2: 998;
+$z-level-3: 997;
+$z-level-4: 996;
+$z-default: 0;
+$z--1: -1;
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* transitions
+/* ****************************************************** */
+$enable-transitions: true;
+$enable-reduced-motion: false;
+$transition-base: all 0.3s ease-in-out !default;
+$transition-fade: opacity 0.3s linear !default;
+// scss-docs-start collapse-transition
+$transition-collapse: height 0.35s ease !default;
+$transition-collapse-width: width 0.35s ease !default;
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* responsive custom Properties - xs is default
+/* ****************************************************** */
+$custom-properties: (
+  'xs': (),
+  'md': (),
+  'lg': (),
+);
+
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* custom properties for clamp()
+/* ****************************************************** */
+
+$clamp-prefix: fluid-;
+$size-clamp: (
+  card-font: (
+    sm: 16,
+    md: 48,
+  ),
+);
+// ------------------------------------------------------
+
+/* ****************************************************** */
+/* values for utility map
+/* ****************************************************** */
+
+$order-values: (
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+);
+
+// - z-index values
+$zindex-levels: (
+  n1: $z--1,
+  0: $z-default,
+  1: $z-level-1,
+  2: $z-level-2,
+  3: $z-level-3,
+);
+
+$percentage-values: (
+  0: 0,
+  10: 10%,
+  15: 15%,
+  20: 20%,
+  25: 25%,
+  30: 30%,
+  35: 35%,
+  40: 40%,
+  45: 45%,
+  50: 50%,
+  55: 55%,
+  60: 60%,
+  65: 65%,
+  70: 70%,
+  75: 75%,
+  80: 80%,
+  85: 85%,
+  90: 90%,
+  95: 95%,
+  100: 100%,
+);
+
+$font-weight: (
+  'thin': $fw-thin,
+  'extra-light': $fw-extra-light,
+  'light': $fw-light,
+  'regular': $fw-regular,
+  'medium': $fw-medium,
+  'semi-bold': $fw-semi-bold,
+  'bold': $fw-bold,
+  'extra-bold': $fw-extra-bold,
+  'black': $fw-black,
+);
+
+$opacity: (
+  0: 0,
+  10: 0.1,
+  25: 0.25,
+  50: 0.5,
+  75: 0.75,
+  100: 1,
+);
+
+$translateXYValues: (
+  '40-70': translate(40%, 70%),
+);
+$fixed-values: (
+  200px: 200px,
+  1440px: 1440px,
+);

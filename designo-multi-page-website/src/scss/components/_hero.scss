@@ -1,0 +1,224 @@
+@use '../abstracts/' as *;
+
+.hero {
+  text-align: center;
+  margin-bottom: 120px;
+  color: var(--clr-white);
+  overflow: hidden;
+  position: relative;
+
+  &__container {
+    position: relative;
+    padding-top: 80px;
+    background-image: url('@images/home/desktop/bg-pattern-hero-home.svg');
+    background-position: 0% 52%;
+    background-repeat: no-repeat;
+    background-color: var(--clr-primary);
+    isolation: isolate;
+    display: grid;
+    row-gap: 80px;
+    grid-template-rows: auto 371px;
+  }
+  &__heading {
+    font-size: px-to-rem(32);
+    margin-bottom: 14px;
+  }
+
+  &__text {
+    font-size: px-to-rem(15);
+    line-height: 25px;
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    grid-row: 2 / 3;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  &--service {
+    margin-bottom: 96px;
+    .hero__container {
+      display: block;
+      padding-block: 105px;
+      background-size: 292px;
+      background-position: right;
+    }
+
+    .hero__heading {
+      margin-bottom: 24px;
+    }
+  }
+
+  &--contact {
+    .hero__container {
+      padding-block: 72px;
+      row-gap: 48px;
+    }
+
+    .hero__text {
+      margin-bottom: 0px;
+    }
+
+    .hero__form-group {
+      position: relative;
+    }
+    .hero__form-group:nth-last-child(2) {
+      margin-bottom: 40px;
+    }
+    .hero__input {
+      display: block;
+      width: 100%;
+      padding-block: 25px 18px;
+      background-color: transparent;
+      border: none;
+      box-shadow: 0 1px var(--clr-white);
+      font-size: px-to-rem(15);
+
+      &::placeholder {
+        font-weight: $fw-medium;
+        color: rgba(255 255 255 / 0.5);
+      }
+
+      &:focus {
+        box-shadow: 0 3px var(--clr-white);
+      }
+
+      &:not(:placeholder-shown):focus {
+        font-weight: $fw-medium;
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:focus {
+        transition: background-color 0s 600000s, color 0s 600000s !important;
+      }
+    }
+    .hero__form-error-group {
+      display: flex;
+      column-gap: 8px;
+      align-items: center;
+      position: absolute;
+      right: 8px;
+      top: 25px;
+    }
+    .hero__form-error-msg {
+      font-style: italic;
+      font-size: px-to-rem(12);
+    }
+  }
+
+  @include mq(sm) {
+    &__container {
+      border-radius: 15px;
+      row-gap: 69px;
+    }
+  }
+
+  @include mq(md) {
+    &__container {
+      padding-top: 60px;
+      background-position: 356% 49%;
+      grid-template-rows: auto 388px;
+    }
+
+    &__heading {
+      font-size: px-to-rem(48);
+      margin-bottom: 25px;
+    }
+
+    &__text {
+      font-size: inherit;
+      max-width: 65%;
+      margin-inline: auto;
+      margin-bottom: 19px;
+      line-height: 26px;
+    }
+
+    &--service {
+      margin-bottom: 120px;
+      .hero__container {
+        background-image: url('@images/web-design/desktop/bg-pattern-intro-web.svg');
+        background-size: revert;
+        background-position: 0% 50%;
+        padding-block: 64px;
+      }
+
+      .hero__text {
+        margin-inline: auto;
+        max-width: 57%;
+      }
+    }
+    &--contact {
+      .hero__container {
+        row-gap: 40px;
+        background-position: left -350% top -25%;
+      }
+
+      .hero__heading {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  @include mq(lg) {
+    text-align: left;
+    margin-bottom: 160px;
+
+    &__container {
+      padding-top: 145px;
+      justify-content: space-between;
+      grid-template-columns: 52% 284px;
+      grid-template-rows: auto 145px;
+      grid-auto-flow: column;
+      padding-inline: 95px;
+      row-gap: 0;
+      background-position: right top;
+    }
+
+    &__image {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      transform: none;
+      top: 0;
+      right: 0;
+      left: unset;
+    }
+
+    &__heading {
+      margin-bottom: 28px;
+    }
+
+    &__text {
+      max-width: revert;
+      margin-inline: 0;
+      width: 85%;
+    }
+
+    &--service {
+      text-align: center;
+      margin-bottom: 160px;
+      .hero__container {
+        background-position: right;
+      }
+      .hero__text {
+        max-width: 44%;
+      }
+    }
+
+    &--contact {
+      .hero__container {
+        grid-template-columns: 445px 380px;
+        grid-template-rows: revert;
+        background-position: left bottom;
+        padding-block: 55px;
+      }
+      .hero__wrapper {
+        padding-top: 80px;
+      }
+      .hero__text {
+        width: 100%;
+      }
+    }
+  }
+}

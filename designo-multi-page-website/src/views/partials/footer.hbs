@@ -1,0 +1,61 @@
+  </main>
+  <div class="grid-footer">
+    <div class="container px-0 cta-container">
+      <div class="cta">
+        <img class="cta__background" src="@images/shared/desktop/bg-pattern-call-to-action.svg" loading="lazy" alt="" draggable="false">
+        <div class="cta__wrapper">
+          <h2 class="cta__heading">
+            Let’s talk about your project
+          </h2>
+          <p class="cta__text">Ready to take it to the next level? Contact us today and find out how our expertise can help your business grow.</p>
+        </div>
+        <a class="btn" href="/contact">get in touch</a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container px-md-0">
+        <nav class="footer__nav" aria-label="footer">
+          <a class="footer__home-link"  href="/" aria-label="designo homepage">
+            <img alt="designo logo" width="202" height="27" src="@images/shared/desktop/logo-light.png?as=webp">
+          </a>
+          <ul class="footer__nav-list list-style-none">
+            <li class="footer__nav-li">
+              <a class="footer__nav-link" href="/about">Our Company</a>
+            </li>
+            <li class="footer__nav-li">
+              <a class="footer__nav-link" href="/locations">Locations</a>
+            </li>
+            <li class="footer__nav-li">
+              <a class="footer__nav-link" href="/contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="footer__bar-bottom">
+          <address class="footer__col--address">
+            <span class="footer__col-heading">Designo Central Office</span>
+            3886 Wellington Street <br>
+            Toronto, Ontario M9C 3J5
+          </address>
+          <div class="footer__col--contact">
+            <span class="footer__col-heading">Contact Us (Central Office)</span>
+            <a class="footer__link" href="tel:+12538638967"><span aria-hidden="true">P:</span> <span class="sr-only">Phone</span>{{ phone }}</a>
+            <a class="footer__link" href="mailto:contact@designo.co"><span aria-hidden="true">M:</span> <span class="sr-only">Mail</span>{{ mail }}</a>
+          </div>
+          <div class="footer__col--sns">
+            {{#each socialNetworks}}
+            <a class="footer__link" href="/" aria-label="{{this}}">
+              <svg class="footer__sn-icon" width="24" height="24" aria-hidden="true">
+                <use href="@images/sprite.svg#icon-{{this}}"/>
+              </svg>
+            </a>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  
+</body>
+</html>

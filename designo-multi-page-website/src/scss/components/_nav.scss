@@ -1,0 +1,115 @@
+@use '../abstracts/' as *;
+@use 'sass:map';
+
+.navbar {
+  padding-block: 35px 34px;
+  position: relative;
+  z-index: $z-level-1;
+  background-color: var(--clr-white);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease-in-out;
+    &[aria-expanded='false'] .navbar__i-close {
+      display: none;
+    }
+
+    &[aria-expanded='true'] .navbar__i-hamburger {
+      display: none;
+    }
+  }
+
+  &__collapse {
+    position: absolute;
+    background: black;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateY(100%);
+    z-index: 1;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    max-width: map.get($container-max-widths, sm);
+    padding-block: 48px;
+
+    padding-inline: 24px;
+    margin-inline: auto;
+    row-gap: 32px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    font-size: px-to-rem(25);
+    letter-spacing: 2px;
+    color: var(--clr-white);
+  }
+
+  // media queries
+
+  @include mq(sm) {
+    &__list {
+      padding-inline: 0px;
+    }
+  }
+
+  @include mq(md) {
+    padding-block: 64px;
+
+    &__toggle {
+      display: none;
+    }
+
+    &__collapse {
+      all: unset;
+      display: block;
+      background-color: transparent;
+    }
+
+    &__list {
+      padding-block: 0;
+      flex-direction: row;
+      column-gap: 42px;
+      row-gap: revert;
+    }
+
+    &__link {
+      font-size: px-to-rem(14);
+    }
+  }
+
+  @include mq(lg) {
+    padding-block: 67px 64px;
+  }
+
+  // expanded navbar
+  @each $breakpoint in map.keys($grid-breakpoints) {
+    @if $breakpoint != 'xs' {
+      @include mq($breakpoint) {
+        &[data-expand='#{$breakpoint}'] {
+          .navbar__collapse {
+            display: block;
+          }
+
+          .navbar__link {
+            color: inherit;
+
+            @media (hover: hover) and (pointer: fine) {
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

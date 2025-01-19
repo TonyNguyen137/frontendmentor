@@ -1,0 +1,129 @@
+<section class="block-image-text{{ heroClass }}">
+  <div class="container px-0 block-image-text__container">
+    {{#if imageLeft}}
+    <picture class="block-image-text__image-wrapper">
+      <source
+        type="image/avif"
+        srcset="@images/about/desktop/image-{{ image }}-desktop.jpg?as=avif"
+        media="(min-width: 1200px)"
+        width="476"
+        height="640"
+      />
+      <source
+        type="image/webp"
+        srcset="@images/about/desktop/image-{{ image }}-desktop.jpg?as=webp"
+        media="(min-width: 1200px)"
+        width="476"
+        height="640"
+      />
+      <source
+        type="image/avif"
+        srcset="@images/about/tablet/image-{{ image }}-tablet.jpg?as=avif"
+        media="(min-width: 768px)"
+        width="689"
+        height="320"
+      />
+      <source
+        type="image/webp"
+        srcset="@images/about/tablet/image-{{ image }}-tablet.jpg?as=webp"
+        media="(min-width: 768px)"
+        width="689"
+        height="320"
+      />
+      <source
+        type="image/avif"
+        srcset="@images/about/mobile/image-{{ image }}-mobile.jpg?as=avif"
+        width="375"
+        height="320"
+      />
+      <source
+        type="image/webp"
+        srcset="@images/about/mobile/image-{{ image }}-mobile.jpg?as=webp"
+        width="375"
+        height="320"
+      />
+
+      <img
+        class="block-image-text__image"
+        src="@images/about/desktop/image-{{ image }}.jpg?as=avif"
+        alt="person looking at images"
+        width="476"
+        height="640"
+      />
+    </picture>
+    <div class="block-image-text__content-wrapper">
+      <h2 class="block-image-text__heading">{{ heading }}</h2>
+      {{#each paragraph}}
+      <p class="block-image-text__text">{{ this }}</p>
+      {{/each}}
+    </div>
+    {{else}}
+    <div class="block-image-text__content-wrapper">
+      <h2 class="block-image-text__heading">{{ heading }}</h2>
+      {{#each paragraph}}
+      <p class="block-image-text__text">{{ this }}</p>
+      {{/each}}
+    </div>
+    <picture class="block-image-text__image-wrapper">
+      <source
+        type="image/avif"
+        srcset="@images/about/desktop/image-{{ image }}-desktop.jpg?as=avif"
+        media="(min-width: 1200px)"
+        width="476"
+        height="640"
+      />
+      <source
+        type="image/webp"
+        srcset="@images/about/desktop/image-{{ image }}-desktop.jpg?as=webp"
+        media="(min-width: 1200px)"
+        width="476"
+        height="640"
+      />
+      <source
+        type="image/avif"
+        srcset="@images/about/tablet/image-{{ image }}-tablet.jpg?as=avif"
+        media="(min-width: 768px)"
+        width="689"
+        height="320"
+      />
+      <source
+        type="image/webp"
+        srcset="@images/about/tablet/image-{{ image }}-tablet.jpg?as=webp"
+        media="(min-width: 768px)"
+        width="689"
+        height="320"
+      />
+      <source
+        type="image/avif"
+        srcset="@images/about/mobile/image-{{ image }}-mobile.jpg?as=avif"
+        width="375"
+        height="320"
+      />
+      <source
+        type="image/webp"
+        srcset="@images/about/mobile/image-{{ image }}-mobile.jpg?as=webp"
+        width="375"
+        height="320"
+      />
+
+      <img
+        class="block-image-text__image"
+        src="@images/about/desktop/image-{{ image }}.jpg?as=avif"
+        alt="person looking at images"
+        width="476"
+        height="640"
+      />
+    </picture>
+    {{/if}}
+  </div>
+  {{#if heroClass}}
+  <svg
+    width="1006"
+    height="594"
+    class="position-absolute bottom-left-0 translate-y-73 z-n1 d-none d-lg-block"
+    aria-hidden="true"
+  >
+    <use href="@images/sprite.svg#leaf" />
+  </svg>
+  {{/if}}
+</section>

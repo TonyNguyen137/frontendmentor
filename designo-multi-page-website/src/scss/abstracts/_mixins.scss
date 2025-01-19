@@ -1,0 +1,698 @@
+/* 
+This file contains SCSS mixins sourced from the Bootstrap framework.
+Source: https://github.com/twbs/bootstrap/tree/main/scss/mixins
+These mixins are used in accordance with Bootstrap's open-source license (MIT).
+Modifications may have been made to the original mixins.
+*/
+@use 'sass:meta';
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:selector';
+@use 'functions' as *;
+@use 'variables' as *;
+
+@mixin generate-breakpoints($grid-breakpoints) {
+  @each $bp in map.keys($grid-breakpoints) {
+    $value: map.get($grid-breakpoints, $bp);
+    $value: if($value != 0, $value, null);
+
+    @if $value {
+      --#{$bp}: #{$value};
+    }
+  }
+}
+
+@mixin transition($transition...) {
+  @if list.length($transition) == 0 {
+    $transition: $transition-base;
+  }
+
+  @if list.length($transition) > 1 {
+    @each $value in $transition {
+      @if $value == null or $value == none {
+        @warn "The keyword 'none' or 'null' must be used as a single argument.";
+      }
+    }
+  }
+
+  @if $enable-transitions {
+    @if list.nth($transition, 1) != null {
+      transition: $transition;
+    }
+
+    @if $enable-reduced-motion and
+      list.nth($transition, 1) !=
+      null and
+      list.nth($transition, 1) !=
+      none
+    {
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+  }
+}
+
+// media query
+
+@mixin mq($size, $add-media-hover: false) {
+  // @debug $size;
+  // @debug $add-media-hover;
+
+  @if map.has-key($grid-breakpoints, $size) and $size != 'xs' {
+    $breakpoint: map.get($grid-breakpoints, $size);
+
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @error 'the keyword #{$size} is not in the $breakpoints map';
+  }
+}
+
+@mixin make-container($gutter: $container-padding-x) {
+  width: 100%;
+  padding-inline: $gutter;
+  margin-inline: auto;
+}
+
+@mixin make-container-fluid($max-width, $gutter: $container-padding-x) {
+  max-width: $max-width;
+  padding-inline: $gutter;
+  margin-inline: auto;
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media screen and (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Bootstrap grid system
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: math.percentage(math.div(1, $count));
+  }
+}
+
+@mixin make-row($gutter: $grid-gutter-width) {
+  --#{$bs-prefix}gutter-x: #{$gutter};
+  --#{$bs-prefix}gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--#{$bs-prefix}gutter-y));
+  margin-right: calc(-0.5 * var(--#{$bs-prefix}gutter-x));
+  margin-left: calc(-0.5 * var(--#{$bs-prefix}gutter-x));
+}
+
+@mixin make-col-ready() {
+  // Add box sizing if only the grid is loaded
+  box-sizing: if(
+    meta.variable-exists(include-column-box-sizing) and $include-column-box-sizing,
+    border-box,
+    null
+  );
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we set the width
+  // later on to override this initial width.
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
+  padding-right: calc(
+    var(--#{$bs-prefix}gutter-x) * 0.5
+  ); // stylelint-disable-line function-disallowed-list
+  padding-left: calc(
+    var(--#{$bs-prefix}gutter-x) * 0.5
+  ); // stylelint-disable-line function-disallowed-list
+  margin-top: var(--#{$bs-prefix}gutter-y);
+}
+
+@mixin make-col($size: false, $columns: $grid-columns) {
+  @if $size {
+    flex: 0 0 auto;
+    width: math.percentage(math.div($size, $columns));
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  $num: math.div($size, $columns);
+  margin-left: if($num == 0, 0, math.percentage($num));
+}
+
+@mixin make-grid-columns(
+  $columns: $grid-columns,
+  $gutter: $grid-gutter-width,
+  $breakpoints: $grid-breakpoints
+) {
+  @each $breakpoint in map.keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col#{$infix} {
+        flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      }
+
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto();
+      }
+
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+      }
+
+      .col#{$infix}-auto {
+        @include make-col-auto();
+      }
+
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+
+        // `$columns - 1` because offsetting by the width of an entire row isn't possible
+        @for $i from 0 through ($columns - 1) {
+          @if not($infix == '' and $i == 0) {
+            // Avoid emitting useless .offset-0
+            .offset#{$infix}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
+          }
+        }
+      }
+
+      // Gutters
+      //
+      // Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
+      @if ($enable-gutters) {
+        @each $key, $value in $gutters {
+          .g#{$infix}-#{$key},
+          .gx#{$infix}-#{$key} {
+            --#{$bs-prefix}gutter-x: #{$value};
+          }
+
+          .g#{$infix}-#{$key},
+          .gy#{$infix}-#{$key} {
+            --#{$bs-prefix}gutter-y: #{$value};
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin make-cssgrid($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .g-col#{$infix}-#{$i} {
+            grid-column: auto / span $i;
+          }
+        }
+
+        // Start with `1` because `0` is an invalid value.
+        // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
+        @for $i from 1 through ($columns - 1) {
+          .g-start#{$infix}-#{$i} {
+            grid-column-start: $i;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin generate-utility($utility, $infix: '', $key, $is-rfs-media-query: false) {
+  $values: map.get($utility, values);
+
+  // Check if the list is not empty before accessing the first element
+  @if list.length($values) > 0 {
+    // If the values are a list or string, convert it into a map
+    @if meta.type-of($values) == 'string' or meta.type-of(list.nth($values, 1)) != 'list' {
+      $values: list.zip($values, $values);
+    }
+  }
+
+  $is-important: if(map.get($utility, important), true, false);
+  $properties: map.get($utility, property);
+
+  $custom-property-value: if(
+    map.has-key($utility, custom-property-value),
+    map.get($utility, custom-property-value),
+    null
+  );
+  $state: if(map.has-key($utility, state), map.get($utility, state), null);
+
+  // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+  @if meta.type-of($properties) == 'string' {
+    $properties: list.append((), $properties);
+  }
+
+  $css-var: map.get($utility, css-var);
+  $is-local-vars: map.get($utility, local-vars);
+  $is-rtl: map.get($utility, rtl);
+
+  // maps $custom-property as value to a property
+  @if $custom-property-value {
+    $property-class: if(map.has-key($utility, class), map.get($utility, class), '');
+
+    $infix: if(
+      $property-class == '' and string.slice($infix, 1, 1) == '-',
+      string.slice($infix, 2),
+      $infix
+    );
+
+    @each $property in $properties {
+      .#{$property-class + $infix} {
+        #{$property}: var(--#{$custom-property-value}) if($is-important, !important, null);
+      }
+    }
+  }
+
+  @if meta.type-of($properties) == 'map' {
+    $property-class: if(map.has-key($utility, class), map.get($utility, class), '');
+    $prefix-class: null;
+    $suffix-class: null;
+    $dash-index: string.index($property-class, '-');
+    $state: if(map.has-key($utility, state), map.get($utility, state), '');
+    @if $dash-index {
+      $prefix-class: string.slice($property-class, 1, $dash-index - 1);
+      $suffix-class: string.slice($property-class, $dash-index + 1);
+    }
+
+    // $prefix-class: string.slice('Helvetica Neue', 11); // "Neue"
+    // @debug class $property-class;
+
+    $infix: if(
+      $property-class == '' and string.slice($infix, 1, 1) == '-',
+      string.slice($infix, 2),
+      $infix
+    );
+
+    .#{if($prefix-class, $prefix-class,$property-class)
+      + $infix
+      + if($suffix-class, -$suffix-class,'')
+      + $state} {
+      @each $property, $value in $properties {
+        #{$property}: $value if($is-important, !important, null);
+      }
+    }
+  }
+  @if $state {
+    @each $key, $value in $values {
+      // Use custom class if present
+      $property-class: if(
+        map.has-key($utility, class),
+        map.get($utility, class),
+        list.nth($properties, 1)
+      );
+
+      // @debug property-class $property-class;
+      $property-class: if($property-class == null, '', $property-class);
+
+      $infix: if(
+        $property-class == '' and string.slice($infix, 1, 1) == '-',
+        string.slice($infix, 2),
+        $infix
+      );
+
+      // Don't prefix if value key is null (e.g. with shadow class)
+      $property-class-modifier: if(
+        $key,
+        if($property-class == '' and $infix == '', '', '-') + $key,
+        ''
+      );
+
+      // @debug infix $infix;
+      @if $state == ':hover' {
+        @media (hover: hover) and (pointer: fine) {
+          .#{$property-class + $infix + $property-class-modifier}#{$state} {
+            @each $property in $properties {
+              #{$property}: $value if($is-important, !important, null);
+            }
+          }
+        }
+      } @else {
+        .#{$property-class + $infix + $property-class-modifier}#{$state} {
+          @each $property in $properties {
+            #{$property}: $value if($is-important, !important, null);
+          }
+        }
+      }
+    }
+  }
+
+  // map values to $custom-property
+  @if $properties == null and $css-var {
+    @each $key, $value in $values {
+      // Use custom class if present
+      $property-class: if(
+        map.has-key($utility, class),
+        map.get($utility, class),
+        list.nth($properties, 1)
+      );
+
+      // @debug property-class $property-class;
+      $property-class: if($property-class == null, '', $property-class);
+
+      $infix: if(
+        $property-class == '' and string.slice($infix, 1, 1) == '-',
+        string.slice($infix, 2),
+        $infix
+      );
+
+      // Don't prefix if value key is null (e.g. with shadow class)
+      $property-class-modifier: if(
+        $key,
+        if($property-class == '' and $infix == '', '', '-') + $key,
+        ''
+      );
+
+      .#{$property-class + $infix + $property-class-modifier} {
+        --#{$css-var}: #{$value};
+      }
+    }
+  }
+
+  @if meta.type-of($properties) == 'list' and $custom-property-value == null and $state == null {
+    @each $key, $value in $values {
+      // @debug key $key value $value;
+
+      // Use custom class if present
+      $property-class: if(
+        map.has-key($utility, class),
+        map.get($utility, class),
+        list.nth($properties, 1)
+      );
+
+      // @debug property-class $property-class;
+      $property-class: if($property-class == null, '', $property-class);
+
+      $infix: if(
+        $property-class == '' and string.slice($infix, 1, 1) == '-',
+        string.slice($infix, 2),
+        $infix
+      );
+
+      // Don't prefix if value key is null (e.g. with shadow class)
+      $property-class-modifier: if(
+        $key,
+        if($property-class == '' and $infix == '', '', '-') + $key,
+        ''
+      );
+
+      .#{$property-class + $infix + $property-class-modifier} {
+        @each $property in $properties {
+          @if $is-local-vars {
+            @each $local-var, $variable in $is-local-vars {
+              --#{$prefix}#{$local-var}: #{$variable};
+            }
+          }
+          #{$property}: $value if($is-important, !important, null);
+        }
+      }
+    }
+  }
+}
+
+// Utility generator
+// Used to generate utilities & print utilities
+@mixin generate-utilit-2($utility, $infix: '', $key, $is-rfs-media-query: false) {
+  $values: map.get($utility, values);
+  // @debug utility $utility;
+  // @debug values $values;
+
+  // Check if the list is not empty before accessing the first element
+  @if list.length($values) > 0 {
+    // If the values are a list or string, convert it into a map
+    @if meta.type-of($values) == 'string' or meta.type-of(list.nth($values, 1)) != 'list' {
+      $values: list.zip($values, $values);
+    }
+  }
+
+  @each $key, $value in $values {
+    $properties: map.get($utility, property);
+
+    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+    @if meta.type-of($properties) == 'string' {
+      $properties: list.append((), $properties);
+    }
+    // @debug $properties;
+
+    // Use custom class if present
+    $property-class: if(
+      map.has-key($utility, class),
+      map.get($utility, class),
+      list.nth($properties, 1)
+    );
+    $property-class: if($property-class == null, '', $property-class);
+
+    // Use custom CSS variable name if present, otherwise default to `class`
+    $custom-property-value: if(
+      map.has-key($utility, custom-property-value),
+      map.get($utility, custom-property-value),
+      map.get($utility, class)
+    );
+
+    // @debug css name $custom-property-value;
+    // State params to generate pseudo-classes
+    $state: if(map.has-key($utility, state), map.get($utility, state), ());
+
+    $infix: if(
+      $property-class == '' and string.slice($infix, 1, 1) == '-',
+      string.slice($infix, 2),
+      $infix
+    );
+
+    // Don't prefix if value key is null (e.g. with shadow class)
+    $property-class-modifier: if(
+      $key,
+      if($property-class == '' and $infix == '', '', '-') + $key,
+      ''
+    );
+
+    // @if map-get($utility, rfs) {
+    //   // Inside the media query
+    //   @if $is-rfs-media-query {
+    //     $val: rfs-value($value);
+
+    //     // Do not render anything if fluid and non fluid values are the same
+    //     $value: if($val == rfs-fluid-value($value), null, $val);
+    //   } @else {
+    //     $value: rfs-fluid-value($value);
+    //   }
+    // }
+
+    // @debug TEST;
+
+    $is-css-var: map.get($utility, css-var);
+    $is-local-vars: map.get($utility, local-vars);
+    $is-rtl: map.get($utility, rtl);
+
+    // @debug is_css $is-css-var;
+
+    // @debug global $is-global-vars;
+    @if $value == null and map.has-key($utility, custom-property-value) {
+      $class: map.get($utility, class);
+      $property: map.get($utility, property);
+      $variable: map.get($utility, custom-property-value);
+
+      // @debug $property $class $variable;
+
+      .#{$class + $infix} {
+        #{$property}: var(--#{$variable});
+      }
+    }
+    @if $value != null {
+      @if $is-rtl == false {
+        /* rtl:begin:remove */
+      }
+
+      @if $is-css-var {
+        .#{$property-class + $infix + $property-class-modifier} {
+          --#{$prefix}#{$is-css-var}: #{$value};
+        }
+
+        @each $pseudo in $state {
+          // @debug pseudo $pseudo;
+          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+            --#{$prefix}#{$custom-property-value}: #{$value};
+          }
+        }
+      } @else {
+        $is-important: if(map.get($utility, important), true, false);
+
+        @if ($value == transparent) {
+          .#{$property-class + $infix + $property-class-modifier} {
+            @each $property in $properties {
+              #{$property}: $value if($is-important, !important, null);
+            }
+          }
+        } @else {
+          .#{$property-class + $infix + $property-class-modifier} {
+            @each $property in $properties {
+              @if $is-local-vars {
+                @each $local-var, $variable in $is-local-vars {
+                  --#{$prefix}#{$local-var}: #{$variable};
+                }
+              }
+
+              #{$property}: $value if($is-important, !important, null);
+            }
+          }
+        }
+
+        .#{$property-class + $infix + $property-class-modifier} {
+          @each $property in $properties {
+            @if $is-local-vars {
+              @each $local-var, $variable in $is-local-vars {
+                --#{$prefix}#{$local-var}: #{$variable};
+              }
+            }
+
+            #{$property}: $value if($is-important, !important, null);
+          }
+        }
+
+        @each $pseudo in $state {
+          // @debug pseudo2 $pseudo;
+
+          .#{$property-class + $infix + $property-class-modifier}:#{$pseudo} {
+            @each $property in $properties {
+              @if $is-local-vars {
+                @each $local-var, $variable in $is-local-vars {
+                  --#{$prefix}#{$local-var}: #{$variable};
+                }
+              }
+              #{$property}: $value if($is-important, !important, null);
+            }
+          }
+        }
+      }
+
+      // @if $is-rtl == false {
+      //   /* rtl:end:remove */
+      // }
+    }
+  }
+}
+
+// @mixin generate-custom-properties($map, $property-prefix: '') {
+//   @each $variable-name, $value in $map {
+//     // @debug $variable-name, $value;
+
+//     --#{$prefix}#{$property-prefix}#{$variable-name}: #{$value};
+//   }
+// }
+
+@mixin generate-custom-properties($map, $property-prefix: '') {
+  @each $breakpoint in map.keys($map) {
+    @include media-breakpoint-up($breakpoint) {
+      @each $variable-name, $value in map.get($map, $breakpoint) {
+        // @debug name $variable-name, value $value;
+
+        --#{$prefix}#{$property-prefix}#{$variable-name}: #{$value};
+      }
+    }
+  }
+}
+
+@mixin generate-clamp-custom-properties($clamp-map, $clamp-prefix: '') {
+  @each $key, $map in $clamp-map {
+    $threshold: map.keys($map);
+    $sizeMin: map.get($map, list.nth($threshold, 1));
+    $sizeMax: map.get($map, list.nth($threshold, 2));
+
+    $viewportMin: remove-unit-and-convert(map.get($grid-breakpoints, list.nth($threshold, 1)));
+    $viewportMax: remove-unit-and-convert(map.get($grid-breakpoints, list.nth($threshold, 2)));
+
+    $deltaSize: $sizeMax - $sizeMin;
+    $deltaViewport: $viewportMax - $viewportMin;
+    $change: round-to(math.div($deltaSize, $deltaViewport));
+
+    $preferred: px-to-rem($sizeMax - ($viewportMax * $change));
+
+    $rateOfChange: 100vw * $change;
+
+    $sizeMin: px-to-rem($sizeMin);
+    $sizeMax: px-to-rem($sizeMax);
+
+    --#{$prefix}#{$clamp-prefix}#{$key}: clamp(
+      #{$sizeMin},
+      #{$preferred} + #{$rateOfChange},
+      #{$sizeMax}
+    );
+  }
+}
+
+@mixin generate-color-themes($color-theme, $removed-theme: 'default') {
+  // @debug color-theme $color-theme;
+  // @debug meta.type-of($color-theme);
+
+  $_theme-map: map.remove($color-theme, $removed-theme);
+  // @debug _theme-map $_theme-map;
+  // @debug meta meta.type-of($_theme-map);
+
+  @each $theme, $color-map, $color-hover in $_theme-map {
+    $colors: map.get($color-map, color);
+    $colors-hover: if(map.get($color-map, hover) != null, map.get($color-map, hover), ());
+    // @debug theme $theme;
+    // @debug color $colors;
+    // @debug color-hover $colors-hover;
+
+    [data-theme='#{$theme}'] {
+      $colors-rgb: map-loop($colors, to-rgb, '$value');
+      @include generate-color-custom-properties($colors, $color-prefix);
+      @include generate-color-custom-properties-rgb($colors-rgb, $color-prefix);
+      @include generate-color-custom-properties($colors-hover, $hover-prefix);
+    }
+  }
+}
+
+@mixin generate-color-custom-properties($color-theme, $color-prefix: 'clr-') {
+  // @debug meta.type-of($color-theme);
+
+  @each $color-name, $value in $color-theme {
+    @if (meta.type-of($value) == 'color') {
+      --#{$prefix}#{$color-prefix}#{$color-name}: #{$value};
+    } @else {
+      @error 'the color input is not correct';
+    }
+  }
+}
+
+@mixin generate-color-custom-properties-rgb($color-theme, $color-prefix: 'clr-') {
+  @each $color, $rgb-value in $color-theme {
+    $type: meta.type-of($rgb-value);
+
+    @if ($type == 'list') {
+      --#{$prefix}#{$color-prefix}#{$color}-rgb: #{$rgb-value};
+    } @else {
+      @error 'the color input is not correct';
+    }
+  }
+}

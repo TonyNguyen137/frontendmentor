@@ -1,0 +1,134 @@
+@use '../abstracts' as *;
+.block-image-text {
+  margin-bottom: 120px;
+  &__container {
+    background-color: var(--clr-tertiary);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content-wrapper {
+    padding: 80px 24px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 24px;
+    background-image: url('@images/about/mobile/bg-pattern.svg');
+    background-repeat: no-repeat;
+    background-position: 27% 75%;
+  }
+
+  &__content-wrapper:first-child {
+    order: 1;
+  }
+
+  &__text {
+    font-size: px-to-rem(15);
+  }
+
+  &__heading {
+    font-size: px-to-rem(32);
+    color: var(--clr-primary);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &--hero {
+    max-width: 1440px;
+    margin-inline: auto;
+    margin-bottom: 0;
+    .block-image-text__content-wrapper:first-child {
+      background-color: var(--clr-primary);
+      background-image: url('@images/about/mobile/bg-pattern-hero-about-mobile.svg');
+      background-position: right top -113%;
+    }
+
+    .block-image-text__heading,
+    .block-image-text__text {
+      color: var(--clr-white);
+    }
+
+    .block-image-text__heading {
+      margin-bottom: 32px;
+    }
+  }
+
+  @include mq(sm) {
+    &__container {
+      overflow: hidden;
+      border-radius: 15px;
+    }
+    &--hero {
+      margin-bottom: 120px;
+    }
+  }
+  @include mq(md) {
+    &__content-wrapper {
+      padding: 68px 59px;
+      background-position: 27% 95%;
+    }
+
+    &--hero {
+      .block-image-text__content-wrapper:first-child {
+        background-image: url('@images/about/desktop/bg-pattern-hero-about-desktop.svg');
+
+        background-position: left -317% top 135%;
+      }
+    }
+  }
+  @include mq(lg) {
+    margin-bottom: 160px;
+    &__container {
+      flex-direction: row;
+    }
+
+    &__image-wrapper {
+      flex: 1 0 476px;
+    }
+
+    &__content-wrapper {
+      padding: 154px 95px;
+      flex-direction: column;
+      text-align: left;
+      row-gap: 24px;
+    }
+
+    &__content-wrapper:first-child {
+      background-position: 170%;
+      order: revert;
+    }
+
+    &__content-wrapper:last-child {
+      background-position: 445%;
+    }
+
+    &__heading {
+      font-size: px-to-rem(40);
+    }
+
+    &__text {
+      font-size: inherit;
+    }
+
+    &--hero {
+      position: relative;
+      margin-bottom: 160px;
+      .block-image-text__content-wrapper:first-child {
+        background-position: -230% 100%;
+        padding-block: 135px;
+        padding-inline: 95px 82px;
+      }
+
+      .block-image-text__heading {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}

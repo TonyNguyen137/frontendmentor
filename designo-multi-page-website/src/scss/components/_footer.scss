@@ -1,0 +1,155 @@
+@use '../abstracts' as *;
+
+.footer {
+  --_gap: 32px;
+  --_opacity: 0.5;
+  --_line: 1px solid rgba(var(--clr-white-rgb), 0.15);
+  background-color: $clr-black;
+  color: $clr-white;
+  text-align: center;
+  padding-top: 253px;
+  padding-bottom: 64px;
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+
+  &__home-link {
+    padding-bottom: var(--_gap);
+  }
+  &__nav-list {
+    padding-top: var(--_gap);
+    border-top: var(--_line);
+  }
+
+  &__nav-li + &__nav-li {
+    margin-top: 32px;
+  }
+
+  &__nav-link {
+    text-transform: uppercase;
+    font-size: px-to-rem(14);
+    line-height: 1;
+    letter-spacing: 2px;
+    color: inherit;
+
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: #979797;
+      }
+    }
+  }
+
+  // bottom bar
+  &__bar-bottom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+  }
+
+  &__col--address {
+    font-style: normal;
+    opacity: var(--_opacity);
+  }
+
+  &__col--contact {
+    opacity: var(--_opacity);
+  }
+
+  &__col-heading {
+    display: block;
+    font-weight: $fw-bold;
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__col--sns {
+    display: flex;
+    column-gap: 16px;
+    justify-content: center;
+    align-items: end;
+  }
+  &__sn-icon {
+    color: $clr-primary;
+    transition: color 0.2s;
+  }
+
+  &--contact {
+    padding-top: 64px;
+  }
+
+  @media (hover: hover) {
+    &__sn-icon:hover {
+      color: var(--clr-secondary);
+    }
+  }
+
+  // media queries
+  @include mq(md) {
+    --_gap: 0;
+    padding-bottom: 80px;
+    text-align: left;
+    padding-top: 166px;
+
+    &__nav {
+      flex-direction: row;
+      justify-content: space-between;
+      border-bottom: var(--_line);
+    }
+
+    &__nav-list {
+      display: flex;
+      column-gap: 40px;
+      border-top: none;
+    }
+
+    &__nav-li + &__nav-li {
+      margin-top: 0;
+    }
+
+    &__link {
+      font-weight: 700;
+    }
+
+    &__bar-bottom {
+      padding-top: 31px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__contact-link {
+      font-weight: $fw-bold;
+    }
+
+    &--contact {
+      padding-top: 80px;
+    }
+  }
+
+  @include mq(lg) {
+    padding-top: 144px;
+    padding-bottom: 72px;
+
+    &__bar-bottom {
+      justify-content: revert;
+    }
+    &__col--contact {
+      margin-left: 202px;
+    }
+
+    &__col--sns {
+      margin-left: auto;
+    }
+
+    &--contact {
+      padding-top: 72px;
+    }
+  }
+}

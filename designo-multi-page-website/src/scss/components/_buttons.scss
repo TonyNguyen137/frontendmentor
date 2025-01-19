@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+a.btn {
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 17px 18px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  border: none;
+
+  font-size: px-to-rem(15);
+  font-weight: $fw-medium;
+  letter-spacing: 1px;
+  transition: background-color 0.2s;
+  background-color: var(--clr-white);
+  color: var(--clr-black);
+
+  &--dark {
+    background-color: var(--clr-primary);
+    color: var(--clr-white);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--clr-secondary);
+      color: var(--clr-white);
+    }
+  }
+}

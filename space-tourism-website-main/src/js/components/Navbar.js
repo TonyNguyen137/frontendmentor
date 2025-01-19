@@ -9,8 +9,7 @@ export class Navbar {
   constructor(navbarEl, transitionDurationValue = 300) {
     // init member variables
     this.navbarEl = typeof navbarEl === 'string' ? $(navbarEl) : navbarEl;
-    this.tabbableListEl = this.navbarEl.querySelectorAll('.link-js, .close-js');
-    this.firstTabbableEl = this.tabbableListEl[0];
+«    this.firstTabbableEl = this.tabbableListEl[0];
     this.lastTabbableEl = this.tabbableListEl[this.tabbableListEl.length - 1];
     this.menubarWrapperEl = this.navbarEl.querySelector('.wrapper-js');
     this.openBtnEl = this.navbarEl.querySelector('.open-js');

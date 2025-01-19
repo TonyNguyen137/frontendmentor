@@ -1,0 +1,58 @@
+<h1 hidden>locations</h1>
+<div class="container px-0">
+  {{#each places}}
+  <div class="location" data-lat="{{ this.lat }}" data-long="{{ this.long }}">
+    {{#if left}}
+    <div class="location__col-map" id="map{{@index}}"></div>
+    <div class="location__col-information">
+      <span class="location__country">{{ this.country }}</span>
+      <div class="location__wrapper">
+        <address class="location__address">
+          <span class="location__office-name">{{ this.office.name }}</span>
+          <span class="location__street">{{ this.office.address.street }}</span>
+          <div>
+            <span class="location__city"> {{ this.office.address.city }},</span>
+            {{#if this.office.address.province }}
+            <span class="location__province">{{ this.office.address.province }}</span>
+            {{/if}}
+
+            <span class="location__postal-code"> {{ this.office.address.postalCode }}</span>
+          </div>
+        </address>
+
+        <div class="location__contact">
+          <span class="location__col-name">Contact</span>
+          <span> P : {{ this.office.contact.phone }} </span>
+          <span> M : {{ this.office.contact.mail }}</span>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="location__col-information">
+      <span class="location__country">{{ this.country }}</span>
+      <div class="location__wrapper">
+        <address class="location__address">
+          <span class="location__office-name">{{ this.office.name }}</span>
+          <span class="location__street">{{ this.office.address.street }}</span>
+          <div>
+            <span class="location__city"> {{ this.office.address.city }},</span>
+            {{#if this.office.address.province }}
+            <span class="location__province">{{ this.office.address.province }}</span>
+            {{/if}}
+
+            <span class="location__postal-code"> {{ this.office.address.postalCode }}</span>
+          </div>
+        </address>
+
+        <div class="location__contact">
+          <span class="location__col-name">Contact</span>
+          <span> P : {{ this.office.contact.phone }} </span>
+          <span> M : {{ this.office.contact.mail }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="location__col-map" id="map{{@index}}"></div>
+    {{/if}}
+  </div>
+  {{/each}}
+</div>
