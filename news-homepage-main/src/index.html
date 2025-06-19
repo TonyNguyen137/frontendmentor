@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/index.js" type="module"></script>
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="flex items-center justify-between">
+          <a href="/" aria-label="to homepage">
+            <img src="images/logo.svg" alt="company logo" />
+          </a>
+          <button
+            class="sm:hidden nav-btn-open"
+            aria-label="open menu"
+            aria-expanded="false"
+            aria-controls="nav-list"
+          >
+            <img src="images/icon-menu.svg" alt="menu icon" />
+          </button>
+          <div
+            id="nav-list"
+            class="nav-list transition-all translate-x-full sm:translate-x-0 p-7 sm:p-0 fixed top-0 right-0 w-[256px] sm:w-auto sm:static h-screen bg-light sm:h-auto z-[2]"
+          >
+            <button
+              class="nav-btn-close block sm:hidden ms-auto cursor-pointer"
+              aria-label="close menu"
+            >
+              <img
+                src="images/icon-menu-close.svg"
+                width="32"
+                height="31"
+                alt="close icon"
+              />
+            </button>
+            <ul
+              class="mt-21 sm:mt-0 flex flex-col sm:flex-row gap-y-6 sm:items-center sm:justify-between gap-x-10"
+            >
+              <li><a href="#">Home</a></li>
+              <li><a href="#">New</a></li>
+              <li><a href="#">Popular</a></li>
+              <li><a href="#">Trending</a></li>
+              <li><a href="#">Categories</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div class="flex flex-col md:flex-row gap-x-[30px] mt-[55px]">
+        <main class="">
+          <picture>
+            <source
+              srcset="/images/image-web-3-desktop.jpg"
+              media="(min-width:768px)"
+            />
+            <img src="/images/image-web-3-mobile.jpg" alt="" />
+          </picture>
+
+          <div class="flex flex-col xl:flex-row mt-7">
+            <h1 class="font-bold leading-[1.1] text-heading-1 text-dark">
+              The Bright Future of Web 3.0?
+            </h1>
+            <div class="flex flex-col gap-y-1 items-start">
+              <p class="mt-4 xl:mt-0">
+                We dive into the next evolution of the web that claims to put
+                the power of the platforms back into the hands of the people.
+                But is it really fulfilling its promise?
+              </p>
+              <button
+                class="bg-dark text-light px-8 py-4 uppercase text-sm mt-6 xl:mt-auto"
+              >
+                Read more
+              </button>
+            </div>
+          </div>
+        </main>
+        <asid
+          class="bg-dark px-6 py-8 md:w-[350px] shrink-[0] mt-[4rem] md:mt-0"
+        >
+          <h2
+            class="text-heading-2 font-bold leading-none text-primary mb-[2.125rem]"
+          >
+            New
+          </h2>
+          <article>
+            <h3 class="text-light">Hydrogen VS Electric Cars</h3>
+            <p class="text-neutral-primary mt-2">
+              Will hydrogen-fueled cars ever catch up to EVs?
+            </p>
+          </article>
+          <article
+            class="mt-7 pt-[1.875rem] border-t-[1px] border-neutral-primary"
+          >
+            <h3 class="text-light">The Downsides of AI Artistry</h3>
+            <p class="text-neutral-primary mt-2">
+              What are the possible adverse effects of on-demand AI image
+              generation?
+            </p>
+          </article>
+          <article
+            class="mt-7 pt-[1.875rem] border-t-[1px] border-neutral-primary"
+          >
+            <h3 class="text-light">Is VC Funding Drying Up?</h3>
+            <p class="text-neutral-primary mt-2">
+              Private funding by VC firms is down 50% YOY. We take a look at
+              what that means.
+            </p>
+          </article>
+        </asid>
+      </div>
+
+      <aside
+        class="flex flex-col gap-y-8 lg:flex-row mt-18 gap-x-[1.875rem] leading-[1.3]"
+      >
+        <a href="#" class="text-none flex-[1]">
+          <article class="flex gap-x-6 items-start">
+            <img
+              class="object-cover"
+              width="100"
+              height="127"
+              src="images/image-retro-pcs.jpg"
+              alt="computer"
+            />
+            <div>
+              <span
+                class="text-heading-3 text-primary font-bold"
+                aria-hidden="true"
+                >01</span
+              >
+              <h3
+                class="mt-4 hover:text-primary transition-all text-heading-4 font-extrabold text-dark"
+              >
+                Reviving Retro Pcs
+              </h3>
+              <p class="text-neutral-secondary mt-2.5">
+                What happens when old PCs are given modern upgrades?
+              </p>
+            </div>
+          </article>
+        </a>
+        <a href="#" class="text-none flex-[1]">
+          <article class="flex gap-x-6 items-start">
+            <img
+              class="object-cover"
+              width="100"
+              height="127"
+              src="images/image-top-laptops.jpg"
+              alt="computer"
+            />
+            <div>
+              <span
+                class="text-heading-3 text-primary font-bold"
+                aria-hidden="true"
+                >02</span
+              >
+              <h3
+                class="mt-4 hover:text-primary transition-all text-heading-4 font-extrabold text-dark"
+              >
+                Top 10 Laptops of 2022
+              </h3>
+              <p class="text-neutral-secondary mt-2.5">
+                Our best picks for various needs and budgets.
+              </p>
+            </div>
+          </article>
+        </a>
+        <a href="#" class="flex-[1]">
+          <article class="flex gap-x-6 items-start">
+            <img
+              class="object-cover"
+              width="100"
+              height="127"
+              src="images/image-gaming-growth.jpg"
+              alt="computer"
+            />
+            <div>
+              <span
+                class="text-heading-3 text-primary font-bold"
+                aria-hidden="true"
+                >03</span
+              >
+              <h3
+                class="mt-4 hover:text-primary transition-all text-heading-4 font-extrabold text-dark"
+              >
+                The growth of gaming
+              </h3>
+              <p class="text-neutral-secondary mt-2.5">
+                How the pandemic has sparked fresh opportunities.
+              </p>
+            </div>
+          </article>
+        </a>
+      </aside>
+    </div>
+  </body>
+</html>

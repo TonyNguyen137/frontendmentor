@@ -3,3 +3,20 @@
 @use 'layout';
 @use 'vendor';
 @use 'utilities';
+
+.navbar__container > :first-child {
+  scale: 5;
+}
+
+.navbar {
+  animation: move 5s;
+}
+
+.grid-footer {
+  animation: top 3s;
+}
+@keyframes bounce {
+  to 100% {
+    bounce: 10px;
+  }
+}

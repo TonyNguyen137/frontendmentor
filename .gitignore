@@ -16,6 +16,7 @@
 .prettierignore/
 .parcel-cache/
 dist/
+public/
 node_modules/
 blog-preview-card-figma
 space-tourism-website-figma
